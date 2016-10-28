@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>计算时间差</title>
+</head>
+<body>
+	<script>
+	var Time = (function(window, undefined) {
+		var T1 = '2016/10/28 11:30:00'; // 终点时间
+
+		function comTime() {
+			var t2 = new Date(), // 现在时间
+				tt = new Date(T1).getTime() - t2.getTime(), // 计算相差毫秒数
+				// 天数	
+				days = Math.floor(tt / (24*3600*1000)),
+				// 小时数
+				leave1 = tt % (24*3600*1000), // 计算天数后剩余的毫秒数
+				hours = Math.floor(leave1 / (3600*1000)),
+				// 分钟数
+				leave2 = leave1 % (3600*1000), // 计算小时数后剩余的毫秒数
+				minutes = Math.floor(leave2 / (60*1000)),
+				// 秒数
+				leave3 = leave2 % (60*1000), // 计算分钟数后剩余的毫秒数
+				seconds = Math.round(leave3 / 1000);
+
+			showTime(days, hours, minutes, seconds);
+		}
+
+		function showTime(days, hours, minutes, seconds) {
+			setTimeout(function() {
+				document.body.innerHTML = '现在距离下班时间还有 ' + days + ' 天 ' + hours + ' 小时 ' + minutes + ' 分钟 ' + seconds +' 秒';
+				comTime();
+			}, 1000);
+		}
+
+		return {
+			init: function() {
+				comTime();
+				console.log(T1);
+			}
+		}
+		
+	})(window);
+	
+	Time.init();
+	</script>
+</body>
+</html>

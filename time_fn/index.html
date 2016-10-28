@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>时间格式化</title>
+</head>
+<body>
+	<script>
+
+		// 参数形式：
+		// new Date("month dd, yyyy hh:mm:ss");
+		// new Date("month dd, yyyy");
+		// new Date(yyyy, mth, dd, hh, mm, ss);
+		// new Date(yyyy, mth, dd);
+		// new Date(ms);
+		//
+		// 说明：
+		// month:用英文表示月份名称，从January到December
+		// mth:用整数表示月份，从0（１月）到１１（１２月）
+
+		function formatDate(now) {
+			var y = now.getFullYear(),
+				m = now.getMonth(),
+				d = now.getDate(),
+				h = now.getHours(),
+				min = now.getMinutes(),
+		  		s = now.getSeconds();
+		  
+			return y + "-" + m + "-" + d + " " + h + ":" + min + ":" + s; 
+		}
+		var nowDate = new Date(2016, 10, 27, 17, 30);
+		document.write(formatDate(nowDate));
+
+	</script>
+</body>
+</html>
