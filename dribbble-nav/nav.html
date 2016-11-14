@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+	<title>Navigation</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<nav>
+		<div class="menu-btn left"><i></i></div>
+		<div class="logo left"><a href="/"><img src="img/logo.png" alt="dribbble"></a></div>
+		<ul class="main-nav left">
+			<li><a href="javascript:;">Shots</a>
+				<ul class="sub-nav">
+					<li><a href="javascript:;">Popular</a></li>
+					<li><a href="javascript:;">Recent</a></li>
+					<li><a href="javascript:;">Debuts</a></li>
+					<li><a href="javascript:;">Teams</a></li>
+					<li><a href="javascript:;">Playoffs</a></li>
+				</ul>
+			</li>
+			<li><a href="javascript:;">Designers</a>
+				<ul class="sub-nav">
+					<li><a href="javascript:;">All</a></li>
+					<li><a href="javascript:;">For Hire</a></li>
+				</ul>
+			</li>
+			<li><a href="javascript:;">Teams</a></li>
+			<li><a href="javascript:;">Community</a></li>
+			<li><a href="javascript:;">Jobs</a></li>
+			<li><a href="javascript:;">More</a>
+				<ul class="sub-nav">
+					<li><a href="javascript:;">About</a></li>
+					<li><a href="javascript:;">Shop</a></li>
+					<li><a href="javascript:;">Suppot</a></li>
+				</ul>
+			</li>
+		</ul>
+		<div class="login right">
+			<a class="sign-up" href="javascript:;">Sign up</a>
+			<a class="sign-in" href="javascript:;">Sign in</a>
+			<span class="search-bar clearfix">
+				<input class="search-input left" type="text" placeholder="Search...">
+				<span class="search-btn right"></span>
+			</span>
+		</div>
+	</nav>
+	<script>
+		window.onload = function() {
+
+			// 展开搜索
+			!function() {
+				var oInput = document.querySelector('.search-input'),
+					oBtn = document.querySelector('.search-btn');
+				document.addEventListener('click', function(e) {
+					if (e.target == oBtn || e.target == oInput) {
+						oInput.classList.add('show');
+					}
+					else{
+						oInput.classList.remove('show');
+					}
+				});
+			}(),
+
+			// 展开菜单
+			function() {
+				var menuBtn = document.querySelector('.menu-btn'),
+					mainNav = document.querySelector('.main-nav');
+				menuBtn.addEventListener('click', function() {
+					mainNav.classList.toggle('toggle');
+				});
+			}()
+			
+		};
+	</script>
+</body>
+</html>

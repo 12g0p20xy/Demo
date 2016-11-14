@@ -1,0 +1,169 @@
+@charset "utf-8";
+
+// 主题色
+$primary-color: #DE0927;
+$secondary-color: blue;
+
+// 主间距
+$margin: 30px;
+$padding: 15px;
+
+// 背景
+$body-bg: #fff;
+// $body-bg: #333 url(../img/bg.jpg) repeat-y;
+
+// 链接
+$link: #2094c4;
+
+// 字体
+$font-color: #333;
+$font-size: 16px;
+$line-height: 1.7;
+$fontfamily: 'helvetica neue',tahoma,'hiragino sans gb',stheiti,'wenquanyi micro hei',\5FAE\8F6F\96C5\9ED1,\5B8B\4F53,sans-serif;
+
+// 按钮
+$btn-color: #fff;
+$btn-fz: 16px;
+$btn-bg: #D0875A;
+
+@import 'reset';
+@import 'mixin';
+@import 'general';
+
+.left{
+	float: left;
+}
+.right{
+	float: right;
+}
+
+nav{
+	width: 100%;
+	height: 56px;
+	background: #333;
+	a{
+		display: block;
+		font-size: 18px;
+		color: #999;
+		@include transition(.2s);
+		&:hover{
+			color: #eee;
+		}
+	}
+	.menu-btn{
+		display: none;
+		width: 30px;
+		height: 56px;
+		margin-left: 15px;
+		background: url(../img/icon-hamburger.png) no-repeat 50% 50%;
+		@include opacity(.6);
+		cursor: pointer;
+	}
+	.logo{
+		> a{
+			display: block;
+			width: 90px;
+			height: 56px;
+			padding: 0 20px;
+			padding-top: 15px;
+			> img{
+				display: block;
+				width: 100%;
+			}
+		}
+	}
+	.main-nav li{
+		@include inline-block;
+		position: relative;
+		height: 56px;
+		line-height: 56px;
+		padding: 0 .5em;
+		.sub-nav{
+			display: none;
+			width: 240px;
+			padding-bottom: .5em;
+			background: #333;
+			@include border-radius(0 0 6px 6px);
+			@include box-shadow(1px 2px 3px rgba(0,0,0,.6));
+			> li{
+				display: block;
+				height: auto;
+				line-height: 1.7;
+				padding: .2em 1em;
+				&:hover{
+					background: #555;
+				}
+			}
+		}
+		&:hover{
+			.sub-nav {
+				display: block;
+				position: absolute;
+				top: 56px;
+			}
+		}
+	}
+	.login{
+		a, span{
+			display: inline-block;
+			vertical-align: middle;
+			padding: 0 .5em;
+			height: 56px;
+			line-height: 56px;
+		}
+		.search-btn{
+			width: 15px;
+			background: url(../img/icon-search.png) no-repeat 50% 50%;
+			background-size: 60%;
+			cursor: pointer;
+		}
+		.search-input{
+			width: 0;
+			@include transition(.3s);
+			&.show{
+				width: 180px;
+			}
+		}
+	}
+}
+@media (max-width: 62em) {
+	nav{
+		.main-nav li{
+			padding: 0 .2em;
+		}
+		.login a{
+			display: none;
+		}
+	}
+}
+@media (max-width: 40em) {
+	nav{
+		.logo{
+			float: none;
+			a{
+				margin: 0 auto;
+				width: 7em;
+			}
+		}
+		.login, .main-nav li{
+			display: none;
+		}
+		.main-nav.toggle{
+			width: 100%;
+			li{
+				display: block;
+				padding-left: 15px;
+				background: #333;
+				&:hover .sub-nav{
+					display: none;
+				}
+			}
+			li + li{
+				border-top: 1px solid #444;
+			}
+		}
+		.menu-btn{
+			display: block;
+		}
+	}
+}
