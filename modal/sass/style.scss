@@ -55,7 +55,6 @@ $btn-bg: #15B0E4;
 	width: 80%;
 	top: 20%;
 	left: 10%;
-	@include translate(-50%, -50%, 0);
 	opacity: 0;
 	h3{
 		color: #fff;
@@ -99,6 +98,28 @@ $btn-bg: #15B0E4;
 	}
 	100% {
 		transform: scale(1);
+		opacity: 1;
+	}
+}
+// 下滑动画
+@-webkit-keyframes slideDown{
+	0% {
+		@include translate(0, -60%, 0);
+		opacity: 0;
+	}
+	100% {
+		@include translate(0, 0, 0);
+		opacity: 1;
+	}
+}
+
+@keyframes slideDown{
+	0% {
+		@include translate(0, -60%, 0);
+		opacity: 0;
+	}
+	100% {
+		@include translate(0, 0, 0);
 		opacity: 1;
 	}
 }

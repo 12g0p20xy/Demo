@@ -43,10 +43,10 @@
 
 			BackTop.prototype.showBtn = function() {
 				this.scrollTop = $(document.body).scrollTop();
-				if (this.scrollTop >= 600) {
+				if (this.scrollTop >= 150) {
 					this.$backBtn.fadeIn();
 				}
-				else if (this.scrollTop < 600) {
+				else if (this.scrollTop < 150) {
 					this.$backBtn.fadeOut();
 				}
 				console.log(this.scrollTop);
