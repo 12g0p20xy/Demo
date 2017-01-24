@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>弹性盒布局消除空白</title>
+	<style type="text/css">
+		.container{
+			display: -moz-box;
+			display: -webkit-box;
+			/*使用盒布局*/
+			border: 3px black solid;
+			-webkit-box-orient: horizontal;
+			-moz-box-orient: horizontal;
+			/*设置元素水平排列或垂直排列*/
+			width: 500px;
+			height: 300px;
+			/*只设置父元素的宽高，子元素只会在一个方向自适应*/
+			font-size: 1.5em;
+		}
+		
+		.left{
+			background: orange;
+		}
+		.middle{
+			background: yellow;
+			-moz-box-flex:1;
+			-webkit-box-flex: 1;
+			/*任一子元素设置弹性盒填补另一个方向剩余的空白*/
+			display: flex;
+			justify-content:center;
+			align-items: center;
+			/*上面3行让文字垂直居中 注意兼容*/
+		}
+		.right{
+			background: limegreen;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="left">LEFT</div>
+		<div class="middle">MIDDLE</div>
+		<div class="right">RIGHT</div>
+	</div>
+</body>
+</html>

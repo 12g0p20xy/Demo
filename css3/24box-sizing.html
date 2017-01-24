@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	.container{
+		width: 600px;
+		height: 100px;
+		margin-bottom: 200px;
+		font-size: 0;
+		background: #eee;
+	}
+	.box{
+		width: 25%;
+		height: 100%;
+		border: 3px solid #ddd;
+		padding: 10px;
+		background: silver;
+		display: inline-block;
+		*zoom: 1;
+		*display: inline;
+	}
+	.container1 .box{
+		/*默认值*/
+		box-sizing: content-box;
+	}
+	.container2 .box{
+		-webkit-box-sizing: border-box;
+		   -moz-box-sizing: border-box;
+		    -ms-box-sizing: border-box;
+		     -o-box-sizing: border-box;
+		        box-sizing: border-box;
+		behavior: url(js/boxsizing.htc);
+	}
+	</style>
+</head>
+<body>
+	<div class="container container1">
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+	</div>
+	<div class="container container2">
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+	</div>
+</body>
+</html>

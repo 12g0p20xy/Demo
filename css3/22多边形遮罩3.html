@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	span{ display: inline-block; width: 400px; height: 200px; background: #00AAFF;}
+	.element {
+	  -webkit-clip-path: polygon(0% 90%, 100% 90%, 100% 100%, 0% 100%);
+	  clip-path: polygon(0% 90%, 100% 90%, 100% 100%, 0% 100%);
+	  transition: .3s;
+	}
+	@-webkit-keyframes polygon-animation {
+		0%{
+			-webkit-clip-path: polygon(0% 90%, 100% 90%, 100% 100%, 0% 100%);
+			clip-path: polygon(0% 90%, 100% 90%, 100% 100%, 0% 100%);
+		}
+		60%{
+			-webkit-clip-path: polygon(0% 45%, 100% 80%, 100% 100%, 0% 100%);
+			clip-path: polygon(0% 45%, 100% 80%, 100% 100%, 0% 100%);
+		}
+		100%{
+			-webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+			clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+		}
+	}
+	.element:hover{
+	    -webkit-animation: polygon-animation .1s ease-in-out forwards; /*forwards设置对象状态为动画结束时的状态*/
+	}
+	</style>
+</head>
+<body>
+	<div class="element-wrap">
+		<span class="element"></span>
+	</div>
+</body>
+</html>

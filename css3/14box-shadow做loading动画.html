@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		body{
+			background: rgb(0,196,202);
+		}
+		.source{
+			border: 1px white solid;
+			margin-left: -1px;
+			width: 240px;
+			height: 240px;
+		}
+		.load{
+			font-size: 20px;
+			margin: 45% auto;
+			width: 1em;
+			height: 1em;
+			border-radius: 50%;
+			position: relative;
+			text-indent: -9999em;
+			animation: load01 1.3s linear infinite;
+		}
+		@-webkit-keyframes load01 {
+		  0%,
+		  100% {
+			    box-shadow: 0em -3em 0em 0.2em #ffffff, 2em -2em 0 0em #ffffff, 3em 
+				0em 0 -0.5em #ffffff, 2em 2em 0 -0.5em #ffffff, 0em 3em 0 -0.5em 
+				#ffffff, -2em 2em 0 -0.5em #ffffff, -3em 0em 0 -0.5em #ffffff, -2em -2em
+				0 0em #ffffff;
+				}
+		  12.5% {
+			    box-shadow: 0em -3em 0em 0em #ffffff, 2em -2em 0 0.2em #ffffff, 3em 
+			0em 0 0em #ffffff, 2em 2em 0 -0.5em #ffffff, 0em 3em 0 -0.5em #ffffff, 
+			-2em 2em 0 -0.5em #ffffff, -3em 0em 0 -0.5em #ffffff, -2em -2em 0 -0.5em
+			 #ffffff;
+			  }
+		  25% {
+			    box-shadow: 0em -3em 0em -0.5em #ffffff, 2em -2em 0 0em #ffffff, 3em
+			 0em 0 0.2em #ffffff, 2em 2em 0 0em #ffffff, 0em 3em 0 -0.5em #ffffff, 
+			-2em 2em 0 -0.5em #ffffff, -3em 0em 0 -0.5em #ffffff, -2em -2em 0 -0.5em
+			 #ffffff;
+			  }
+		  37.5% {
+			    box-shadow: 0em -3em 0em -0.5em #ffffff, 2em -2em 0 -0.5em #ffffff, 
+			3em 0em 0 0em #ffffff, 2em 2em 0 0.2em #ffffff, 0em 3em 0 0em #ffffff, 
+			-2em 2em 0 -0.5em #ffffff, -3em 0em 0 -0.5em #ffffff, -2em -2em 0 -0.5em
+			 #ffffff;
+			  }
+		  50% {
+			    box-shadow: 0em -3em 0em -0.5em #ffffff, 2em -2em 0 -0.5em #ffffff, 
+			3em 0em 0 -0.5em #ffffff, 2em 2em 0 0em #ffffff, 0em 3em 0 0.2em 
+			#ffffff, -2em 2em 0 0em #ffffff, -3em 0em 0 -0.5em #ffffff, -2em -2em 0 
+			-0.5em #ffffff;
+			  }
+		  62.5% {
+			    box-shadow: 0em -3em 0em -0.5em #ffffff, 2em -2em 0 -0.5em #ffffff, 
+			3em 0em 0 -0.5em #ffffff, 2em 2em 0 -0.5em #ffffff, 0em 3em 0 0em 
+			#ffffff, -2em 2em 0 0.2em #ffffff, -3em 0em 0 0em #ffffff, -2em -2em 0 
+			-0.5em #ffffff;
+			  }
+		  75% {
+			    box-shadow: 0em -3em 0em -0.5em #ffffff, 2em -2em 0 -0.5em #ffffff, 
+			3em 0em 0 -0.5em #ffffff, 2em 2em 0 -0.5em #ffffff, 0em 3em 0 -0.5em 
+			#ffffff, -2em 2em 0 0em #ffffff, -3em 0em 0 0.2em #ffffff, -2em -2em 0 
+			0em #ffffff;
+			  }
+		  87.5% {
+			    box-shadow: 0em -3em 0em 0em #ffffff, 2em -2em 0 -0.5em #ffffff, 3em
+			 0em 0 -0.5em #ffffff, 2em 2em 0 -0.5em #ffffff, 0em 3em 0 -0.5em 
+			#ffffff, -2em 2em 0 0em #ffffff, -3em 0em 0 0em #ffffff, -2em -2em 0 
+			0.2em #ffffff;
+			  }
+		} /*通过box-shadow来做圆点 div元素在正中隐藏 通过x，y偏移量设置位置 阴影扩展半径设置大小*/
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="source">
+			<div class="load">加载中...</div>
+		</div>
+	</div>
+</body>
+</html>

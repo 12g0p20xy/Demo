@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	.blur {	
+	    filter: url(#blur); /* FireFox, Chrome, Opera */
+	    -webkit-filter: blur(10px); /* Chrome, Opera */
+	       -moz-filter: blur(10px);
+	        -ms-filter: blur(10px);    
+	            filter: blur(10px);
+	    filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
+	}
+	.mask{
+		-webkit-filter: blur(10px);
+	}
+	</style>
+</head>
+<body>
+	<img src="images/11.jpg" class="blur" />
+	<div class="mask"><img src="images/11.jpg"></div>
+	<svg>
+		<defs>
+        	<filter id="blur">
+            	<feGaussianBlur stdDeviation="10" />
+        	</filter>
+    	</defs>
+	</svg>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Keyframes</title>
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<style type="text/css">
+		.stage{
+			margin: 300px;
+		}
+		.box{
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+		@keyframes MOVE{
+			0%{
+				transform:rotate(30deg);
+				border-radius: 3px;
+			}
+			10%{
+				transform:rotate(48deg) translateX(120px);
+				border-radius: 10px;
+			}
+			50%{
+				transform:rotate(90deg) translateX(60px) translateY(200px);
+				border-radius: 20px;
+				background: blue;
+			}
+			80%{
+				transform:translateY(-300px);
+			}
+			100%{
+				transform:rotate(360deg);
+				border-radius: 100px;
+			}
+		}
+		.round{
+			-webkit-animation-name: "MOVE";
+			-webkit-animation-duration: 10s;
+			-webkit-animation-timing-function: ease-in-out;
+			-webkit-animation-iteration-count: infinite;
+			/*animation的属性目前要分开写*/
+			/*按下按钮给方块增加.round*/
+		}
+	</style>
+</head>
+<body>
+	<div class="stage">
+		<div class="box"></div>
+		<button>Click me!</button>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('button').click(function(){
+				$(this).siblings().addClass('round');
+			});
+		});
+	</script>
+</body>
+</html>

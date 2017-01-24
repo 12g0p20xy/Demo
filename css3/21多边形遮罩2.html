@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	.element {
+	  -webkit-clip-path: polygon(50% 0%, 90% 10%, 90% 90%, 10% 90%);
+	  clip-path: polygon(50% 0%, 90% 10%, 90% 90%, 10% 90%);
+	  -webkit-clip-path: url("#clip-demo-basic");
+	  clip-path: url("#clip-demo-basic");
+	  display: block;
+	}
+	</style>
+</head>
+<body>
+	<div class="element-wrap">
+		<img class="element" src="http://karenmenezes.com/shapes-polygon/clip-demo-img.jpg" alt="demo-clip-path-coordinates" width="550">
+	</div>
+	<svg class="clip-svg">
+	    <defs>
+	        <clipPath id="clip-demo-basic" clipPathUnits="objectBoundingBox">
+	            <polygon points="0.5 0, 0.9 0.1, 0.9 0.9, 0.1 0.9" />
+	        </clipPath>
+	    </defs>
+	</svg>
+</body>
+</html>

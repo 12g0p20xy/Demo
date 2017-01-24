@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>弹性盒布局</title>
+	<style type="text/css">
+		.container{
+			display: -moz-box;
+			display: -webkit-box;
+			/*-webkit-box-orient: vertical;
+			-moz-box-orient: vertical;*/
+			/*可以将3个元素水平排列改为垂直排列*/
+		}
+		
+		.left{
+			-webkit-box-ordinal-group: 3;/*可以控制元素的顺序*/
+			width: 260px;
+			padding: 26px;
+			background: orange;
+		}
+		.contents{
+			/*width: 300px;*//*去掉中间元素的宽度限制*/
+			-webkit-box-flex:1;
+			-moz-box-flex:1;/*弹性盒属性*/
+			padding: 26px;
+			background: yellow;
+			-webkit-box-ordinal-group: 1;
+		}
+		.right{
+			-webkit-box-ordinal-group: 2;
+			width: 260px;
+			padding: 26px;
+			background: limegreen;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="left">
+			<h2>左侧边栏</h2>
+			<ul>
+				<li><a href="">超链接</a></li>
+				<li><a href="">超链接</a></li>
+				<li><a href="">超链接</a></li>
+				<li><a href="">超链接</a></li>
+				<li><a href="">超链接</a></li>
+			</ul>
+		</div>
+		<div class="contents">
+			<h2>内容</h2>
+			<p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
+		</div>
+		<div class="right">
+			<h2>右侧边栏</h2>
+			<ul>
+				<li><a href="">超链接</a></li>
+				<li><a href="">超链接</a></li>
+				<li><a href="">超链接</a></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

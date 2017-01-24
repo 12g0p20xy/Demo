@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.ex{
+			width: 300px;
+			height: 150px;
+			background: -webkit-linear-gradient(left, #ccc, #000);
+			background: -o-linear-gradient(left, #ccc, #000);
+			background: linear-gradient(to right, #ccc, #000);
+		}
+		.ex2{
+			width: 300px;
+			height: 150px;
+			background: -webkit-linear-gradient(left, red, #f96, 30%, green);
+			background: -o-linear-gradient(left, red, #f96, 30%, green);
+			background: linear-gradient(to right, red, #f96, 30%, green);
+		}
+		.ex3{
+			width: 300px;
+			height: 150px;
+			background: #ace;
+			/*可以控制背景大小*/
+			-webkit-background-size: 20px 20px;
+			-moz-background-size: 20px 20px;
+  			background-size: 20px 20px; 
+			background-image: -webkit-gradient(linear, 0 0, 100% 100%,
+		      color-stop(.25, rgba(255, 255, 255, .2)), color-stop(.25, transparent),
+		      color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .2)),
+		      color-stop(.75, rgba(255, 255, 255, .2)), color-stop(.75, transparent),
+		      to(transparent));
+		}
+	</style>
+</head>
+<body>
+	<div class="ex"></div>
+	<div class="ex2"></div>
+	<div class="ex3"></div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>flexbox响应式</title>
+	<style type="text/css">
+		section{
+			border: 3px black solid;
+			width: 90%;
+			height: 800px;
+			margin: 0 auto;
+			display: -webkit-flex;
+  			display: -moz-flex;
+  			display: -ms-flex;
+  			display: flex;
+  			/*指定flexbox在父元素上*/
+		}
+		article:nth-child(1){
+			-webkit-flex:2;
+			-moz-flex: 2;
+			-ms-flex: 2;
+			flex:2;
+			background: red;
+		}
+		article:nth-child(2){
+			-webkit-flex:1;
+			-moz-flex: 1;
+			-ms-flex: 1;
+			flex:1;
+			background: green;
+		}
+		article:nth-child(3){
+			-webkit-flex:1;
+			-moz-flex: 1;
+			-ms-flex: 1;
+			flex:1;
+			background: blue;
+		}
+		@media screen and (max-width: 800px){
+			article:nth-child(1){
+				background: yellow;
+			}
+		}
+		@media screen and (max-width: 300px){
+			article:nth-child(1){
+				width: 100%;
+				order: 1;
+				/*改变此元素的顺序 默认值是0 注意正负*/
+				/*不会改变html结构*/
+			}
+			section{
+				flex-direction:column;
+				/*设置纵向排列*/
+			}
+		}
+	</style>
+</head>
+<body>
+	<section>
+		<article>01</article>
+		<article>02</article>
+		<article>03</article>
+	</section>
+</body>
+</html>

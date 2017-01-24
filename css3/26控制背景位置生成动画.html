@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>26</title>
+	<style type="text/css">
+	html, body{margin: 0; padding: 0;}
+	@keyframes loading { 
+		from { 
+			background-position: 0px 0px; 
+		} 
+		to { 
+			background-position: -17280px 0px; 
+		}
+	}
+	.loading{
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		width: 160px;
+		height: 76px;
+		/*居中定位的方法*/
+		margin-left: -80px;
+		margin-top: -80px;
+		background: url(images/preloader2.png) no-repeat;
+		animation: loading 4s steps(108) infinite;
+	}
+	</style>
+</head>
+<body>
+	<div class="loading"></div>
+</body>
+</html>

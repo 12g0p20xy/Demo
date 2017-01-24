@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>menu</title>
+	<style type="text/css">
+		ul.nav{
+			width: 260px;
+			border-right: 1px #ccc solid;
+			margin: 100px;
+			position: relative;
+		}
+		li{
+			width: 260px;
+			height: 105px;
+			list-style: none;
+			text-align: right;
+		}
+		li a{
+			text-decoration: none;
+			display: block;
+			width: 240px;
+			height: 85px;
+			padding: 10px;
+		}
+		li:nth-child(1):hover a{
+			background: rgba(174,54,55,0.9);
+		}
+		li:nth-child(2):hover a{
+			background: rgba(195, 210, 67, 0.9);
+		}
+		li:nth-child(3):hover a{
+			background: rgba(211, 132, 57, 0.9);
+		}
+		li:hover a span{
+			color: white;
+		}
+		li span{
+			display: block;
+		}
+		li span:nth-child(1){
+			font:12px/21px 'Alegreya SC', Georgia, serif;
+			font-weight: bold;
+			color: #ccc;
+		}
+		li span:nth-child(2){
+			font:24px 'Alegreya SC', Georgia, serif;
+			color: #333;
+		}
+		li img{
+			position: absolute;
+			top: 0;
+			right: 0;
+			opacity: 0;
+			z-index: -10;
+			transition: all .3s ease-in-out .1s;/*放在这里图片有退回去的效果*/
+		}
+		li:hover img{
+			right: -200px;
+			opacity: 1;
+		}
+	</style>
+</head>
+<body>
+	<ul class="nav">
+		<li>
+			<a href="#"><span>Art Director</span><span>Henry James</span></a>
+			<img src="images/1.jpg">
+		</li>
+		<li>
+			<a href="#"><span>Production Coordinator</span><span>Francis Morgan</span></a>
+			<img src="images/2.jpg">
+		</li>
+		<li>
+			<a href="#"><span>Sound</span><span>Kevin Schneider</span></a>
+			<img src="images/3.jpg">
+		</li>
+	</ul>
+</body>
+</html>

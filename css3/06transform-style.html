@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>transform-style</title>
+	<style type="text/css">
+		.wrap{
+			width: 500px;
+			height: 300px;
+			margin: 30px auto;
+			position: relative;
+			background: #ccc;
+		}
+		@keyframes spin{
+			0%{
+				transform:rotateY(0deg);
+			}
+			100%{
+				transform:rotateY(360deg);
+			}
+		}
+		.spin{
+			width: 142px;
+			height: 200px;
+			position: absolute;
+			top: 50%;
+			left:50%;
+			margin-left: -72px;
+			margin-top: -101px;
+			border:1px dashed orange;
+			cursor:pointer;
+			transform-style:preserve-3d;
+			/*preserve-3d表示所有子元素在3D空间中呈现，需要设置在父元素*/
+		}
+
+		.spin:hover{
+			animation: spin 5s linear infinite;
+		}
+		.rotate{
+			border: 2px blue solid;
+			background: red;
+			transform:perspective(200px) rotateY(45deg);
+			/*perspective属性设置透视*/
+		}
+		.child{
+			width: 142px;
+			height: 200px;
+			background: green;
+			transform:rotateX(15deg) translateZ(10px);
+			transform-origin: 0 0 40px;
+		}
+		.three-d {
+    		transform-style: preserve-3d;
+    		/*设置了preserve-3d后的child元素会根据translateZ()值摊开，不再会堆叠在一起*/
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+	    <div class="spin">
+	        <div class="rotate">
+	        	<div class="child"></div>
+	        </div>
+	    </div>
+	</div>
+	<div class="wrap">
+	    <div class="spin">
+	        <div class="rotate three-d">
+	        	<div class="child"></div>
+	        </div>
+	    </div>
+	</div>
+</body>
+</html>

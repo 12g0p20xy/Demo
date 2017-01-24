@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	.clip-wrap {
+	  text-align: center;
+	}
+	.clip-svg {
+	  width: 0;
+	  height: 0;
+	}
+	.clip-polygon {
+      -webkit-clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+      clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+      -webkit-clip-path: url("#clip-svg-demo");
+      clip-path: url("#clip-svg-demo");
+	}
+	</style>
+</head>
+<body>
+	<div class="clip-wrap">
+	  <img src="images/01_iron_man_2.jpg" width="300" height="300" class="clip-polygon">
+	</div>
+
+    <svg class="clip-svg">
+        <defs>
+            <clipPath id="clip-svg-demo" clipPathUnits="objectBoundingBox">
+                <polygon points="0.25 0, 0.75 0, 1 0.5, 0.75 1, 0.25 1, 0 0.5" />
+            </clipPath>
+        </defs>
+    </svg>
+</body>
+</html>

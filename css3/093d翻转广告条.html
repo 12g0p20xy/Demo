@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>3d banner</title>
+	<style type="text/css">
+		.stage{
+			position: relative;
+			width: 310px;
+			height: 100px;
+			margin: 300px;
+			font-family: Tahoma, Arial;
+			-webkit-perspective: 4000px;
+			-moz-perspective:4000px;
+			-ms-perspective:4000px;
+			-o-perspective:4000px;
+			perspective: 4000px;
+			/*设置透视视距*/
+		}
+		.item{
+			height: 100px;/*高度不要忘记 否则无法对齐*/
+			-webkit-transform-style:preserve-3d;
+			-moz-transform-style:preserve-3d;
+			-ms-transform-style:preserve-3d;
+			-o-transform-style:preserve-3d;
+			transform-style:preserve-3d;
+			/*转换成3d*/
+			-webkit-transition: -webkit-transform .6s;
+         	-moz-transition: -moz-transform .6s;
+          	-ms-transition: -ms-transform .6s;
+           	-o-transition: -o-transform .6s;
+            transition: transform .6s;
+            /*设置变换的时间*/
+		}
+		.item img{
+			position: absolute;
+			top: 0;
+			border-radius: 3px;
+			box-shadow: 0px 3px 8px rgba(0,0,0,0.3);
+			/*-webkit-transform: translateZ(50px);
+     		-moz-transform: translateZ(50px);
+      		-ms-transform: translateZ(50px);
+       		-o-transform: translateZ(50px);*/
+          	transform: translateZ(50px);/*盒子的厚度*/
+          	/*-webkit-transition: all .6s;
+     		-moz-transition: all .6s;
+      		-ms-transition: all .6s;
+       		-o-transition: all .6s;*/
+          	transition: all .6s;
+		}
+		.item .info{
+			display: block;
+			position: absolute;
+			top: 0;
+			width: 290px;
+			height: 60px;
+			border-radius: 15px;
+			padding: 10px;
+		    padding-top: 30px;
+			font-size: 12px;
+			text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
+			/*background: rgb(236,241,244);
+			background: -webkit-linear-gradient(to bottom,  rgba(236,241,244,1) 0%,rgba(190,202,217,1) 100%);
+			background: -ms-linear-gradient(to bottom,  rgba(236,241,244,1) 0%,rgba(190,202,217,1) 100%);*/
+			background: linear-gradient(to bottom,  rgba(236,241,244,1) 0%,rgba(190,202,217,1) 100%);
+			/*-webkit-transform: rotateX(-90deg) translateZ(50px);
+		    -moz-transform: rotateX(-90deg) translateZ(50px);
+		    -ms-transform: rotateX(-90deg) translateZ(50px);
+		    -o-transform: rotateX(-90deg) translateZ(50px);*/
+		    transform: rotateX(-90deg) translateZ(50px);/*沿x轴到下面 沿z轴移动50px到底部*/
+		    /*-webkit-transition: all .6s;
+		    -moz-transition: all .6s;
+		    -ms-transition: all .6s;
+		    -o-transition: all .6s;*/
+		    transition: all .6s;
+		}
+		.item:hover{
+			/*-webkit-transform: translateZ(-50px) rotateX(95deg);
+		    -moz-transform: translateZ(-50px) rotateX(95deg);
+		    -ms-transform: translateZ(-50px) rotateX(95deg);
+		    -o-transform: translateZ(-50px) rotateX(95deg);*/
+		    transform: translateZ(-50px) rotateX(90deg);
+		}
+		.item:hover img{
+			box-shadow: none;
+			border-radius: 15px;
+		}
+		.item:hover .info {
+    	box-shadow: 0px 3px 8px rgba(0,0,0,0.3);
+    	border-radius: 3px;
+  		}
+	</style>
+</head>
+<body>
+	<!-- 在三维旋转中通常使用的结构： -->
+	<div class="stage"><!-- 1、用来设置3d视点 -->
+		<div class="item"><!-- 2、用来包裹容器内容 -->
+			<img src="images/chimpified.jpeg">
+			<span class="info"><b>Chimpified</b><br>Chimpified connects your Shopify store to your Mailchimp account.</span>
+		</div>
+	</div>
+</body>
+</html>

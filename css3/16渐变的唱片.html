@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>cd cover</title>
+	<style type="text/css">
+		body{
+			background: #57280D;
+		}
+		.item{
+			margin: 300px;
+			position: relative;
+			cursor: pointer;
+		}
+		.cover{
+			width: 150px;
+			height: 150px;
+			border-radius: 3px;
+			/*???内发光*/
+			box-shadow: inset 0 0 10px red;
+			/*阴影*/
+			box-shadow: 1px 1px 6px #291000;
+			/*定义position后z-index才可以生效*/
+			position: relative;
+			z-index: 99;
+		}
+		.cover img{
+			width: 150px;
+			height: 150px;
+		}
+		.cd{
+			width: 145px;
+			height: 145px;
+			border-radius: 50%;
+			box-shadow: 1px 1px 6px #291000;
+			z-index: -2;
+			position: absolute;
+			top: 2px;
+			margin-left: 30px;
+			/*增加边缘反光*/
+			border-left: 1px solid rgba(255,255,255,.25);
+			border-right: 1px solid rgba(0,0,0,.25);
+			background: black;
+			background: -webkit-gradient(linear,left top,left bottom,from(transparent),color-stop(0.1,transparent),color-stop(0.5,rgba(255,255,255,0.25)),color-stop(0.9,transparent),to(transparent)),-webkit-gradient(radial,73 73,15,73 73,150,from(transparent),color-stop(0.01,transparent),color-stop(0.021,rgba(0,0,0,1)),color-stop(0.09,rgba(0,0,0,1)),color-stop(0.1,rgba(28,28,28,1)),to(rgba(28,28,28,1)));
+			transition: all .5s ease-in-out;
+			}
+		.item:hover .cd{
+			transform:rotate(120deg);
+			margin-left: 120px;
+		}
+		.btn{
+			position: absolute;
+			top: 3px;
+			left: 75px;
+			transition: all .5s ease-in-out;
+			z-index: 1;
+		}
+		.item:hover .btn{
+			margin-left: 100px;
+		}
+		.btn li{
+			list-style: none;
+			text-indent: -9999em;
+			font-size: 18px;
+			width: 1em;
+			height: 1em;
+			border-radius: 50%;
+			background: -webkit-linear-gradient(bottom, #161616, #454545);
+			box-shadow: 1px 1px 3px rgba(0,0,0,.75);
+			margin: 5px;
+		}
+		.btn li:hover{
+			background: -webkit-linear-gradient(top, #161616, #454545);
+		}
+		.btn li a{
+			display: block;
+			width: 18px;
+			height: 18px;
+		}
+		.btn li:nth-child(1) a{
+			background: url(images/play-button.png) 2px;
+		}
+		.btn li:nth-child(2) a{
+			background: url(images/info.png) 1px;
+		}
+		.btn{
+			margin: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="item">
+		<div class="cover">
+			<img src="images/michael-jackson-bad.jpg">
+		</div>
+		<div class="cd"></div>
+		<ul class="btn">
+			<li><a href="#">play</a></li>
+			<li><a href="#">info</a></li>
+		</ul>
+	</div>
+</body>
+</html>

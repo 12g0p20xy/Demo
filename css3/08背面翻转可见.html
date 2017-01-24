@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>backface-visibility</title>
+	<style type="text/css">
+		.stage{
+			margin: 100px;
+			border: dotted 1px green;
+			width: 200px;
+			height: 200px;
+			perspective:1000px;
+		}
+		.container{
+			position: relative;
+			transform-style:preserve-3d;
+		}
+		.card{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 200px;
+			height: 200px;
+			background: #ccc;
+			backface-visibility: hidden;
+		}
+		.front{
+			background: #FF8B00;
+		}
+		.back{
+			transform:rotateY(180deg);
+			/*先把背面翻过去 此时是hidden状态 hover的时候背面翻过来 正面翻过去变成hidden*/
+		}
+		.container:hover{
+			transform:rotateY(360deg);
+			transition:3s;
+		}
+	</style>
+</head>
+<body>
+	<div class="stage">
+		<div class="container">
+			<div class="card back"></div>
+			<div class="card front"></div>
+		</div>
+	</div>
+</body>
+</html>

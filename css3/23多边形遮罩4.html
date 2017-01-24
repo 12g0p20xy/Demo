@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	html, body{ margin: 0; padding: 0; background: black;}
+	.element-wrap{ text-align: center; margin-top: 100px;}
+	.element{
+		display: inline-block; width: 400px; height: 346.410px; background: #fff;
+		position: relative;
+		transition: .3s;
+	}
+	.element:after{
+		content: '';
+		position: absolute;
+		background: black;
+		/*设定伪元素的边距*/
+		top: 3px;
+		left: 3px;
+		right: 3px;
+		bottom: 3px;
+	}
+
+	/*这种方法不行*/
+	.element{
+		-webkit-clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+	}
+	.element:after{
+		-webkit-clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+	}
+	@-webkit-keyframes polygon-animation {
+		0%{
+			background: white;
+			-webkit-clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+		}
+		60%{
+			background: white;
+			-webkit-clip-path: polygon(20% 9.8%, 87.5% 25%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+		}
+		100%{
+			background: white;
+			-webkit-clip-path: polygon(25% 100%, 75% 100%);
+		}
+	}
+	.element:hover:after{
+	    -webkit-animation: polygon-animation 3s ease-in-out forwards; /*forwards设置动画结束后对象保持为动画结束时的状态*/
+	}
+	</style>
+</head>
+<body>
+	<div class="element-wrap">
+		<span class="element"></span>
+	</div>
+</body>
+</html>
