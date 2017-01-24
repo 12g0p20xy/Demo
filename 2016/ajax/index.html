@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		html, body{ margin: 0; padding: 0; }
+		.container{ margin: 0 auto; width: 1000px; }
+		.content{ float: left; width: 660px; height: 600px; outline: 1px solid silver; overflow: hidden;}
+		.aside{ overflow: hidden; height: 600px; outline: 1px solid silver;}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<!-- <iframe class="content" src="test.html"></iframe> -->
+		<div class="content"></div>
+		<div class="aside"></div>
+		<button id="load-btn"">load...</button>
+	</div>
+
+	<script src="../jquery-1.11.3.min.js"></script>
+	<script>
+		$('#load-btn').on('click', function() {
+		    $(".content").load("test.html", function(){
+		    	console.log('Done');
+		    });
+		});
+		$('#load-btn').css({
+			border: 'none'
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="animate.css">
+	<style>
+		.box{width: 100px; height: 100px; margin-bottom: 30px; background: rgba(255, 0, 0, .6);}
+	</style>
+</head>
+<body>
+	<div class="box animated"></div>
+	<button>START</button>
+</body>
+<script>
+	var oBox = document.getElementsByTagName('div')[0],
+		oBtn = document.getElementsByTagName('button')[0];
+
+	// 当动画结束时触发事件
+	oBox.addEventListener('animationend', function(){
+		this.classList.remove('bounce');
+	});
+	oBtn.onclick = function(){
+		oBox.classList.add('bounce');
+	}
+</script>
+</html>

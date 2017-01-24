@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+	<style>
+	html, body{
+		margin: 0; padding: 0;
+	}
+	.box{
+		display: inline-block;
+		margin: 20px;
+		width: 100px;
+		height: 100px;
+		background: #DEDEDE;
+		font-size: 16px;
+		color: #666;
+		line-height: 100px;
+		text-align: center;
+		cursor: pointer;
+	}
+	</style>
+</head>
+<body>
+	<div class="box">click me!</div>
+
+	<script src="zepto.min.js"></script>
+	<script>
+		$(function(){
+			var $box = $('.box');
+			$box.on({
+				click: function() {console.log('click');},
+				tap: function() {console.log('tap');},
+				touchstart: function() {console.log('touchstart');},
+				touchmove: function() {console.log('touchmove');},
+				touchend: function() {console.log('touchend');}
+			});
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+	<!-- 给body设置drawer-open类让它整体移动 -->
+	<i>&lt;</i>
+	<nav>
+		<ul>
+			<li>Home</li>
+			<li>Email</li>
+			<li>Resume</li>
+			<li>About Me</li>
+			<li>Subscribe to Feed</li>
+		</ul>
+	</nav>
+	<main>
+		<div class="container">
+			<h1>CLICK LEFT TO OPEN DRAWER</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati amet numquam quaerat minus exercitationem, laboriosam recusandae laudantium libero eum, iste ipsa fuga nostrum laborum ab non culpa? Doloribus, distinctio, quam.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati amet numquam quaerat minus exercitationem, laboriosam recusandae laudantium libero eum, iste ipsa fuga nostrum laborum ab non culpa? Doloribus, distinctio, quam.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati amet numquam quaerat minus exercitationem, laboriosam recusandae laudantium libero eum, iste ipsa fuga nostrum laborum ab non culpa? Doloribus, distinctio, quam.</p>
+		</div>
+	</main>
+	<script src="../jquery-1.11.3.min.js"></script>
+	<script>
+	$(function(){
+
+		var $btn = $('i');
+
+		$btn.on('click', function(event) {
+			event.preventDefault();
+			$btn.fadeOut(300);
+			$('body').addClass('drawer-open');
+		});
+
+		$('main').on('click', function(event) {
+			event.preventDefault();
+			$btn.fadeIn(300);
+			$('body').removeClass('drawer-open');
+		});
+
+	})
+	</script>
+
+</body>
+</html>

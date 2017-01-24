@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			margin: 0; padding: 0;
+		}
+		ul{
+			list-style: none;
+		}
+		li{
+			display: inline-block;
+			margin: 1em;
+			width: 5em;
+			height: 5em;
+			background: #000;
+		}
+	</style>
+</head>
+<body>
+	<!-- step用法的测试 -->
+	<!-- 参考页面http://www.css88.com/jqapi-1.9/animate/ -->
+	<ul>
+		<li></li>
+		<li></li>
+	</ul>
+	<script src="../jquery-1.11.3.min.js"></script>
+	<script>
+		$(function(){
+			$('li').animate({
+				opacity: .5,
+				height: '2.5em'
+			},
+			{
+				duration: 3000,
+				step: function(now, fx) {
+					var data = fx.elem.id + ' ' + fx.prop + ':' + now;
+					$('body').append('<div>' + data + '</div>');
+				}
+			});
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+html, body{
+	margin: 0;
+	padding: 0;
+}
+.container{
+	margin: 100px 200px;
+}
+
+
+.wrap1{
+	position: relative;
+	margin: 50px 0;
+	width: 600px;
+	height: 450px;
+	border: 1px solid #888;
+}
+.box1{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%); /*transform的百分比是相对自身计算的*/
+	background: silver;
+}
+
+
+.wrap2{
+	display: table;
+	margin: 50px 0;
+	width: 600px;
+	height: 450px;
+	border: 1px solid #888;
+}
+.box2{
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+.box2 span{
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+	width: 300px;
+	background: silver;
+}
+
+.wrap3{
+	margin: 50px 0;
+	width: 600px;
+	height: 450px;
+	border: 1px solid #888;
+	font-size: 0;
+	text-align: center;
+}
+.wrap3 span{
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+	vertical-align: middle;
+	width: 0;
+	height: 100%;
+}
+.box3{
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+	vertical-align: middle;
+	width: 300px;
+	background: silver;
+	font-size: 16px;
+}
+
+.wrap4{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	margin: 50px 0;
+	width: 600px;
+	height: 450px;
+	border: 1px solid #888;
+}
+.box4{
+	display: inline-block;
+	width: 300px;
+	background: silver;
+}

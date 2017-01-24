@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script src="../jquery-1.11.3.min.js"></script>
+	<script>
+	$({name: 'nico', sex: 'male', age: 30}).each(function(i, elem) {
+		$('body').append(elem.name + ', ' + elem.sex + ', ' + elem.age);
+	});
+	</script>
+</body>
+</html>

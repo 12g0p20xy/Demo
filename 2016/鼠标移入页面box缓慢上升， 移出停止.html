@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			height: 200px;
+			background-color:#269;
+			background-image: linear-gradient(white 2px, transparent 2px),
+			linear-gradient(90deg, white 2px, transparent 2px),
+			linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px),
+			linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px);
+			background-size:100px 100px, 100px 100px, 20px 20px, 20px 20px;
+			background-position:-2px -2px, -2px -2px, -1px -1px, -1px -1px
+		}
+		#box{
+			position: fixed;
+			bottom: 0;
+			background: #fff;
+			width: 150px;
+			height: 150px;
+		}
+	</style>
+</head>
+<body style="height: 3000px;">
+	<div id="box"></div>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+	<script>
+		var $box = $('#box');
+		function move(){
+			var top = $('body').scrollTop();
+			timer = setTimeout(move, 1);
+			top -= 1;
+			console.log(top);
+			$('body').scrollTop(top);
+		}
+		function stop(){
+			clearTimeout(timer);
+		}
+		$box.on({
+			'mouseover': move,
+			'mouseout': stop
+		});
+		// 鼠标移入页面box缓慢上升， 移出停止
+	</script>
+</body>
+</html>

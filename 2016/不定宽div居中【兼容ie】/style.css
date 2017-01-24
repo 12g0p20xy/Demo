@@ -1,0 +1,53 @@
+/*========================================================
+=            セットアップ用サンプルスタイリング    　　　　     =
+========================================================*/
+
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+body{ margin: 0; padding: 0; background: #fafafa;
+  font-family: YuGothic, 'Yu Gothic', 游ゴシック体, 游ゴシック, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, 'ＭＳ Ｐゴシック', Osaka, 'MS PGothic', Arial, Helvetica, Verdana, sans-serif;
+}
+
+
+header{
+  margin: 20px 20px 30px;
+  text-align: center;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+section{
+  margin: 50px auto 50px;
+  
+}
+
+small{
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  
+  
+}
+
+/*========================================================
+=            サンプルスタイリング    　　　　     =
+========================================================*/
+.content {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 8px;
+    display: table;
+    }
+ 
+.content div {
+    display: table-cell;
+    }
+ 
+<!--[if IE]>
+.content {
+    display: block;
+    text-align: center;
+    }
+.content div {
+    display: inline;
+    zoom: 1;
+}
+<![endif]-->

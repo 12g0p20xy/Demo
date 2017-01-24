@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		html, body{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background: #24272F;
+		}
+		section{
+		}
+		.grid-wrap{
+			width: 100%;
+			perspective: 1500px;
+		}
+		.grid{
+			position: relative;
+			transition: all 0.5s cubic-bezier(0,0,0.25,1);
+			transform-style: preserve-3d;
+		}
+		figure{
+			display: inline-block;
+			margin: 10px;
+		}
+		/*点击图像后添加class“view-full”让图像后退*/
+		.view-full .grid{
+			transform: translate3d(0, 0, -1500px);
+		}
+		/*点击后图片隐藏，用placeholder代替*/
+		.grid figure.active{
+			opacity: 0;
+		}
+		/*placeholder*/
+		.grid .placeholder{
+			/*width: 340px;
+			height: 300px;*/
+			display: none;
+			pointer-events: none;
+			position: absolute;
+			transform-style: preserve-3d;
+			transition: all .5s ease-out;
+		}
+		.placeholder > div {
+			display: block;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			backface-visibility: hidden;
+		}
+		.placeholder .front img {
+			width: 100%;
+			height: 100%;
+		}
+		.placeholder .back {
+			background: white;
+			transform: rotateY(180deg);
+		}
+		.view-full .placeholder {
+			transition: all 0.5s 0.1s cubic-bezier(0,0,0.25,1);
+			transform: translateZ(1500px) rotateX(-179.9deg);
+		}
+		/*content*/
+		.content{
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			padding: 100px;
+			overflow-y: scroll;
+			height: 0;
+			background: #fff;
+			visibility: hidden;
+			z-index: 400;
+			-webkit-overflow-scrolling: touch;
+		}
+		.content.show {
+			height: auto;
+			pointer-events: auto;
+			visibility: visible;
+		}
+	</style>
+</head>
+<body>
+
+	<section>
+		<div class="grid-wrap">
+			<div class="grid">
+				<figure><img src="img/1.jpg" alt=""></figure>
+				<figure><img src="img/5.jpg" alt=""></figure>
+				<figure><img src="img/8.jpg" alt=""></figure>
+				<figure><img src="img/1.jpg" alt=""></figure>
+				<figure><img src="img/5.jpg" alt=""></figure>
+				<figure><img src="img/8.jpg" alt=""></figure>
+				<!-- 替代图片完成动画效果 -->
+				<div class="placeholder">
+					<div class="front"></div>
+					<div class="back"></div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<div>
+				<p class="dummy-text">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore inventore eligendi, nulla quibusdam mollitia, consectetur ducimus illo cumque, consequuntur odio cupiditate tempora minima corporis natus facilis molestias! Ipsa incidunt, dicta.
+				</p>
+				<p class="dummy-text">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis culpa quo ex, nam natus, aperiam magnam facilis, sequi cumque harum consequatur dolore temporibus atque ipsa dolorem. Aspernatur veniam, mollitia nam.
+				</p>
+			</div>
+			<span class="loading"></span>
+			<span class="close"></span>
+		</div>
+	</section>
+
+	<script src="../jquery-1.11.3.min.js"></script>
+	<script>
+		$(function(){
+			$('figure').on('click', function() {
+				var top = $(this).offset().top,
+					left = $(this).offset().left;
+				var $placeholder = $('.placeholder')
+					.find('.front').append($(this).find('img').clone())
+					.end().css({
+						display: 'block',
+						top: top,
+						left: left,
+						width: 340,
+						height: 300
+					});
+
+				// 下面这个函数内用$(this)则会直接指向window
+				var el = $(this);
+				function animFn(){
+					el.addClass('active')
+					   .parents('.grid-wrap').addClass('view-full');
+				}
+				setTimeout(animFn, 10);
+				setTimeout(function(){
+					$placeholder.css({
+						left: 0,
+						top: 0,
+						width: $(window).width(),
+						height: $(window).height()
+					});
+				}, 10);
+				setTimeout(function(){
+					$('.content').addClass('show');
+				}, 550);
+			});
+		});
+	</script>
+</body>
+</html>

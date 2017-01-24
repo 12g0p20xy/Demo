@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	/*
+
+	进度条插件在这里下载
+	http://github.hubspot.com/pace/
+
+	*/
+
+	html, body{
+		margin: 0; padding: 0;
+	}
+	h1{
+		margin-top: 100px;
+		text-align: center;
+	}
+	#progress{
+		position: fixed;
+		top: 0;
+		height: 3px;
+		background: #b91f1f;
+		/*box-shadow: 0 2px 6px #b91f1f;*/
+		transition: opacity 500ms linear;
+	}
+	#progress.done{
+		opacity: 0;
+	}
+	/*进度条前面闪烁的圆头*/
+	#progress span{
+		position: absolute;
+		height: 3px;
+		box-shadow: 1px 0 6px #b91f1f;
+		border-radius: 100%;
+		width: 150px;
+		right: -10px;
+		-webkit-animation: pulse 2s ease-out infinite;
+	}
+	@-webkit-keyframes pulse{
+		30% { opacity: .6}
+		60% { opacity: 0;}
+		100% { opacity: .6}
+	}
+	</style>
+</head>
+<body>
+	<div id="progress">
+		<span></span>
+	</div>
+	<h1>Youtube顶部进度条</h1>
+
+	<script src="../jquery-1.11.3.min.js"></script>
+	<script>
+	// this.property意思是建立了一个临时对象并设定一个属性property
+	$({property: 0}).animate({property: 100}, {
+		duration: 2000,
+		step: function(){
+			console.log(this.property);
+			var percentage = Math.round(this.property);
+			$('#progress').css('width', percentage + '%');
+			if (percentage == 100) {
+				// 完成后进度条消失
+				$('#progress').addClass('done');
+			}
+		}
+	});
+	</script>
+</body>
+</html>

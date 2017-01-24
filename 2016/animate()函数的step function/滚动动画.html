@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	div {
+	   position: relative;
+	   background-color: #abc;
+	   width: 40px;
+	   height: 40px;
+	   float: left;
+	   margin: 5px;
+	}
+	</style>
+</head>
+<body>
+	<p><button id="go">Run &raquo;</button></p>
+	<div class="block"></div> <div class="block"></div>
+	<div class="block"></div> <div class="block"></div>
+	<div class="block"></div> <div class="block"></div>
+	 
+	<script src="../jquery-1.11.3.min.js"></script>
+	<script>
+	$( "#go" ).click(function(){
+	  $( ".block:first" ).animate({
+	    left: '+=100px'
+	  }, {
+	    duration: 1000,
+	    step: function( now, fx ){
+	      $( ".block:gt(0)" ).css( "left", now );
+	      console.log(now + fx.elem + fx.prop);
+	    }
+	  });
+	});
+	</script>
+</body>
+</html>

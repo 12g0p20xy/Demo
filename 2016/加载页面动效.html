@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		html, body{
+			margin: 0;
+			padding: 0;
+		}
+		.stage{
+			position: absolute;
+			transition: .3s;
+			/*background: silver;*/
+			animation: load .3s ease-out forwards;
+		}
+		li{
+			display: inline-block;
+			width: 200px;
+			height: 200px;
+			background: silver;
+			box-shadow: 1px 1px 6px rgba(0,0,0,.1);
+			margin: 10px;
+		}
+		@keyframes load{
+			0%{
+				top: 100%;
+				left: 0;
+				right: 100%;
+				bottom: 0;
+			}
+			100%{
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="stage">
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+</body>
+</html>

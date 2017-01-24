@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		html, body{
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			background: #ccc; 
+			font-family: arial, verdana, tahoma;
+		}
+		ul{
+			margin: 0;
+			padding: 0;
+		}
+
+		/*Time to apply widths for accordian to work
+		Width of image = 640px
+		total images = 5
+		so width of hovered image = 640px
+		width of un-hovered image = 40px - you can set this to anything
+		so total container width = 640 + 40*4 = 800px;
+		default width = 800/5 = 160px;
+		*/
+		.accordian {
+			width: 805px;
+			height: 320px;
+			margin: 100px auto;
+			-webkit-box-shadow: 0 0 10px 1px rgba(0, 0, 0, .35);
+			-moz-box-shadow: 0 0 10px 1px rgba(0, 0, 0, .35);
+			box-shadow: 0 0 10px 1px rgba(0, 0, 0, .35);
+			overflow: hidden;
+		}
+		.accordian ul {
+			width: 2000px;
+		}
+		.accordian li {
+			position: relative;
+			display: block;
+			width: 160px;
+			float: left;
+			border-left: 1px solid #888;
+			-webkit-box-shadow: 0 0 25px 10px rgba(0, 0, 0, .5);
+			-moz-box-shadow: 0 0 25px 10px rgba(0, 0, 0, .5);
+			box-shadow: 0 0 25px 10px rgba(0, 0, 0, .5);
+			-webkit-transition: all .6s;
+			-moz-transition: all .6s;
+			transition: all .6s;
+		}
+
+		/*Reduce with of un-hovered elements*/
+		.accordian ul:hover li {
+			width: 40px;
+		}
+		/*The LI hover style should override the UL hover style*/
+		.accordian ul li:hover {
+			width: 640px;
+		}
+		.accordian li img {
+			display: block;
+		}
+		/*Image title styles*/
+		.img_title {
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 640px;
+			background: rgba(0, 0, 0, .5);
+		}
+		.img_title a {
+			display: block;
+			color: #fff;
+			text-decoration: none;
+			padding: 20px;
+			font-size: 16px;
+		}
+	</style>
+</head>
+<body>
+	<div class="accordian">
+		<ul>
+			<li>
+				<div class="img_title"><a href="javascript: ;">KungFu Panda</a></div>
+				<a href="javascript: ;"><img src="images/01.jpg" alt=""></a>
+			</li>
+			<li>
+				<div class="img_title"><a href="javascript: ;">Toy Story 2</a></div>
+				<a href="javascript: ;"><img src="images/02.jpg" alt=""></a>
+			</li>
+			<li>
+				<div class="img_title"><a href="javascript: ;">Wall-E</a></div>
+				<a href="javascript: ;"><img src="images/03.jpg" alt=""></a>
+			</li>
+			<li>
+				<div class="img_title"><a href="javascript: ;">Up</a></div>
+				<a href="javascript: ;"><img src="images/04.jpg" alt=""></a>
+			</li>
+			<li>
+				<div class="img_title"><a href="javascript: ;">Cars 2</a></div>
+				<a href="javascript: ;"><img src="images/05.jpg" alt=""></a>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

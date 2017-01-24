@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		html, body{margin: 0; padding: 0;}
+		body{font-family: Roboto; font-weight: 200;}
+		button{margin: 300px;}
+		a, p{color: #fff;}
+		a{text-decoration: none; margin-left: 1em;}
+		p{text-align: right;}
+		h3{text-align: center; color: #fff; font-weight: 300; font-size: 24px;}
+		.prev{float: left;}
+		.next{float: right;}
+		.layer{display: none; opacity: 0; background:rgba(0,0,0,.6); position: absolute; width: 100%; top: 0; bottom: 0;}
+		input{margin-left: .5em; border: none; outline: none; background: transparent; border-bottom: 1px solid #fff; color: #fff;}
+		.layer.show{display: block; animation: layer .2s forwards;}
+		.login{padding: 30px; position: absolute; top: 50%; left: 50%;}
+		.layer.show .login{animation: login .2s forwards; transform-origin: 0 0;}
+		.close span{position: absolute; right: 30px; top: 30px; color: #fff; font-size: 24px; cursor: pointer;}
+		@keyframes layer{
+			0%{
+				opacity: 0;
+			}
+			100%{
+				opacity: 1;
+			}
+		}
+		@keyframes login{
+			0%{
+				transform: scale(3) translate3d(-50%, -80%, 0);
+				opacity: 0;
+			}
+			100%{
+				transform: scale(1) translate3d(-50%, -80%, 0);
+				opacity: 1;
+			}
+		}
+	</style>
+</head>
+<body>
+	<button>Login</button>
+	<div class="layer">
+		<div class="close">
+			<span>x</span>
+		</div>
+		<div class="login">
+			<h3>Greeting!</h3>
+			<p>Name<input type="text" placeholder=""></p>
+			<p>Password<input type="text" placeholder=""></p>
+			<p><a class="prev" href="javacript:;">Prev</a><a class="next" href="javascript:;">Next</a></p>
+		</div>
+	</div>
+	<script>
+		var oBtn = document.querySelector('button'),
+			oLayer = document.querySelector('.layer'),
+			oClose = oLayer.querySelector('span');
+		oBtn.onclick = function(){
+			oLayer.classList.add('show');
+		};
+		oClose.onclick = function(){
+			oLayer.classList.remove('show');
+		}
+	</script>
+</body>
+</html>
