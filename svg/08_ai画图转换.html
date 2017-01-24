@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	html, body{height: 100%;}
+	svg{width: 100%; height: 100%;}
+	</style>
+</head>
+<body>
+	<svg>
+		<!-- 直接从ai文件保存成svg -->
+		<path d="M185.166,209.167c-1.333,0.667-4.999,3.167-6.666,3.167s-5.668-4.667-10.334-4.167S154,212,155.833,223.333
+			c-11.167,0-20-5.5-26-12.667c-3.833,2-1,13.333,2.667,16.333c-5.667-1.167-4.494-0.833-4.494-0.833s-0.172,8.499,9.161,12.833
+			c-4.5,0.5-4.5,0.5-4.5,0.5s0.5,6.167,11.167,8.167c-4.833,1.5-0.167,4.501-17.833,5.667c6.167,5.833,25.667,10.999,44.5-5.334
+			c13-12.5,10.333-27.833,10.333-27.833L187,215l-5.5-0.333L185.166,209.167z" style="fill:red"/>
+	</svg>
+
+	<script src="snap.svg-min.js"></script>
+	<script>
+	var svg = Snap('path');
+	svg.drag();
+	svg.hover(function() {
+		this.animate({
+			fill:"blue"
+		}, 1000);
+	}, function() {
+		this.animate({
+			fill:"red"
+		}, 1000);
+	});
+	</script>
+</body>
+</html>

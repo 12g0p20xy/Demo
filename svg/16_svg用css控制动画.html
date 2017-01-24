@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	html, body{padding: 0; margin: 0; height: 100%;}
+	.logo {
+	    position: relative;
+	    top: 200px;
+	    left: 0;
+	    right: 0;
+	}
+
+	.logo-link {
+	    text-align: center;
+	    border-bottom-width: .1875em;
+	    border-bottom-color: transparent;
+	    display: block;
+	    position: relative;
+	    z-index: 2
+	}
+
+	.logo-canvas {
+	    position: relative;
+	    height: 3.5625em
+	}
+
+	.logo-svg {
+	    width: 20em;
+	    height: 20em;
+	    position: relative;
+	    top: .4375em
+	}
+
+	.logo-svg polygon {
+	    stroke: #bbbcc3;
+	    stroke-width: 1
+	}
+
+	.logo-svg g {
+	    -webkit-transform: translateX(0);
+	    transform: translateX(0);
+	    transition-property: -webkit-transform;
+	    transition-property: transform
+	}
+
+	.logo-svg-b-3,.logo-svg-c-1,.logo-svg-c-4,.logo-svg-g-1,.logo-svg-o-3,.logo-svg-pi-1,.logo-svg-pi-4,.logo-svg-pu-2,.logo-svg-r-2,.logo-svg-r-5,.logo-svg-y-2 {
+	    transition-duration: .15s;
+	    transition-timing-function: cubic-bezier(.455,.03,.515,.955)
+	}
+
+	.logo-svg-b-1,.logo-svg-b-4,.logo-svg-c-2,.logo-svg-g-2,.logo-svg-o-1,.logo-svg-o-4,.logo-svg-pi-2,.logo-svg-pi-5,.logo-svg-pu-3,.logo-svg-r-3,.logo-svg-y-3 {
+	    transition-duration: .175s;
+	    transition-timing-function: cubic-bezier(.55,.055,.675,.19)
+	}
+
+	.logo-svg-b-2,.logo-svg-c-3,.logo-svg-g-3,.logo-svg-o-2,.logo-svg-pi-3,.logo-svg-pu-1,.logo-svg-pu-4,.logo-svg-r-1,.logo-svg-r-4,.logo-svg-y-1 {
+	    transition-duration: .2s;
+	    transition-timing-function: cubic-bezier(.215,.61,.355,1)
+	}
+
+	.logo-svg-g-1 {
+	    fill: #3fae52
+	}
+
+	.logo-svg-g-2 {
+	    fill: #7cc686
+	}
+
+	.logo-svg-g-3 {
+	    fill: #2d8d43
+	}
+
+	.logo-svg-c-1 {
+	    fill: #00bad2
+	}
+
+	.logo-svg-c-2 {
+	    fill: #0097a7
+	}
+
+	.logo-svg-c-3 {
+	    fill: #4ac4d7
+	}
+
+	.logo-svg-c-4 {
+	    fill: #00bad2
+	}
+
+	.logo-svg-b-1 {
+	    fill: #62b3e4
+	}
+
+	.logo-svg-b-2 {
+	    fill: #1b77bd
+	}
+
+	.logo-svg-b-3 {
+	    fill: #62b3e4
+	}
+
+	.logo-svg-b-4 {
+	    fill: #3191cf
+	}
+
+	.logo-svg-pu-1 {
+	    fill: #7a3594
+	}
+
+	.logo-svg-pu-2 {
+	    fill: #944198
+	}
+
+	.logo-svg-pu-3 {
+	    fill: #b06eae
+	}
+
+	.logo-svg-pu-4 {
+	    fill: #944198
+	}
+
+	.logo-svg-pi-1 {
+	    fill: #e81f64
+	}
+
+	.logo-svg-pi-2 {
+	    fill: #c21e5c
+	}
+
+	.logo-svg-pi-3 {
+	    fill: #f06392
+	}
+
+	.logo-svg-pi-4 {
+	    fill: #e81f64
+	}
+
+	.logo-svg-pi-5 {
+	    fill: #c21e5c
+	}
+
+	.logo-svg-r-1 {
+	    fill: #ef4438
+	}
+
+	.logo-svg-r-2 {
+	    fill: #e57373
+	}
+
+	.logo-svg-r-3 {
+	    fill: #d32e2e
+	}
+
+	.logo-svg-r-4 {
+	    fill: #ef4438
+	}
+
+	.logo-svg-r-5 {
+	    fill: #d32e2e
+	}
+
+	.logo-svg-o-1 {
+	    fill: #f47c20
+	}
+
+	.logo-svg-o-2 {
+	    fill: #f8951f
+	}
+
+	.logo-svg-o-3 {
+	    fill: #f47c20
+	}
+
+	.logo-svg-o-4 {
+	    fill: #fcb452
+	}
+
+	.logo-svg-y-1 {
+	    fill: #fedc63
+	}
+
+	.logo-svg-y-2 {
+	    fill: #fecd27
+	}
+
+	.logo-svg-y-3 {
+	    fill: #faa71c
+	}
+
+	.logo-link:hover .logo-svg-g-1 {
+	    -webkit-transform: rotate(-15deg) translate3d(1.875em,0,0);
+	    transform: rotate(-15deg) translate3d(1.875em,0,0)
+	}
+
+	.logo-link:hover .logo-svg-g-2 {
+	    -webkit-transform: rotate(-10deg) translate3d(-.625em,-1.875em,0);
+	    transform: rotate(-10deg) translate3d(-.625em,-1.875em,0)
+	}
+
+	.logo-link:hover .logo-svg-g-3 {
+	    -webkit-transform: rotate(14deg) translate3d(1.25em,-6.875em,0);
+	    transform: rotate(14deg) translate3d(1.25em,-6.875em,0)
+	}
+
+	.logo-link:hover .logo-svg-c-1 {
+	    -webkit-transform: rotate(-7deg) translate3d(-5.3125em,-3.125em,0);
+	    transform: rotate(-7deg) translate3d(-5.3125em,-3.125em,0)
+	}
+
+	.logo-link:hover .logo-svg-c-2 {
+	    -webkit-transform: rotate(22deg) translate3d(4.375em,-11.25em,0);
+	    transform: rotate(22deg) translate3d(4.375em,-11.25em,0)
+	}
+
+	.logo-link:hover .logo-svg-c-3 {
+	    -webkit-transform: rotate(12deg) translate3d(-1.25em,-5em,0);
+	    transform: rotate(12deg) translate3d(-1.25em,-5em,0)
+	}
+
+	.logo-link:hover .logo-svg-c-4 {
+	    -webkit-transform: rotate(-25deg) translate3d(0,5em,0);
+	    transform: rotate(-25deg) translate3d(0,5em,0)
+	}
+
+	.logo-link:hover .logo-svg-b-1 {
+	    -webkit-transform: rotate(7deg) translate3d(-2.1875em,-3.75em,0);
+	    transform: rotate(7deg) translate3d(-2.1875em,-3.75em,0)
+	}
+
+	.logo-link:hover .logo-svg-b-2 {
+	    -webkit-transform: rotate(13deg) translate3d(6.25em,-9.375em,0);
+	    transform: rotate(13deg) translate3d(6.25em,-9.375em,0)
+	}
+
+	.logo-link:hover .logo-svg-b-3 {
+	    -webkit-transform: rotate(2deg) translate3d(3.125em,-3.125em,0);
+	    transform: rotate(2deg) translate3d(3.125em,-3.125em,0)
+	}
+
+	.logo-link:hover .logo-svg-b-4 {
+	    -webkit-transform: rotate(-10deg) translate3d(3.125em,3.75em,0);
+	    transform: rotate(-10deg) translate3d(3.125em,3.75em,0)
+	}
+
+	.logo-link:hover .logo-svg-pu-1 {
+	    -webkit-transform: rotate(5deg) translate3d(-5em,-9.375em,0);
+	    transform: rotate(5deg) translate3d(-5em,-9.375em,0)
+	}
+
+	.logo-link:hover .logo-svg-pu-2 {
+	    -webkit-transform: rotate(8deg) translate3d(-1.25em,-7.5em,0);
+	    transform: rotate(8deg) translate3d(-1.25em,-7.5em,0)
+	}
+
+	.logo-link:hover .logo-svg-pu-3 {
+	    -webkit-transform: rotate(-30deg) translate3d(-5em,7.5em,0);
+	    transform: rotate(-30deg) translate3d(-5em,7.5em,0)
+	}
+
+	.logo-link:hover .logo-svg-pu-4 {
+	    -webkit-transform: rotate(20deg) translate3d(9.375em,-5em,0);
+	    transform: rotate(20deg) translate3d(9.375em,-5em,0)
+	}
+
+	.logo-link:hover .logo-svg-pi-1 {
+	    -webkit-transform: rotate(10deg) translate3d(2.5em,-7.5em,0);
+	    transform: rotate(10deg) translate3d(2.5em,-7.5em,0)
+	}
+
+	.logo-link:hover .logo-svg-pi-2 {
+	    -webkit-transform: rotate(-30deg) translate3d(-7.5em,0,0);
+	    transform: rotate(-30deg) translate3d(-7.5em,0,0)
+	}
+
+	.logo-link:hover .logo-svg-pi-3 {
+	    -webkit-transform: rotate(11deg) translate3d(5.625em,0,0);
+	    transform: rotate(11deg) translate3d(5.625em,0,0)
+	}
+
+	.logo-link:hover .logo-svg-pi-4 {
+	    -webkit-transform: rotate(-60deg) translate3d(-21.875em,-.625em,0);
+	    transform: rotate(-60deg) translate3d(-21.875em,-.625em,0)
+	}
+
+	.logo-link:hover .logo-svg-pi-5 {
+	    -webkit-transform: rotate(-22deg) translate3d(-7.5em,5.625em,0);
+	    transform: rotate(-22deg) translate3d(-7.5em,5.625em,0)
+	}
+
+	.logo-link:hover .logo-svg-r-1 {
+	    -webkit-transform: rotate(5deg) translate3d(3.125em,-1.875em,0);
+	    transform: rotate(5deg) translate3d(3.125em,-1.875em,0)
+	}
+
+	.logo-link:hover .logo-svg-r-2 {
+	    -webkit-transform: rotate(-20deg) translate3d(-5.9375em,.9375em,0);
+	    transform: rotate(-20deg) translate3d(-5.9375em,.9375em,0)
+	}
+
+	.logo-link:hover .logo-svg-r-3 {
+	    -webkit-transform: rotate(17deg) translate3d(5em,0,0);
+	    transform: rotate(17deg) translate3d(5em,0,0)
+	}
+
+	.logo-link:hover .logo-svg-r-4 {
+	    -webkit-transform: rotate(9deg) translate3d(3.125em,1.25em,0);
+	    transform: rotate(9deg) translate3d(3.125em,1.25em,0)
+	}
+
+	.logo-link:hover .logo-svg-r-5 {
+	    -webkit-transform: rotate(-12deg) translate3d(-4.375em,3.125em,0);
+	    transform: rotate(-12deg) translate3d(-4.375em,3.125em,0)
+	}
+
+	.logo-link:hover .logo-svg-o-1 {
+	    -webkit-transform: rotate(8deg) translate3d(4.375em,-2.1875em,0);
+	    transform: rotate(8deg) translate3d(4.375em,-2.1875em,0)
+	}
+
+	.logo-link:hover .logo-svg-o-2 {
+	    -webkit-transform: rotate(-23deg) translate3d(-6.25em,0,0);
+	    transform: rotate(-23deg) translate3d(-6.25em,0,0)
+	}
+
+	.logo-link:hover .logo-svg-o-3 {
+	    -webkit-transform: rotate(15deg) translate3d(.625em,1.125em,0);
+	    transform: rotate(15deg) translate3d(.625em,1.125em,0)
+	}
+
+	.logo-link:hover .logo-svg-o-4 {
+	    -webkit-transform: rotate(10deg) translate3d(2.5em,1.75em,0);
+	    transform: rotate(10deg) translate3d(2.5em,1.75em,0)
+	}
+
+	.logo-link:hover .logo-svg-y-1 {
+	    -webkit-transform: rotate(20deg) translate3d(3.125em,0,0);
+	    transform: rotate(20deg) translate3d(3.125em,0,0)
+	}
+
+	.logo-link:hover .logo-svg-y-2 {
+	    -webkit-transform: rotate(-14deg) translate3d(-5em,-1.0625em,0);
+	    transform: rotate(-14deg) translate3d(-5em,-1.0625em,0)
+	}
+
+	.logo-link:hover .logo-svg-y-3 {
+	    -webkit-transform: rotate(-5deg) translate3d(-.9375em,-1.25em,0);
+	    transform: rotate(-5deg) translate3d(-.9375em,-1.25em,0)
+	}
+	</style>
+</head>
+<body>
+	<div class="logo">
+	    <a href="/" class="logo-link" title="Jonathan Suh">
+	        <div class="logo-canvas">
+	            <svg viewBox="-100 -100 500 500" preserveAspectRatio="xMidYMid meet" class="logo-svg">
+	                <g class="logo-svg-g-1">
+	                    <polygon points="235.4,58.2 269.2,0.8 186.7,0.8">
+	                    </polygon>
+	                </g>
+	                <g class="logo-svg-g-2">
+	                    <polygon points="186.7,0.8 235.4,58.2 188.8,82">
+	                    </polygon>
+	                </g>
+	                <g class="logo-svg-g-3">
+	                    <polygon points="269.2,0.8 235.4,58.2 269.2,79.8">
+	                    </polygon>
+	                </g>
+	                <g class="logo-svg-c-1">
+	                    <polygon points="232.3,145.3 235.4,58.2 188.8,82">
+	                    </polygon>
+	                </g>
+	                <g class="logo-svg-c-2">
+	                    <polygon points="232.3,145.3 269.2,79.8 235.4,58.2">
+	                    </polygon>
+	                </g>
+	                <g class="logo-svg-c-3">
+	                    <polygon points="188.8,82 232.3,145.3 185.5,131.1">
+	                    </polygon>
+	                </g>
+	                <g class="logo-svg-c-4">
+	                    <polygon points="269.2,79.8 232.3,145.3 267.8,126.6">
+	                    </polygon>
+	                </g>
+	                <g class="logo-svg-b-1">
+	                    <polygon points="185.5,131.1 188.8,196.8 232.3,145.3">
+	                    </polygon>
+	                </g>
+	                <g class="logo-svg-b-2">
+	                    <polygon points="232.3,145.3 237.3,206.6 188.8,196.8">
+	                    </polygon>
+	                </g>
+	                <g class="logo-svg-b-3">
+	                    <polygon points="232.3,145.3 267.8,202.7 237.3,206.6">
+	                    </polygon>
+	                </g>
+	                <g class="logo-svg-b-4">
+	                    <polygon points="232.3,145.3 267.8,126.6 267.8,202.7">
+	                    </polygon>
+	                </g>
+	                <g class="logo-svg-pu-1">
+	                    <polygon points="188.8,196.8 203.3,290.1 184.9,255.9">
+	                    </polygon>
+	                </g>
+	                <g class="logo-svg-pu-2">
+	                    <polygon points="203.3,290.1 237.3,206.6 188.8,196.8">
+	                    </polygon>
+	                </g>
+	                <g class="logo-svg-pu-3">
+	                    <polygon points="203.3,290.1 267.8,202.7 237.3,206.6">
+	                    </polygon>
+	                </g>
+	                <g class="logo-svg-pu-4">
+	                    <polygon points="203.3,290.1 261.3,279.3 267.8,202.7">
+	                    </polygon>
+	                </g>
+	                <g class="logo-svg-pi-1">
+	                    <polygon points="145.3,285.4 184.9,255.9 135.6,315.1">
+	                    </polygon>
+	                </g>
+	                <g class="logo-svg-pi-2">
+	                    <polygon points="135.6,315.1 203.3,290.1 184.9,255.9">
+	                    </polygon>
+	                </g>
+	                <g class="logo-svg-pi-3">
+	                    <polygon points="203.3,290.1 261.3,279.3 236,323.5">
+	                    </polygon>
+	                </g>
+	                <g class="logo-svg-pi-4">
+	                    <polygon points="135.6,315.1 236,323.5 203.3,290.1">
+	                    </polygon>
+	                </g>
+	                <g class="logo-svg-pi-5">
+	                    <polygon points="135.6,315.1 180.7,353.2 236,323.5">
+	                    </polygon>
+	                </g>
+	                <g class="logo-svg-r-1">
+	                    <polygon points="135.6,315.1 104.4,274 145.3,285.4">
+	                    </polygon>
+	                </g>
+	                <g class="logo-svg-r-2">
+	                    <polygon points="135.6,315.1 73.6,290.1 104.4,274">
+	                    </polygon>
+	                </g>
+	                <g class="logo-svg-r-3">
+	                    <polygon points="73.6,290.1 64.2,335.2 102.1,351.8">
+	                    </polygon>
+	                </g>
+	                <g class="logo-svg-r-4">
+	                    <polygon points="73.6,290.1 102.1,351.8 135.6,315.1">
+	                    </polygon>
+	                </g>
+	                <g class="logo-svg-r-5">
+	                    <polygon points="102.1,351.8 180.7,353.2 135.6,315.1">
+	                    </polygon>
+	                </g>
+	                <g class="logo-svg-o-1">
+	                    <polygon points="46.1,273 77.8,250.5 104.4,274">
+	                    </polygon>
+	                </g>
+	                <g class="logo-svg-o-2">
+	                    <polygon points="73.6,290.1 46.1,273 104.4,274">
+	                    </polygon>
+	                </g>
+	                <g class="logo-svg-o-3">
+	                    <polygon points="46.1,273 64.2,335.2 73.6,290.1">
+	                    </polygon>
+	                </g>
+	                <g class="logo-svg-o-4">
+	                    <polygon points="46.1,273 8.5,275.2 64.2,335.2">
+	                    </polygon>
+	                </g>
+	                <g class="logo-svg-y-1">
+	                    <polygon points="46.1,273 0.8,251.5 8.5,275.2">
+	                    </polygon>
+	                </g>
+	                <g class="logo-svg-y-2">
+	                    <polygon points="0.8,251.5 69.5,230 46.1,273">
+	                    </polygon>
+	                </g>
+	                <g class="logo-svg-y-3">
+	                    <polygon points="46.1,273 69.5,230 77.8,250.5">
+	                    </polygon>
+	                </g>
+	            </svg>
+	        </div>
+	    </a>
+	</div>
+</body>
+</html>

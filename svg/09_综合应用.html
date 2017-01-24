@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<svg id="svg"></svg>
+	<script src="snap.svg-min.js"></script>
+	<script>
+	var svg=Snap("#svg");
+	var pathes=[
+	    "M37.5,37.5S87.5,37.5,87.5,37.5S137.5,37.5,137.5,37.5S137.5,87.5,137.5,87.5 S137.5,137.5,137.5,137.5S87.5,137.5,87.5,137.5S37.5,137.5,37.5,137.5S37.5,87.5,37.5,87.5S37.5,37.5,37.5,37.5z",
+	    "M37.5,37.5 S47.5,12.5,87.5,12.5 S127.5,25,137.5,37.5 S162.5,47.5,162.5,87.5 S150,127.5,137.5,137.5 S127.5,162.5,87.5,162.5 S47.5,150,37.5,137.5 S12.5,127.5,12.5,87.5 S25,47.5,37.5,37.5z",
+	    "M12.5,12.5S87.5,12.5,87.5,12.5S162.5,12.5,162.5,12.5S162.5,87.5,162.5,87.5S162.5,162.5,162.5,162.5S87.5,162.5,87.5,162.5S12.5,162.5,12.5,162.5S12.5,127.5,12.5,127.5S12.5,12.5,12.5,12.5z"
+	];
+
+	var path=svg.path(pathes[0]);
+
+	path.attr({
+	    fill:"#2E70FF"
+	});
+
+	// 将动画分成3个阶段
+	// pathes[0]为A阶段 pathes[1]为B阶段 pathes[2]为C阶段
+	
+	// 由当前阶段easeout转到阶段B再elastic转到阶段A
+	function animateIn(callback){
+	    path.animate({
+	        d:pathes[1]
+	    },300,mina.easeout,function(){
+	        path.animate({
+	            d:pathes[0]
+	        },400,mina.elastic,callback)
+	    });
+	};
+
+	// 由当前阶段easeout转到阶段B再elastic转到阶段C
+	function animateOut(callback){
+	    path.animate({
+	        d:pathes[1]
+	    },300,mina.easeout,function(){
+	        path.animate({
+	            d:pathes[2]
+	        },400,mina.elastic,callback)
+	    });
+	};
+
+	// path.click(function() {
+	// 	animateOut();
+	// });
+	var animating=false,
+	    out=true;
+	svg.node.addEventListener('click',function(){
+	    if(animating)return;
+	    animating=true;
+	    if(out){
+	        animateOut(done);
+	    }else{
+	        animateIn(done);
+	    };
+	    function done(){
+	        animating=false;
+	        out=!out;
+	    }
+	});
+
+	console.log(pathes[0]);
+	console.log(pathes[1]);
+	console.log(pathes[2]);
+	</script>
+</body>
+</html>

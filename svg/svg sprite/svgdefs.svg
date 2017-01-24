@@ -1,0 +1,16 @@
+<svg style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<symbol id="icon-play" viewBox="0 0 768 1024">
+	<title>play</title>
+	<path class="path1" d="M0 0l768 512-768 512z"></path>
+</symbol>
+<symbol id="icon-pause" viewBox="0 0 768 1024">
+	<title>pause</title>
+	<path class="path1" d="M0 0h256v1024h-256zM512 0h256v1024h-256z"></path>
+</symbol>
+<symbol id="icon-stop" viewBox="0 0 1024 1024">
+	<title>stop</title>
+	<path class="path1" d="M0 0h1024v1024h-1024z"></path>
+</symbol>
+</defs>
+</svg>

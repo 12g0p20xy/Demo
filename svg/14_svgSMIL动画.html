@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	html, body{height: 100%; margin: 0; padding: 0;}
+	#svg{width: 100%; height: 100%;}
+	</style>
+</head>
+<body>
+	<svg id="svg">
+		<circle id="my-circle" r="30" cx="50" cy="50" fill="orange" />
+		<animate
+		  xlink:href="#my-circle"
+		  attributeName="cx"
+		  from="50"
+		  to="450"
+		  dur="1s"
+		  begin="click"
+		  fill="freeze" />
+		
+		<!-- 贝塞尔曲线画圆 -->
+
+        <!-- <path id="circle" d="M 15,0
+                     C 23.284,0 30,6.716 30,15
+                     30,23.284 23.284,30 15,30
+                     Z" fill="red" /> -->
+
+            <path d="M100,85
+            		 C108.25,85 115,91.75 115,100
+            		 S108.25,115 100,115
+            		 S85,108.25 85,100
+            		 S91.68,85 100,85" fill="red" />
+
+            <path d="M 100,81.46
+                     C100,81.46 118,112 118,112
+                     S118,112 118,112
+                     S82.12,112.44 82.12,112.44
+                     S100,81.46 100,81.46" fill="red" />
+	</svg>
+</body>
+</html>

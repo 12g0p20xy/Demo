@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	html, body{height: 100%; margin: 0; padding: 0;}
+	svg{width: 100%; height: 300px;}
+	#btn{border: 0; background-color: #f0f3f9; outline:0; box-shadow: 1px 1px #a0b3d6, 2px 2px #a0b3d6, 3px 3px #a0b3d6, 4px 4px #a0b3d6; padding: 0.5em 1em;}
+	#btn:active{transform: translate(2px, 2px); background-color: #E3E8F2; box-shadow: 1px 1px #a0b3d6, 2px 2px #a0b3d6;}
+	</style>
+</head>
+<body>
+	<svg id="svg"></svg>
+	<input id="btn" type="button" value="点击变形">
+
+	<script src="snap.svg-min.js"></script>
+	<script>
+	var svg = Snap('#svg');
+
+	// 创建一个多边形
+	var rect = svg.paper.rect(10, 20, 200, 150, 10).attr({
+	    stroke: "#000",
+	    strokeWidth: 3,
+	    fill: '#f00'
+	});
+	document.getElementById('btn').onclick = function(){
+		rect.animate({width: 300}, 1200,mina.elastic, function(){
+			console.log(rect.attr());
+			console.log('Success!');
+		});
+	};
+	</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<svg id="icons" width="300" viewBox="-100 -100 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+		<g id="icon-stop" style="display: none;">
+			<path fill="#f90" d="M0 0h32v32h-32z"></path>
+		</g>
+		<g id="icon-pause" style="display: none;">
+			<path fill="#f00" d="M0 0h8v32h-8zM16 0h8v32h-8z"></path>
+		</g>
+		<g id="icon-play" style="display: none;">
+			<path fill="#00f" d="M0 0l24 16-24 16z"></path>
+		</g>
+	</svg>
+	
+	<script src="svg-morpheus.js"></script>
+	<script>
+	var play = new SVGMorpheus('#icons');
+	var count = 0;
+	document.getElementById('icons').addEventListener('click', function () {
+		count++;
+		if(count == 1){
+			play.to('icon-pause');
+		}
+		else if(count == 2){
+			play.to('icon-stop');
+		}
+		else{
+			play.to('icon-play', {rotation: 'counterclock',});
+			count = 0;
+		}
+	});
+	</script>
+</body>
+</html>
