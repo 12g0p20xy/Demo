@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>w1060</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]>
+	<script>
+		var html5 = "abbr,article,aside,audio,canvas,datalist,details,dialog,eventsource,figure,footer,header,hgroup,mark,menu,meter,nav,output,progress,section,time,video".split(','),i = html5.length;
+		while(i--) document.createElement(html5[i]);
+	</script>
+	<![endif]-->
+</head>
+<body>
+	<header>
+		<h1>SUPER-SONICO</h1>
+		<h2>hardcore test</h2>
+		<span class="hand"></span>
+	</header>
+	<div class="side-nav">
+		<ul>
+			<li><a href="#con1">con1</a></li>
+			<li><a href="#con2">con2</a></li>
+			<li><a href="#con3">con3</a></li>
+			<li><a href="#top">回到顶部</a></li>
+		</ul>
+	</div>
+	<div class="container" id="con1">
+		<section class="intro">
+			<div class="w1060">
+				<h3>Lorem ipsum dolor</h3>
+				<p><b>Lorem ipsum dolor</b> sit amet, consectetur adipisicing elit. Repellat quasi ex voluptatem eligendi quae commodi hic incidunt ab. Inventore ea a alias natus cumque labore ut ipsa maiores eius expedita?Lorem ipsum dolor sit amet, consectetur adipisicing elit. <b>Repellat quasi ex voluptatem eligendi quae commodi</b> hic incidunt ab. Inventore ea a alias natus cumque labore ut ipsa maiores eius expedita?</p>
+				<br>
+				<br>
+				<h3>万圣节的夜晚</h3>
+				<p><b>Lorem ipsum dolor</b> sit amet, consectetur adipisicing elit. Repellat quasi ex voluptatem eligendi quae commodi hic incidunt ab.万圣节的夜晚，派大星与海绵宝宝们玩起了躲猫猫的游戏，当派大星以为找到了海绵宝宝的时候，<b>他发现，原来这并不是海绵宝...</b> hic incidunt ab. Inventore ea a alias natus cumque 万圣节的夜晚，派大星与海绵宝宝们玩起了躲猫猫的游戏labore ut ipsa maiores eius expedita?Inventore ea a alias natus cumque </p>
+			</div>
+		</section>
+		<section class="img-list" id="con2">
+			<div class="w1060">
+				<ul>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+		</section>
+		<section class="text-list" id="con3">
+			<div class="w1060">
+				<ul>
+					<li><span></span><div class="text-item"><h3>Lorem ipsum dolor</h3><p>Repellat quasi ex voluptatem eligendi quae commodi hic incidunt ab.</p></div></li>
+					<li><span></span><div class="text-item"><h3>Lorem ipsum dolor</h3><p>Repellat quasi ex voluptatem eligendi quae commodi hic incidunt ab.万圣节的夜晚，派大星与海绵宝宝们玩起了躲猫猫的游戏，当派大星以为找到了海绵宝宝的时候，他发现，原来这并不是海绵宝...</p></div></li>
+					<li><span></span><div class="text-item"><h3>Lorem ipsum dolor</h3><p>Repellat quasi ex voluptatem eligendi quae commodi hic incidunt ab.</p></div></li>
+				</ul>
+				<a href="" class="btn">点击了解</a>
+			</div>
+		</section>
+		<section class="layout">
+			<div class="w1060">
+				<div class="main"></div>
+				<div class="sidebar"></div>
+			</div>
+		</section>
+
+		<section class="banner">
+			<div class="slider">
+				<ul class="s-container">
+					<li class="s-item"><a href="#"></a></li>
+					<li class="s-item"><a href="#"></a></li>
+					<li class="s-item"><a href="#"></a></li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="banner">
+			<div class="slider2">
+				<ul class="s-container2">
+					<li class="s-item2"><a href="#"><img src="images/birds.jpg"></a></li>
+					<li class="s-item2"><a href="#"><img src="images/iceage.jpg"></a></li>
+					<li class="s-item2"><a href="#"><img src="images/up.jpg"></a></li>
+				</ul>
+			</div>
+		</section>
+	</div>
+
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/my-tool.js"></script>
+	<script>
+		// 背景随鼠标移动
+		$('header').mousemove(function(e) {
+		    var x = (e.pageX * -1 / 24), y = (e.pageY * -1 / 24);
+		    $(this).css('background-position', x + 'px ' + y + 'px');
+		});
+		$('.hand').mousemove(function(e) {
+		    var x = (600 + e.pageX * -1 / 12), y = (e.pageY * -1 / 12);
+		    $(this).css('backgroundPosition', x + 'px ' + y + 'px');
+		});
+	</script>
+</body>
+</html>

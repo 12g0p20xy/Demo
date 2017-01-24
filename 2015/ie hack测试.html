@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ie hack</title>
+	<style type="text/css">
+	p{
+		width: 600px;
+		color: red;
+		color: yellow\0; /*ie8 only*/
+		color: green\9\0; /*ie9 éxéùcss3*/
+		*color: blue; /*ie6 & ie7*/
+		+color: cyan; /*ie7 only*/
+		_color: silver; /*ie6*/
+	}
+	</style>
+</head>
+<body>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum voluptatum enim ut nemo doloremque officia numquam tempora ratione error soluta explicabo et, ab ducimus cumque molestiae. Vero quo sed aliquam.</p>
+</body>
+</html>

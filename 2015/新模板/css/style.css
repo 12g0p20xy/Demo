@@ -1,0 +1,267 @@
+/* Reset Styles
+***********************/
+html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed,figure, figcaption, footer, header, hgroup,menu, nav, output, ruby, section, summary,time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline;}
+article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
+body {line-height: 1;}
+ol, ul {list-style: none;}
+table {border-collapse: collapse; border-spacing: 0;}
+
+.clearfix:before, .clearfix:after{content:""; display:table;}
+.clearfix:after{clear:both;}
+.clearfix{*zoom:1;/*IE/7/6*/}
+
+/* General
+***********************/
+html, body{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+body{
+	color: #333;
+	font: normal 16px/1.7 "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
+a{
+	text-decoration: none;
+}
+header{
+	min-height: 250px;
+	padding-top: 150px;
+	background: url(../images/hd.jpg);
+	background-position: center 0;
+	background-size: cover;
+	text-align: center;
+}
+h1, h2{
+	color: white;
+	font-weight: bold;
+	line-height: 1.5em;
+	text-shadow: 0 0 12px rgba(0,0,0,.3);
+}
+h1{
+	font-size: 60px;
+}
+h2{
+	font-size: 36px;
+}
+.hand{
+	background: url(../images/g2.png) no-repeat;
+	background-position: center 0;
+	display: inline-block;
+	min-height: 250px;
+	width: 100%;
+	position: absolute;
+	left: 0; top: 0;
+}
+
+.side-nav{
+	position: fixed;
+	right: 100px;
+	width: 4em;
+	background: #ccc;
+	text-align: center;
+}
+.side-nav li{
+	border-bottom: 2px solid white;
+	padding: 10px;
+}
+.side-nav .current{
+	background: #710000;
+	border: 2px solid #710000;
+}
+
+section{
+	text-align: center;
+	padding-top: 45px;
+	padding-bottom: 45px;
+}
+.w1060{
+	max-width: 1060px;
+	margin-left: auto;
+	margin-right: auto;
+	/*border: 1px dashed #ccc;*/
+}
+
+.intro p{
+	font-size: 1.1em;
+	width: 80%;
+	margin: 0 auto;
+	color: #777;
+}
+b{
+	font-weight: bold;
+}
+h3{
+	font-size: 2em;
+	font-weight: bold;
+	line-height: 1.5em;
+}
+
+.img-list{
+	background: #eee;
+}
+.img-list ul{
+	font-size: 0;
+}
+.img-list li{
+	display: inline-block;
+	width: 25%;
+	padding-bottom: 25%;
+	background: silver;
+	border: 10px solid #eee;
+	-webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+
+.text-list{
+	text-align: left;
+}
+.text-list li{
+	margin-bottom: 1em;
+	border-bottom: 1px dashed #ccc;
+}
+.text-list span{
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+	background: silver;
+	margin-right: 30px;
+}
+.text-item{
+	display: inline-block;
+	height: 100px;
+	padding-top: 20px;
+	vertical-align: top;
+	max-width: 930px;
+}
+.btn{
+	color: #666;
+	display: block;
+	font-size: 18px;
+	width: 6em;
+	padding: 0.5em 0.5em;
+	border: 1px solid #666;
+	border-radius: 6px;
+	margin: 0 auto;
+	text-align: center;
+	opacity: 0.8;
+	transition: 0.2s;
+}
+.btn:hover{
+	opacity: 1;
+	border-radius: 3px;
+	padding: 0.5em 1em;
+}
+
+/*不用float的布局*/
+.layout{
+	background: #eee;
+}
+.layout .w1060{
+	position: relative;
+}
+/*导航条宽度固定 主内容不固定*/
+.sidebar{
+	width: 300px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	/*通过设置top和bottom撑开，不用再设置height*/
+	background: white;
+}
+.main{
+	margin-right: 330px;
+	/*300侧栏的宽度加30间距*/
+	background: white;
+	min-height: 600px;
+}
+
+/*设置li背景图片的方法*/
+.banner{
+	background: #202020;
+}
+.slider{
+	overflow: hidden;
+}
+.s-container{
+	position: relative;
+	height: 300px;
+}
+.s-item{
+	display: block;
+	width: 100%;
+	height: 300px;
+	position: absolute;
+}
+.s-item:nth-child(1){
+	background: url(../images/birds.jpg);
+	background-position: center right;
+	background-size: cover;
+	z-index: 999;
+}
+.s-item:nth-child(2){
+	background: url(../images/iceage.jpg);
+	background-position: center right;
+	background-size: cover;
+	z-index: 1;
+}
+.s-item:nth-child(3){
+	background: url(../images/up.jpg);
+	background-position: center right;
+	background-size: cover;
+	z-index: 0;
+}
+
+/*插入图片的方法*/
+.slider2{
+	overflow: hidden;
+	height: 300px;
+	position: relative;
+}
+.s-container2{
+	position: relative;
+	width: 1000%;
+}
+.s-item2{
+	/*这里width用js控制，需要具体数值*/
+	float: left;
+	height: 300px;
+}
+.s-item2 img{
+	width: 100%;
+}
+.s-tip{
+	position: absolute;
+	bottom: 0.5em;
+	right: 5%;
+}
+.s-tip span{
+	display: inline-block;
+	background: #fff;
+	opacity: 0.6;
+	width: 3em;
+	height: 0.6em;
+	margin-right: 0.5em;
+}
+span.current{
+	opacity: 1;
+}
+.prevBtn, .nextBtn{
+	display: block;
+	background: #fff;
+	opacity: 0.6;
+	width: 2em;
+	height: 4em;
+	position: absolute;
+	top: 40%;
+}
+.prevBtn{
+	left: -30px;
+	opacity: 0;
+}
+.nextBtn{
+	right: -30px;
+	opacity: 0;
+}
