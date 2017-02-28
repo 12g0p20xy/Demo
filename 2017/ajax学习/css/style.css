@@ -1,0 +1,16 @@
+html, body{
+	margin: 0;
+	padding: 0;
+}
+ul{
+	padding: 0;
+	list-style: none;
+}
+li{
+	width: 500px;
+	margin-top: 15px;
+	border-bottom: 1px solid #eee;
+}
+img{
+	display: block;
+}

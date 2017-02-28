@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>AJAX侧边栏</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="hot">
+		<ul></ul>
+	</div>
+	<button>获取列表</button>
+	<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+	<script>
+		$("button").click(function() {
+			$.get("data/list.htm", function(data) {
+					var aList = JSON.parse(data), // 转换JSON
+						item = ''; // 需要插入的列表集合
+					for (var i = 0; i < aList.length; i++) {
+						var url = aList[i].photoUrl,
+							title = aList[i].title,
+							des = aList[i].description;
+						item += 
+							'<li>'
+							+ '<img src="' + url + '" alt="">'
+							+ '<h3>' + title + '</h3>'
+							+ '<p>' + des + '</p>'
+							+ '</li>';
+					}
+					$('.hot > ul').append(item);
+			});
+		});
+	</script>
+</body>
+</html>
