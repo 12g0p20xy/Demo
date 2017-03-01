@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JSON字符串转换成对象</title>
+</head>
+<body>
+	<script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+	<script>
+		var str1 = '{ "name": "John" }',  // 标准格式
+		    str2 = "{ 'name': 'John' }", // 非标准格式
+		    str3 = "{ name: 'John' }";   // 非标准格式
+
+		console.log(eval('(' + str1 + ')').name);
+		console.log(eval('(' + str2 + ')').name);
+		console.log(eval('(' + str3 + ')').name);
+
+		console.log($.parseJSON(str1).name);
+		// console.log($.parseJSON(str2).name); // 非标准格式无法转换
+		// console.log($.parseJSON(str3).name); // 非标准格式无法转换
+
+		console.log(JSON.parse(str1).name);
+		// console.log(JSON.parse(str2).name); // 非标准格式无法转换
+		// console.log(JSON.parse(str3).name); // 非标准格式无法转换
+	</script>
+</body>
+</html>
