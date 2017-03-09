@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Document</title>
+	<link href="http://cdn.bootcss.com/normalize/5.0.0/normalize.min.css" rel="stylesheet">
+	<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body ng-app="app" ng-controller="ctrl">
+	<div class="container">
+		
+		<div class="row">
+			<div class="item-list col-md-8">
+				<h3>商品列表</h3>
+				<table class="table table-hover table-bordered">
+				  <thead>
+				  	<tr>
+				  		<td>序号</td>
+					  	<td>商品</td>
+					  	<td>单价</td>
+					  	<td>数量</td>
+					  	<td>价格</td>
+					  	<td>操作</td>
+				  	</tr></thead>
+				  <tbody>
+				  	<tr ng-repeat="x in items">
+				  		<td>{{ $index + 1 }}</td>
+						<td>{{ x.name }}</td>
+						<td>{{ x.price }}</td>
+						<td>
+							<input ng-if="x.isEdit" class="form-control" type="number" ng-model="x.num">
+							<span ng-if="!x.isEdit">{{ x.num }}</span>
+						</td>
+						<td>{{ x.price * x.num }}</td>
+						<td>
+							<button ng-click="edit()" class="btn btn-warning"><i class="glyphicon glyphicon-edit"></i></button>
+							<button ng-click="save()" class="btn btn-success"><i class="glyphicon glyphicon-save"></i></button>
+							<button ng-click="remove($index)" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button>
+						</td>
+				  	</tr>
+				  </tbody>
+				</table>
+				<p>
+					总价：{{ total() }}
+				</p>
+			</div>
+		</div>
+
+	</div>
+
+	<script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+	<script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="http://cdn.bootcss.com/angular.js/1.6.2/angular.min.js"></script>
+	<script>
+	  var app = angular.module("app", []);
+	  app.controller("ctrl", function($scope) {
+
+	    $scope.items = [{name: 'iphone', price: 3000, num: 5}, {name: 'ipad', price: 2000, num: 3}, {name: 'imac', price: 10000, num: 1}];
+
+	    $scope.total = function() {
+	    	var t = 0;
+	    	for (var i = 0; i < $scope.items.length; i++) {
+	    		var items = $scope.items[i];
+	    		t += items.price * items.num;
+	    	}
+	    	return t;
+	    }
+
+	    // 按钮方法
+	    $scope.edit = function() {
+	    	this.x.isEdit = true;
+	    	console.log(this.x.name); // 这里的 this 指向当前的子 $scope
+	    }
+	    $scope.save = function() {
+	    	this.x.isEdit = false;
+	    }
+	    $scope.remove = function(index){
+	        $scope.items.splice(index, 1);
+	    }
+
+	  });
+	</script>
+</body>
+</html>
