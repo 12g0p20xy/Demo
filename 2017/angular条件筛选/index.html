@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html ng-app="gApp">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Angular筛选</title>
+	<link href="//cdn.bootcss.com/minireset.css/0.0.2/minireset.min.css" rel="stylesheet">
+	<link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="theme/bootstrap.min.css">
+	<link href="css/style.min.css" rel="stylesheet">
+</head>
+<body ng-controller="gCtrl">
+
+	<div id="alert" ng-show="true" style="background: #FFF6CA; color: #FF6B24; height: 30px; line-height: 30px"># 使用了 Ajax，请在服务器环境下打开</div>
+
+	
+	<!-- 左边的条件筛选 -->
+	<aside class="col-md-2">
+
+		<p>搜索条件</p>
+		<div class="panel panel-default">
+			<div class="panel-heading">按类型</div>
+			<div class="list-group">
+				<label class="list-group-item" ng-repeat="genre in filter.genres">
+					<input type="checkbox" ng-model="isChecked" ng-change="getGenre()">
+					{{ genre }}
+				</label>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">按平台</div>
+			<div class="list-group">
+				<label class="list-group-item" ng-repeat="stage in filter.stages">
+					<input type="checkbox" ng-model="isChecked" ng-change="getPlat()">
+					{{ stage }}
+				</label>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">按时间</div>
+		</div>
+
+	</aside>
+	<div class="game-list col-md-10"><div class="container">
+		<div class="row">
+			<label for="">搜索标题</label>
+			<input type="text" class="form-control" ng-model="search" placeholder="请输入游戏名">
+		</div>
+		<div class="row">
+			<h3>游戏库</h3>
+			<div class="list-group">
+				<a href="javascript:;" class="col-md-2 list-group-item" ng-repeat="list in lists | filter:{'title': search} | filter: gameFilter">
+					<img src="{{ list.img }}" alt="{{ list.title }}">
+					<h4>{{ list.title }}</h4>
+					<small>{{ list.platform }}</small>
+					<small>{{ list.genre }}</small>
+					<hr>
+					<p class="desctiption">{{ list.description }}</p>
+				</a>
+			</div>
+		</div>
+	</div></div>
+	 
+	<script src="//cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+	<script>
+		(function() {
+
+			var app = angular.module('gApp', []);
+			app.controller('gCtrl', function($scope, $http){
+
+				// 从服务器获取数据
+		    	$http.get("data/list.json")
+		    		 .success(function (response) {
+		    		 	$scope.lists = response;
+		    		 });
+
+		        $scope.filter = {
+		        	genres: ['RPG', 'ACT', 'FPS'],
+		        	stages: ['索尼', '微软', '任天堂'],
+		        	years: []
+		        };
+
+
+		        // 过滤条件赋值
+		        $scope.getPlat = function(){
+		        	$scope.gameFilter = this.isChecked ? {platform: this.stage} : '';
+		        }
+		        $scope.getGenre = function(){
+		        	$scope.gameFilter = this.isChecked ? {genre: this.genre} : '';
+		        }
+
+			});
+
+		})();
+	</script>
+
+</body>
+</html>

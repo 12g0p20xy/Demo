@@ -1,0 +1,37 @@
+@import "mixin";
+
+// Custom
+
+.game-list{
+	.list-group-item{
+		height: 450px;
+		margin: 10px;
+		box-shadow: 0 3px 6px rgba(0,0,0,.25);
+		transition: .35s ease-in-out;
+		cursor: pointer;
+		&:hover{
+			box-shadow: 0 6px 6px rgba(0,0,0,.35);
+		}
+		img{
+			display: block;
+			margin: 0 auto;
+			width: 129px;
+			height: 169px;
+		}
+		.desctiption{
+			.opacity(.6);
+			.ellipsis(6);
+		}
+	}
+}
+
+.panel{
+	.list-group-item{
+		input[type="checkbox"]{
+			display: none;
+		}
+		&.active{
+			background: #565c6b;
+		}
+	}
+}

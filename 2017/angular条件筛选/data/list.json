@@ -1,0 +1,55 @@
+[{
+	"title": "Horizon Zero Dawn",
+	"platform": "索尼",
+	"genre": "RPG",
+	"img": "/img/medium_horizon_key_art.jpg",
+	"description": "Libero accusantium aperiam ex repellendus magni? Similique impedit error fugit distinctio, provident rerum maxime in libero, molestiae, quos vel ipsam ipsa exercitationem!"
+},{
+	"title": "Stellaris",
+	"platform": "微软",
+	"genre": "RPG",
+	"img": "/img/medium_1460650657_stellaris.jpg",
+	"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae dicta obcaecati, velit neque repellendus nam inventore, dolores odit a voluptatem, incidunt tenetur animi accusantium debitis non ad soluta, vitae quia?"
+},{
+	"title": "The Legend of Zelda: Breath of the Wild",
+	"platform": "任天堂",
+	"genre": "RPG",
+	"img": "/img/the-legend-of-zelda-breath-of-the-wild_ajy2.110.jpg",
+	"description": "Libero accusantium aperiam ex repellendus magni? Similique impedit error fugit distinctio, provident rerum maxime in libero, molestiae, quos vel ipsam ipsa exercitationem!"
+},{
+	"title": "Kirby: Planet Robobot",
+	"platform": "任天堂",
+	"genre": "RPG",
+	"img": "/img/medium_nx2nqgyjq0HuRCxAxMqhKQR_9DOCfATm.jpg",
+	"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae dicta obcaecati, velit neque repellendus nam inventore, dolores odit a voluptatem, incidunt tenetur animi accusantium debitis non ad soluta, vitae quia?"
+},{
+	"title": "Doom (2016)",
+	"platform": "微软",
+	"genre": "FPS",
+	"img": "/img/medium_doom_art.jpg",
+	"description": "Libero accusantium aperiam ex repellendus magni? Similique impedit error fugit distinctio, provident rerum maxime in libero, molestiae, quos vel ipsam ipsa exercitationem!"
+},{
+	"title": "Star Fox Zero",
+	"platform": "任天堂",
+	"genre": "ACT",
+	"img": "/img/medium_starfoxzero.jpg",
+	"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae dicta obcaecati, velit neque repellendus nam inventore, dolores odit a voluptatem, incidunt tenetur animi accusantium debitis non ad soluta, vitae quia?"
+},{
+	"title": "Gravity Rush 2",
+	"platform": "索尼",
+	"genre": "ACT",
+	"img": "/img/medium_gravity_rush_2_keyart.jpg",
+	"description": "Libero accusantium aperiam ex repellendus magni? Similique impedit error fugit distinctio, provident rerum maxime in libero, molestiae, quos vel ipsam ipsa exercitationem!"
+},{
+	"title": "The Last Guardian",
+	"platform": "索尼",
+	"genre": "RPG",
+	"img": "/img/medium_the-last-guardian-box-art_800.jpg",
+	"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae dicta obcaecati, velit neque repellendus nam inventore, dolores odit a voluptatem, incidunt tenetur animi accusantium debitis non ad soluta, vitae quia?"
+},{
+	"title": "Tokyo Mirage Sessions #FE",
+	"platform": "任天堂",
+	"genre": "RPG",
+	"img": "/img/medium_tokyo_mirage_sessions.jpg",
+	"description": "Libero accusantium aperiam ex repellendus magni? Similique impedit error fugit distinctio, provident rerum maxime in libero, molestiae, quos vel ipsam ipsa exercitationem!"
+}]
