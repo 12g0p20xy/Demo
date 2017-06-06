@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<style>
+		body{padding: 30px}
+		hr{margin: 30px 0}
+		span.active{text-decoration:line-through}
+	</style>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+
+	<div id="app">
+	  <input type="text" v-model="msg" placeholder="type something">
+	  <p>输入的文字是：{{ msg }}</p>
+	</div>
+	<script>
+		new Vue({
+		  el: '#app',
+		  data: {
+		  	msg: ""
+		  }
+		})
+	</script>
+
+	<hr>
+
+	<div id="app2">
+
+		<h3>待读书单：</h3>
+
+		<template v-for="item of items">
+			
+			<input type="checkbox" v-on:click="check(item)">
+			<span v-bind:class="{ active: item.isActive }" v-if="item.isEdit" v-on:click="edit(item)">{{ item.title }}</span>
+			<input type="text" v-model="item.title" v-else v-on:blur="edit(item)">
+
+		</template>
+
+	</div>
+	<script>
+		new Vue({
+		  el: '#app2',
+		  data: {
+		  	items: [{
+		  		title: "月亮和六便士",
+		  		isActive: false,
+		  		isEdit: true
+		  	},{
+		  		title: "藤野先生",
+		  		isActive: false,
+		  		isEdit: true
+		  	},{
+		  		title: "尤利西斯",
+		  		isActive: false,
+		  		isEdit: true
+		  	}]
+		  },
+		  methods: {
+		  	check: function(item) {
+  			  	item.isActive = !item.isActive
+  			  },
+  			edit: function(item) {
+  			 	item.isEdit = !item.isEdit
+  			} 
+		  }
+		})
+	</script>
+
+	<hr>
+
+	<ul id="app3">
+	  <li v-for="item in items">
+	    {{ item.message }}
+	  </li>
+	  <button v-on:click="add">添加</button>
+	</ul>
+	<script>
+	  new Vue({
+	    el: '#app3',
+	    data: {
+	      items: [
+	        { message: 'Foo' },
+	        { message: 'Bar' }
+	      ]
+	    },
+	    methods: {
+	    	add: function() {
+	    		this.items.push({ message: 'Baz' })
+	    	}
+	    }
+	  })
+	</script>
+
+	<hr>
+
+	<ul id="app4">
+		过滤结果：
+		<li v-for="n in even(numbers)">{{ n }}</li>
+	</ul>
+	
+	<script>
+	 new Vue({
+		el: '#app4',
+		data: {
+			numbers: [ 1, 2, 3, 4, 5 ]
+		},
+		methods: {
+			even: function (numbers) {
+			  return numbers.filter(function (number) {
+			    return number % 2 === 0
+			  })
+			}
+		}
+	})
+	</script>
+
+	<hr>
+
+	<div id="app5">
+	  <button @click="greet">Greet</button>
+	  <p id="aa">点击按钮显示按钮元素的标签名</p>
+	</div>
+	<script>
+	  new Vue({
+	    el: '#app5',
+	    data: {
+	      name: 'Vue.js'
+	    },
+	    methods: {
+	      greet: function (event) {
+	        // this 指当前 Vue 实例
+	        console.log('Hello ' + this.name + '!');
+	        // event.target 获取 DOM 元素
+	        document.getElementById('aa').innerHTML = event.target.tagName;
+	      }
+	    }
+	  })
+	</script>
+
+	<hr>
+
+	<div id="app6">
+		<input type="checkbox" v-model="toggle" v-bind:true-value="a" v-bind:false-value="b">
+		{{ toggle }}
+	</div>
+	<script>
+		new Vue({
+			el: '#app6',
+			data: {
+				toggle: '已选择',
+				a: '已选择',
+				b: '未选择'
+			}
+		})
+	</script>
+
+	<hr>
+
+	<div id="app7">
+		<select v-model="selected">
+		  <option v-for="option in options" v-bind:value="option.value">
+		    {{ option.text }}
+		  </option>
+		</select>
+		<span>Selected: {{ selected }}</span>
+	</div>
+	<script>
+	  new Vue({
+	    el: '#app7',
+	    data: {
+	      selected: 'A',
+	      options: [
+	        { text: 'One', value: 'A' },
+	        { text: 'Two', value: 'B' },
+	        { text: 'Three', value: 'C' }
+	      ]
+	    }
+	  })
+	</script>
+
+	<hr>
+
+	<div id="app8">
+		<p>Original message: "{{ message }}"</p>
+		<p>Computed reversed message: "{{ reversedMessage }}"</p>
+	</div>
+	<script>
+		var vm = new Vue({
+		  el: '#app8',
+		  data: {
+		    message: 'Hello'
+		  },
+		  computed: {
+		    reversedMessage: function () {
+		      return this.message.split('').reverse().join('')
+		    }
+		  }
+		})
+	</script>
+
+</body>
+</html>

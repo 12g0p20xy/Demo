@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	// 块级作用域
+	let name1 = 'Jack'
+	while (true) {
+		let name1 = 'Marry'
+		console.log(name1) // Marry
+		break
+	}
+	console.log(name1) // Jack
+
+	var name2 = 'Jack'
+	while (true) {
+		var name2 = 'Marry'
+		console.log(name2) // Marry
+		break
+	}
+	console.log(name2) // Marry
+
+	let arr = []
+	for (let i = 0; i < 10; i++) {
+		arr[i] = function () {
+			console.log(i)
+		}
+	}
+	arr[6]()
+
+	/* ============================================== */
+	
+	// 声明常量
+	const A = 666
+	console.log(A)
+	// A = 777 返回错误：Uncaught TypeError: Assignment to constant variable.
+
+	/* ============================================== */
+
+	// 箭头函数
+	var num = 111;
+	var	sayName = () => num + 1;
+	console.log(sayName()); // 112
+
+	// 给函数添加默认参数
+	var animal = (type = 'cat') => {
+	    console.log(type)
+	}
+	animal() // cat
+	animal('dog') // dog
+
+	/* ============================================== */
+
+	// Template String 用来方便地连接大段字符串和变量
+	// 用一对反引号 ` ` 框住内容，${} 里放入变量
+
+	let worker = {name: 'Blue', age: 16}
+	document.write(`My Name is ${worker.name}, I'm ${worker.age} years old.`)
+
+
+	</script>
+</body>
+</html>

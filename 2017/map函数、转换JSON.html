@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+		// map 函数循环数组
+		let arr1 = [0, 3, 6, 9]
+		let result = arr1.map(index => {
+			return index * 2
+		})
+		console.log(result)
+
+		// map 可以直接传入函数
+		let arr2 = [1, 2, 3]
+		let show = function (i) {
+			console.log(i)
+		}
+		arr2.map(show)
+
+
+
+		// 如何给对象赋值
+		var obj = {}
+		obj['name'] = 'Jack'  //  等同于 obj.name = 'Jack'
+		console.log(obj)
+
+		// 转换字符串为 JSON 对象
+		let str1 = 'name=111&age=222'
+		let str2 = str1.split('&')
+		console.log(str2)
+		let result2 = {}
+		for (var i = 0; i < str2.length; i++) {
+			result2[str2[i].split('=')[0]] = str2[i].split('=')[1]
+		}
+		console.log(result2)
+
+
+	</script>
+</body>
+</html>
