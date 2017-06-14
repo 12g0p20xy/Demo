@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script src="sea.js"></script>
+	<script>
+		seajs.use('./b', function(b) {
+			b.say()
+			console.log(b.bStr)
+		})
+	</script>
+</body>
+</html>
