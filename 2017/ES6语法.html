@@ -55,6 +55,24 @@
 
 	/* ============================================== */
 
+	// 一个带有类的构造函数
+	
+	class Person {
+		constructor() {
+			this.job = 'student'
+		}
+
+		say(name, age) {
+			alert( name + age + this.job)
+		}
+	}
+
+	let marry = new Person()
+
+	marry.say('Marry', 20)
+
+	/* ============================================== */
+
 	// Template String 用来方便地连接大段字符串和变量
 	// 用一对反引号 ` ` 框住内容，${} 里放入变量
 
