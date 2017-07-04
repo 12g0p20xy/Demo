@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+		function getNow() {
+			var t = new Date(),
+				y = t.getFullYear(),
+				m = t.getMonth() + 1, // 月份要加1
+				d = t.getDate(),
+				h = t.getHours(),
+				min = t.getMinutes(),
+				s = t.getSeconds();
+
+			setTimeout(function() {
+				document.body.innerHTML = 
+					'今天是：'
+					+ y + '年'
+					+ m + '月'
+					+ d + '日'
+					+ h + '时'
+					+ min + '分'
+					+ s + '秒';
+				getNow(); // 回调
+			}, 1000);
+		}
+
+		getNow();
+		
+	</script>
+</body>
+</html>

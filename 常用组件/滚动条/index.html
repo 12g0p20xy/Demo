@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://www.wanjiangnews.com/css/style.css">
+	<link rel="stylesheet" href="custom.css">
+</head>
+<body>
+	<div class="main special clearfix" id="scroll">
+		<h2 class="fl mr10"><a href="javascript:void(0)">专题报道</a></h2>
+		<div class="stage">
+			<div id="scroller">
+				<a target="_blank" href="http://www.wanjiangnews.com/Infos/DocList.aspx?fid=40b1cdc6-b123-4026-81f5-31b53e05ab6a"><img src="images/special6.gif"></a>
+			    <a target="_blank" href="http://www.wanjiangnews.com/Infos/DocList.aspx?fid=52bd1d75-1827-4e0c-b741-a9f02f4cd8d9"><img src="images/special5.gif"></a>
+			    <a target="_blank" href="Infos/DocList.aspx?fid=932ddfa3-0511-4977-95b1-94e71911a343"><img src="images/special4.gif" data-pin-nopin="true"></a>
+			    <a target="_blank" href="Infos/Doc.aspx?fid=a5eaf1cc-2aff-40c8-9b79-c44f90844835"><img src="images/special2.gif" data-pin-nopin="true"></a>
+				 <a target="_blank" href="http://www.wanjiangnews.com/Infos/DocList.aspx?fid=f5e4a74d-c7b5-4d6e-b519-6b099530311e"><img src="images/special1.gif" data-pin-nopin="true"></a>
+			</div>
+		</div>
+	</div>
+	<div id="pos"></div>
+
+	<script>
+		window.onload = function(){
+			var oScroll = document.getElementById('scroll'),
+				oScroller = document.getElementById('scroller'),
+				aItem = oScroller.getElementsByTagName('img');
+			var timer = null;
+
+			var pos = document.getElementById('pos');
+			
+			oScroller.innerHTML += oScroller.innerHTML;
+			oScroller.style.width = 1840 + 'px';
+			function scroll(){
+				timer = setInterval(function(){
+					pos.innerHTML = oScroller.style.left;
+					oScroller.style.left = oScroller.offsetLeft - 3 + 'px';
+					console.log(oScroller.offsetLeft);
+					if (oScroller.offsetLeft <= -oScroller.offsetWidth/2) {
+						oScroller.style.left = 0;
+					}
+				}, 30);
+			}
+			oScroller.onmouseover = function(){
+				clearInterval(timer);
+			}
+			oScroller.onmouseout = function(){
+				scroll();
+			}
+			scroll();
+		};
+	</script>
+</body>
+</html>

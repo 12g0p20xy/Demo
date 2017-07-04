@@ -1,0 +1,13 @@
+.stage{
+	/*outline: 1px red solid;*/
+	height: 44px;
+	overflow: hidden;
+	position: relative;
+}
+#scroller{
+	position: absolute;
+	left: 0;
+}
+#scroller img{
+	margin-right: 9px;
+}

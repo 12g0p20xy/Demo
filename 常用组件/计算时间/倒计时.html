@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	function countDown(deadline) {
+
+		let start = null,
+			end = new Date(deadline).getTime()
+
+		setInterval(function() {
+
+			start = new Date().getTime()
+			let tt = end - start, 			             // 剩余的毫秒数
+				d = parseInt(tt / 1000 / 60 / 60 / 24),  // 剩余天数
+				h = parseInt(tt / 1000 / 60 / 60 % 24),  // 剩余小时
+				min = parseInt(tt / 1000 / 60 % 60),     // 剩余分钟
+				s = parseInt(tt / 1000 % 60)             // 剩余秒
+
+			document.body.innerHTML = 
+				'距离 ' + deadline + ' 还有 '
+				+ d + ' 天 '
+				+ h + ' 时 '
+				+ min + ' 分 '
+				+ s + ' 秒'
+
+		}, 1000)
+
+	}
+
+	countDown('2017/07/03 16:30:00')
+
+	</script>
+</body>
+</html>

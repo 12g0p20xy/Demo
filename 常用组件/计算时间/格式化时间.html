@@ -20,15 +20,22 @@
 
 		function formatDate(now) {
 			var y = now.getFullYear(),
-				m = now.getMonth(),
+				m = now.getMonth() + 1,
 				d = now.getDate(),
 				h = now.getHours(),
 				min = now.getMinutes(),
 		  		s = now.getSeconds();
 		  
-			return y + "-" + m + "-" + d + " " + h + ":" + min + ":" + s; 
+			return y + "年" + m + "月" + d + "日" + h + "时" + min + "分" + s + '秒' + '</br>';
 		}
-		var nowDate = new Date(2016, 10, 27, 17, 30);
+
+		var someDate = new Date(2016, 0, 27, 17, 30, 00);
+		document.write(formatDate(someDate));
+
+		var otherDate = new Date('2016/01/27 17:30:00');
+		document.write(formatDate(otherDate));
+
+		var nowDate = new Date();
 		document.write(formatDate(nowDate));
 
 	</script>
