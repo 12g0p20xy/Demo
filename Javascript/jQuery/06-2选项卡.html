@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>06-2</title>
+	<script type="text/javascript" src='jquery-1.11.3.min.js'></script>
+	<script type="text/javascript" src='jquery-migrate-1.2.1.min.js'></script>
+	<style type="text/css">
+		.tab{padding: 10px; width: 300px; height: 200px; border: 1px solid #ccc;}
+		.tab_menu li{display: inline-block; padding: 3px; vertical-align: center; border: 1px solid #ccc;}
+		li.current{background: #ccc;}
+		.tab_box{position: relative;}
+		.tab_box div{border: 1px solid #ccc; width: 100%; height: 120px; position: absolute; top: 0; left: 0; display: none;}
+		.tab_box>div.current{display: block;}
+		.big, .small{display: inline-block; padding: 3px; background: grey; margin: 10px; color: white;}
+		i{width: 12px; height: 12px; display: inline-block; background: grey; border: 1px solid rgba(0,0,0,.3); cursor: pointer;}
+		i:nth-child(1){background: -webkit-linear-gradient(top, #FFAE92, #EB0000);}
+		i:nth-child(2){background: -webkit-linear-gradient(top, #BEFF92, #008330);}
+		i:nth-child(3){background: -webkit-linear-gradient(top, #92E6FF, #000E77);}
+	</style>
+</head>
+<body>
+	<div class="tab">
+		<div class="tab_menu">
+			<ul>
+				<li class='current'>时事</li>
+				<li>体育</li>
+				<li>娱乐</li>
+			</ul>
+		</div>
+		<div class="tab_box">
+			<div class='current'>时事</div>
+			<div>体育</div>
+			<div>娱乐</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+	$(function(){
+		$('.tab_menu li').mousemove(function(){
+			$(this).addClass('current').siblings().removeClass('current');
+			$('.tab_box>div').eq($(this).index()).show().siblings().hide();
+		})
+	})
+	</script>
+
+	<!-------- 分割线 -------->
+	<span class='big'>放大字号</span>
+	<span class='small'>缩小字号</span>
+	<script type="text/javascript">
+	$(function(){
+		$('span').click(function(){
+			if ($(this).attr('class')=='big') {
+				$('body').find('div').css('font-size','+=2');
+			}else{
+				$('body').find('div').css('font-size','-=2');
+			};
+		});
+	});
+	</script>
+
+	<!-------- 分割线 -------->
+	<div>
+		<i title='单击切换背景颜色'></i>
+		<i></i>
+		<i></i>
+	</div>
+	<script type="text/javascript">
+	$(function(){
+		$('i').eq(0).toggle(function(){
+			$('.tab').css('background', '#800000');
+		},function(){
+			$('.tab').css('background', '#fff');
+		});
+	})
+	</script>
+</body>
+</html>

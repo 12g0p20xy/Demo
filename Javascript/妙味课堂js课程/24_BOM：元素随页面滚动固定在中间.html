@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{ height: 6000px;}
+		#box{ position: absolute; right: 0; width: 100px; height: 100px; background: red;}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<script>
+		window.onload = window.onresize =  window.onscroll = function(){
+			var oBox = document.getElementById('box');
+			var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+
+			//	 ______________
+			//	|              |			——
+			//	|              |			 |
+			//	|              |  scrollTop  |
+			//	|              |    		 |
+			//	|______________|	     	 |
+			//	|            t |
+			//	|          ————|  可视区   整个页面
+			//	|         |#box|
+			//  |          ————|	         |
+			//	|______________|             |
+			//  |              |			 |
+			//  |              |			 |
+			//	|______________|		    ——
+			//
+			//  要将#box居中 即用（滚动距离-#box高度）/2
+
+			var t = (document.documentElement.clientHeight - oBox.offsetHeight)/2;
+			oBox.style['top'] = scrollTop + t + 'px';
+		};
+	</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.box{
+		margin: 100px;
+		width: 100px;
+		height: 100px;
+		background: red;
+		outline: 1px silver solid;
+	}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<script src="../jQuery/jquery-1.11.3.min.js"></script>
+	<script src="23_tool.js"></script>
+	<script>
+	$(function(){
+		$('.box').shadow({
+			copyOffset: function(index) {
+				return {x: -index, y: -2*index};
+			}
+		});
+	})
+	</script>
+</body>
+</html>

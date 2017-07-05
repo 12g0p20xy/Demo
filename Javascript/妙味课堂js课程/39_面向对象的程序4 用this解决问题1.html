@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	// 用上一个例子的工厂模式会有2个问题
+	// 1、要能用new创建对象 可以简化函数
+	// 2、每次创建的对象都有不同的方法 资源浪费
+	// 先解决问题1
+
+	function createPerson(name, sex){
+
+		// 这样每次 var p1 = new createPerson();
+		// 就默认创建了新对象指向this
+		// var this = new Object();
+		this.name = name;
+		this.sex = sex;
+
+
+		this.showName = function(){
+			alert(this.name);
+		};
+		this.showSex = function(){
+			alert(this.sex);
+		};
+
+		// 默认已经返回了对象，不用再写这一句
+		// return this;
+		
+	}; 
+
+	var p1 = new createPerson('john', 'male');
+	var p2 = new createPerson('marry', 'female');
+	p1.showName(); // 'john'
+	p2.showSex(); // 'female'
+
+	</script>
+</body>
+</html>

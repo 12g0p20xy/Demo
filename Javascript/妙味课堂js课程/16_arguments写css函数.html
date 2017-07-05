@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{ width: 200px; height: 180px; background: blue; }
+	</style>
+</head>
+<body>
+	<button>获取样式</button>
+	<button>设置样式</button>
+	<div id="box"></div>
+	<script>
+		// obj 即是 arguments[0]
+		// attr 即是 arguments[1]
+		// value 即是 arguments[2]
+		function fnCss(obj, attr, value){
+			// 如果只传入2个参数 则是获取css的值
+			if (arguments.length == 2) {
+				alert(getComputedStyle(obj, false)[attr]);
+			}
+			// 如果传入了3个参数 则是设置css的值
+			else if (arguments.length == 3) {
+				obj.style[attr] = value;
+			}
+		}
+
+		var aBtn = document.getElementsByTagName('button'),
+			oBox = document.getElementById('box');
+		aBtn[0].onclick = function(){
+			fnCss(oBox, 'background-color');
+		};
+		aBtn[1].onclick = function(){
+			fnCss(oBox, 'background-color', 'red');
+		};
+	</script>
+</body>
+</html>

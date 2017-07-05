@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	// 可以用css的方式来理解
+	// prototype就相当于class(类) 改变一类元素的样式
+	// 直接添加相当于行间样式 改变一个元素的样式
+
+	// 优先级：原型 < 直接添加
+
+	Array.prototype.a = 12;
+	var arr = [1, 2, 3];
+	alert(arr.a); // 12
+
+	arr.a = 5;
+	alert(arr.a); // 5
+
+	</script>
+</body>
+</html>

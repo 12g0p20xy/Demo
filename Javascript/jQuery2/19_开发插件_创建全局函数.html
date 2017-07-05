@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin: 0; padding: 0;
+	}
+	td{
+		border: 1px solid silver;
+		padding: .5em 1em;
+	}
+	#sum{
+		background: #ccc;
+	}
+	#average{
+		background: #eee;
+	}
+	</style>
+</head>
+<body>
+	<table>
+		<tbody>
+			<tr>
+				<td>15</td>
+				<td>30</td>
+				<td>60</td>
+			</tr>
+			<tr>
+				<td id="sum"></td>
+				<td id="average"></td>
+			</tr>
+		</tbody>
+	</table>
+	<script src="../jQuery/jquery-1.11.3.min.js"></script>
+	<script src="19_tool.js"></script>
+	<script>
+	$(function(){
+		// 得到包含第一排表格的数据的数组
+		var allNum = $('tr:nth-child(1)').find('td').map(function(i, elem) {
+			return $(elem).text();
+		}).get();
+		console.log(allNum);
+
+		// 下面使用插件
+		var sum = $.myFirstPlugin.sum(allNum);
+		$('#sum').text('和 = ' + sum);
+
+		var average = $.myFirstPlugin.average(allNum);
+		$('#average').text('平均数 = ' + average);
+
+
+	})
+	</script>
+</body>
+</html>

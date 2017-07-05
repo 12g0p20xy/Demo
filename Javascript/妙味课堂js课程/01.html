@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#txt{
+			display: none;
+			width: 200px;
+			height: 80px;
+			background: #FCF6DF;
+			border: 1px solid #F3E4C2;
+		}
+	</style>
+</head>
+<body>
+	<label for="" id="remember"><input type="checkbox">记住密码</label>
+	<div id="txt">不要在网吧等公共...</div>
+	<script>
+		var remember = document.querySelector('#remember');
+		remember.addEventListener('mouseenter', function(){
+			document.querySelector('#txt').style.display = 'block';
+		});
+		remember.addEventListener('mouseleave', function(){
+			document.querySelector('#txt').style.display = 'none';
+		});
+	</script>
+</body>
+</html>

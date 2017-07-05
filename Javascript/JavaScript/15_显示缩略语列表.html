@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	abbr{ background: yellow;}
+	</style>
+</head>
+<body>
+	<h1>What is the Document Object Model?</h1>
+	<p>The <abbr title="World Wide Web Consortium">W3C</abbr> defines the <abbr title="Document Object Model">DOM</abbr> as:</p>
+	<blockquote cite="http://www.w3.org/DOM/"><p>A platform- and language-neutral interface that will allow programs and scripts to dynamically access and update the content, structure and style of documents.</p>
+	</blockquote>
+	<p>It is an <abbr title="Application Programming Interface">API</abbr> that can be used to navigate <abbr title="HyperText Markup Language"> HTML</abbr> and <abbr title="eXtensible Markup Language">XML</abbr> documents.</p>
+
+	<script>
+	function displayAbbreviations(){
+		var abbreviations = document.getElementsByTagName('abbr');
+		if (abbreviations.length < 1) {return false};
+		
+		// 定义一个数组存放每个abbr的title
+		var defs = new Array();
+		// 遍历abbr数组
+		for (var i = 0; i < abbreviations.length; i++) {
+			// 获取每个abbr的title的值
+			var definition = abbreviations[i].getAttribute('title');
+			// 获取每个abbr文本节点的值
+			var key = abbreviations[i].lastChild.nodeValue;
+			// 将两个变量保存到defs数组里，key作为下标
+			defs[key] = definition;
+			// 现在我们有了一个数组：[W3C: "World Wide Web Consortium", DOM: "Document Object Model", API: "Application Programming Interface", " HTML": "HyperText Markup Language", XML: "eXtensible Markup Language"]
+		};
+
+		// 下面开始创建一个如下的自定义列表:
+		// <dl>
+		// 	<dt>Title 1</dt>
+		// 	<dd>Description 1</dd>
+		// 	<dt>Title 2</dt>
+		// 	<dd>Description 2</dd>
+		// </dl>
+		var dlist = document.createElement('dl');
+
+		// 使用for/in将数组的下标临时赋值给一个变量
+		for (key in defs) {
+			// 每次循环得到一个key和对应的definition值，例如第一次就是W3C和World Wide Web Consortium
+			var definition = defs[key];
+			// 创建dt元素
+			var dtitle = document.createElement('dt');
+			var dtitle_text = document.createTextNode(key);
+			dtitle.appendChild(dtitle_text);
+			// 创建dd元素
+			var ddesc = document.createElement('dd');
+			var ddesc_text = document.createTextNode(definition);
+			ddesc.appendChild(ddesc_text);
+			// 把创建好的dt和dd追加到dl上
+			dlist.appendChild(dtitle);
+			dlist.appendChild(ddesc);
+		}
+		// 将列表插入文档
+		document.body.appendChild(dlist);
+	}
+	window.onload = displayAbbreviations;
+	</script>
+</body>
+</html>

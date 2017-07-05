@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button>读取文件</button>
+	<small>***在服务器环境下测试本页面***</small>
+	<script>
+		// ajax请求4步：
+		// 1、创建ajax对象
+		// 2、连接服务器
+		// 3、发送请求
+		// 4、接受返回
+		var oBtn = document.getElementsByTagName('button')[0];
+		oBtn.onclick = function(){
+			// 1、创建ajax对象
+			var oAjax = new XMLHttpRequest();
+			// 2、连接服务器
+			// open(方法, url, 是否异步)
+			oAjax.open('GET', 'data.txt', true);
+			// 3、发送请求
+			oAjax.send();
+			// 4、接受返回
+			// onreadystatechange事件 当服务器通信变化时候调用
+			oAjax.onreadystatechange = function(){
+				// readyState属性：返回4 相当于完成解析，可以调用
+				if(oAjax.readyState == 4){
+					// status属性：返回200代表成功 404代表未找到文件
+					if(oAjax.status == 200){
+						alert('成功');
+						document.write(oAjax.responseText);
+					}
+					else{
+						alert('失败');
+					}
+				}
+			};
+		};
+	</script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul{
+			position: absolute;
+			left: 0;
+			list-style: none;
+			padding: 0;
+			font-size: 0;
+		}
+		li{
+			display: inline-block;
+			width: 100px;
+			height: 100px;
+			background: #ccc;
+			font-size: 16px;
+			line-height: 100px;
+			text-align: center;
+		}
+		li:nth-child(2n){
+			opacity: .6;
+		}
+		.wrap{
+			position: relative;
+			width: 530px;
+			height: 100px;
+			outline: 1px red solid;
+			overflow: hidden;
+		}
+		.ctrl{
+			position: relative;
+			top: 50px;
+		}
+		a{
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			text-decoration: none;
+			padding: 1em .2em;
+			color: #fff;
+			background: #333;
+			left: 0;
+			z-index: 99;
+		}
+		#right{
+			left: 516px;
+		}
+	</style>
+</head>
+<body>
+	<div class="ctrl">
+		<a id="left" href="javascript:;"><</a>
+		<a id="right" href="javascript:;">></a>
+	</div>
+	<div class="wrap">
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+		</ul>
+	</div>
+
+	<script>
+		window.onload = function(){
+			var oBtn = document.getElementsByTagName('a'),
+				oUl = document.getElementsByTagName('ul')[0],
+				oLi = document.getElementsByTagName('li'),
+				iSpeed = 5,
+				timer = null;
+
+			// 即oUl.innerHTML = oUl.innerHTML + oUl.innerHTML
+			// 复制自身   
+			oUl.innerHTML += oUl.innerHTML;
+			// 注意放在复制自身后面
+			// 计算并设置ul的宽度
+			oUl.style.width = oLi[0].offsetWidth*oLi.length + 'px';
+			
+			// 改变iSpeed的正负即可改变左右移动的方向
+			oBtn[0].onmouseover = function(){
+				iSpeed = -5;
+			};
+			oBtn[1].onmouseover = function(){
+				iSpeed = 5;
+			};
+
+			oUl.onmouseover = function(){
+				clearInterval(timer);
+			};
+
+			oUl.onmouseout = function(){
+				move();
+			};
+
+			move();
+
+			function move(){
+				timer = setInterval(function(){
+					// 注意要加上'px'
+					oUl.style.left = oUl.offsetLeft + iSpeed + 'px';
+					// 当向右移动到ul宽度的一半的时候
+					if (oUl.offsetLeft <= -oUl.offsetWidth/2) {
+						// 拉回ul
+						oUl.style.left = 0;
+					}
+					// 当向左移动到头的时候
+					else if (oUl.offsetLeft > 0){
+						// 拉回ul的二分之一
+						oUl.style.left = -oUl.offsetWidth/2 + 'px';
+
+						console.log(oUl.offsetWidth/2);
+					}
+				}, 30);
+			};
+		};
+	</script>
+</body>
+</html>

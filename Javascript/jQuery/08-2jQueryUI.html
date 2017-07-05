@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>08-2</title>
+	<script type="text/javascript" src='jquery-1.11.3.min.js'></script>
+	<script type="text/javascript" src='jquery-ui.js'></script>
+	<style type="text/css">
+		.box{width: 100px; height: 100px; background: #ccc; color: white; line-height: 100px; text-align: center;}
+		.dialog{display: block; width: 100px; height: 100px; border: 3px solid rgba(0,0,0,.3); display: none; position: relative;}
+		#d2>span{width: 20px; height: 20px; position: absolute; top:-20px; right:0;}
+		#d2{position: absolute; top: 50%; left: 50%; width: 200px; height: 100px; background: #ccc; }
+		.ui-dialog-titlebar-close{width: 3em; height: 3em; background: red; position: absolute; right: 0; border: 0;}
+	</style>
+</head>
+<body>
+	<section>
+		<div class="box">可以拖动</div>
+		<script type="text/javascript">
+			$('.box').draggable();
+		</script>
+	</section>
+
+	<section>
+		<button id='btn'>点我</button>
+		<div class="dialog">hi！</div>
+		<script type="text/javascript">
+		$(function(){
+			$('button#btn').click(function(){
+				var closeText = $( ".selector" ).dialog( "option", "closeText" );
+				$('.dialog').dialog({
+					dialogClass: "alert",
+					closeText:'关闭',
+					width:400,
+					buttons:[
+						{
+							text:'确定',
+							click:function(){
+								$(this).dialog('close');
+							}
+						},
+						{
+							text:'取消',
+							click:function(){
+								$(this).dialog('close');
+							}
+						}
+					],
+				});
+			});
+		});
+		</script>
+	</section>
+
+	<section>
+		<button id='btn2'>点我</button>
+		<script type="text/javascript">
+		$(function(){
+			$('button#btn2').on('click', function(){
+				$('body').append('<div id="d2"><span>X</span></div>');
+			});
+			$('body').on('click', 'span', function(){ //这里要使用on()绑定
+				$('#d2').hide();
+			});
+		});
+		</script>
+	</section>
+</body>
+</html>

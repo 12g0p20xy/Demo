@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			height: 3000px;
+		}
+		#btn{
+			position: fixed;
+			bottom: 0;
+			right: 0;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn">top</button>
+	<script>
+		window.onload = function(){
+			var oBtn = document.getElementById('btn');
+			var timer = null;
+			var bScroll = true;
+
+			// 回到了頂部或者用戶滾動了滾動條則停止計時器
+
+			window.onscroll = function(){
+				if (!bScroll) {
+					clearInterval(timer);
+				}
+				bScroll = false;
+				console.log(bScroll);
+			};
+			oBtn.onclick = function(){
+				timer = setInterval(function(){
+					var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+					var iSpeed = Math.floor(-scrollTop/8);
+
+					if (scrollTop == 0) {
+						clearInterval(timer);
+					}
+					bScroll = true;
+					document.documentElement.scrollTop = document.body.scrollTop = scrollTop + iSpeed;
+				}, 30);
+			};
+		};
+	</script>
+</body>
+</html>

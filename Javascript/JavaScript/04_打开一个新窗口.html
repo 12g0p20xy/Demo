@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<a href="javascript:popUp('http://www.baidu.com');">click me!</a>
+	<!-- 或者 -->
+	<a href="#" onclick="popUp('http://www.baidu.com'); return false;">click me!</a>
+	<script type="text/javascript">
+	function popUp(winURL){
+		window.open(winURL, 'popup', 'width=320, height=480');
+		//格式window.open(url, name, features)
+	};
+	</script>
+</body>
+</html>

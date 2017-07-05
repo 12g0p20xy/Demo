@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<img src="" alt="" width="300" height="200">
+	<script>
+		var oImg = document.getElementsByTagName('img')[0];
+		oImg.setAttribute('src', 'http://d.hiphotos.baidu.com/image/pic/item/38dbb6fd5266d01622b0017d9f2bd40735fa353d.jpg?' + new Date().getTime());
+		// oImg.onload = function(){
+		// 	alert('loaded!');
+		// }
+		// oImg.onerror = function(){
+		// 	alert('failed!');
+		// }
+
+		// 预加载
+		var oImgBack = new Image();
+		oImgBack.src='http://b.zol-img.com.cn/desk/bizhi/start/7/1451367171338.jpg';
+		oImgBack.onload = function(){
+			alert('预加载完成!');
+		}
+		oImgBack.onerror = function(){
+			alert('预加载失败!');
+		}
+
+		var _src = oImg.src;
+		oImg.onmouseover = function(){
+			this.src = oImgBack.src;
+		}
+		oImg.onmouseout = function(){
+			this.src = _src;
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			position: relative;
+			margin: 30px auto;
+			list-style: none;
+			width: 360px;
+		}
+		li{
+			float: left;
+			margin: 10px;
+			width: 100px;
+			height: 100px;
+			background: #ccc;
+			font-size: 14px;
+			color: #333;
+			line-height: 100px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+
+	<script>
+		window.onload = function(){
+			var oUl = document.getElementsByTagName('ul')[0],
+				aLi = oUl.getElementsByTagName('li');
+			for (var i = 0; i < aLi.length; i++) {
+				aLi[i].innerHTML = (aLi[i].offsetLeft + ', ' + aLi[i].offsetTop);
+				// 根据布局存储left和top的值
+				aLi[i].style.left = aLi[i].offsetLeft + 'px';
+				aLi[i].style.top = aLi[i].offsetTop + 'px';
+			}
+			for (var i = 0; i < aLi.length; i++) {
+				aLi[i].style.position = 'absolute';
+				aLi[i].style.margin = 0;
+			}
+		}
+	</script>
+</body>
+</html>

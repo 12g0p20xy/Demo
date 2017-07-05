@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+			
+		var point = {
+			x: 0,
+			y: 0,
+			moveTo: function(x, y){
+				this.x = x;
+				this.y = y;                  // this == point
+			}
+		};
+		point.moveTo(1, 1);
+		console.log(point.x);                // 1
+	
+
+		var point2 = {
+			x: 0,
+			y: 0,
+			moveTo: function(x, y){
+				var _this = this;            // this == point2
+				var moveX = function(x){
+					_this.x = x;             // this == window
+										     // _this == point2
+				};
+				var moveY = function(y){
+					_this.y = y;
+				};
+				moveX(x);
+				moveY(y);
+			}
+		};
+		point2.moveTo(2, 3);
+		console.log(point2.x);              // 2
+
+	</script>
+</body>
+</html>

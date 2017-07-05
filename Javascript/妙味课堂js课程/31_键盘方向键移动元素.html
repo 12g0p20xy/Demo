@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{
+			position: absolute;
+			left: 300px;
+			top: 200px;
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+
+	<script>
+		window.onload = function(){
+			var oBox = document.getElementById('box');
+			document.onkeydown = function(e){
+				var e = e || event;
+
+				// ← 37
+				// → 39
+				if (e.keyCode == 37) {
+					// 在当前位置左移10px
+					oBox.style.left = oBox.offsetLeft - 10 +'px';
+				}
+				else if (e.keyCode == 39) {
+					oBox.style.left = oBox.offsetLeft + 10 +'px';
+				}
+			};
+		};
+	</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件委托</title>
+	<script type="text/javascript" src="../jQuery/jquery-1.11.3.min.js"></script>
+	<style type="text/css">
+	*{margin: 0 auto;}
+	#switcher{background: #ccc; width: 200px; height: 100px;}
+	.hidden{display: none;}
+	.selected{background: #f90;}
+	</style>
+</head>
+<body>
+	<div id='switcher'>
+		<p>some text</p>
+		<a href="#">some text</a>
+		<button>click me</button>
+		<button>click me</button>
+	</div>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$('#switcher').click(function(event){
+			if (event.target==this) { // 点击按钮按钮不会消失，.target可以确定DOM中首先接受到事件的元素
+				$('#switcher button').toggleClass('hidden');
+			};
+		});
+	});
+
+	// 事件委托
+	$(function(){
+		$('#switcher').click(function(event){
+			if ($(event.target).is('button')) {
+				$('body').toggleClass('selected');
+			};
+		});
+	});
+
+	// 内置的事件委托 同上面的写法
+	$(function(){
+		$('#switcher').on('click', 'button', function(){
+			$('body').toggleClass('selected');
+		});
+	});
+	</script>
+</body>
+</html>

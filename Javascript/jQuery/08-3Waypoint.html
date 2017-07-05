@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>08-3</title>
+	<script type="text/javascript" src='jquery-1.11.3.min.js'></script>
+	<script type="text/javascript" src='jquery.waypoints.js'></script>
+	<style type="text/css">
+		body{height: 6000px;}
+		.line{border-bottom: 1px dashed #ccc; height: 600px; position: relative;}
+		.bunny{width: 100px; position: relative; left: -298px; opacity: 0;}
+	</style>
+</head>
+<body>
+	<section>
+		<div class="line"></div>
+		<img src="images/demo_bunny.png" id='basic-waypoint' class='bunny'>
+		<script type="text/javascript">
+			var waypoint = new Waypoint({
+  				element: document.getElementById('basic-waypoint'),
+  				handler: function(direction) {
+  					if (direction=='down') {
+    					$(".bunny").animate({left:'50%', opacity:'1'}, 1000);
+  					}else{
+  						$(".bunny").animate({left:'0', opacity:'0'}, 1000);
+  					};
+  				},
+  				offset:'50%',
+			});
+		</script>
+	</section>
+</body>
+</html>

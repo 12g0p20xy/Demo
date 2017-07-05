@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	*{margin: 0; padding: 0;}
+	img{width: 100px; transition: .3s;}
+	.photo{height: 192px; overflow: hidden; display: inline-block; box-shadow: 1px 1px 3px rgba(0,0,0,.3); margin: 10px; cursor: pointer;}
+	#gallery{border: 1px #ccc solid; width: 400px;}
+	.details{background: rgba(0,0,0,.6); color: white; width: 100%;}
+	.photo:hover img{margin-top: -20px;}
+	.more{text-decoration: none; width: 300px; padding: 5px; background: #333; color: white; text-align: center;}
+	</style>
+	<script type="text/javascript" src="../jQuery/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+	<div id="container">
+		<h1>Photo Gallery</h1>
+		<div id="gallery">
+			<div class="photo">
+				<img src="../css3/images/1.jpg">
+				<div class="details">description</div>
+			</div>
+			<div class="photo">
+				<img src="../css3/images/2.jpg">
+				<div class="details">description</div>
+			</div>
+			<div class="photo">
+				<img src="../css3/images/3.jpg">
+				<div class="details">description</div>
+			</div>
+		</div>
+		<a href="pages/1.html" class="more">more...</a>
+	</div>
+	<script type="text/javascript">
+	$(function(){
+		var pageNum = 1;
+		$('.more').click(function(event){
+			event.preventDefault();
+			var url = $(this).attr('href');
+			if (url) {
+				$.get(url, function(data){
+					$('#gallery').append(data);
+				});
+				pageNum++;
+				if (pageNum<4) {
+					$(this).attr('href', 'pages/'+pageNum+'.html');
+				}else{
+					$(this).text('ended');
+				};
+			};
+		});
+	});
+	</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src='jquery-1.11.3.min.js'></script>
+	<style type="text/css">
+		body{
+			height: 6000px;
+			background: #ccc;
+		}
+		.box{
+			width: 100px;
+			height: 100px;
+			background: red;
+			position: fixed;
+			bottom: 100px;
+			right: 0;
+			display: none;
+			line-height: 100px;
+			text-align: center;
+			color: white;
+			font-weight: bold;
+			cursor: pointer;
+		}
+		.boxfixed{
+			position: fixed;
+		}
+		nav{
+			width: 100%;
+			height: 100px;
+			margin: 0 auto;
+			margin-top: 100px;
+			background: blue;
+		}
+		.navfixed{
+			height: 60px;
+			margin-top: 0;
+			position: fixed;
+			opacity: .3;
+		}
+		.box2{
+			background: rgba(0,0,0,.6);
+			width: 0;
+			height: 60px;
+			position: fixed;
+			bottom: 0;
+			right: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">点我</div>
+	<nav></nav>
+	<div class="box2"></div>
+</body>
+<script type="text/javascript">
+	$(window).scroll(function(){
+		// 设置右边盒子
+		if($(document).scrollTop()>=600){
+			$('.box').addClass('boxfixed');
+			$('.box').fadeIn();
+		}
+		else{
+			$('.box').removeClass('boxfixed');
+			$('.box').fadeOut();
+		}
+		// 设置导航栏
+		if($(document).scrollTop()>=100){
+			$('nav').addClass('navfixed');
+		}
+		else{
+			$('nav').removeClass('navfixed');
+		}
+		// 右下伸出
+		if($(document).scrollTop()>=800){
+			$('.box2').animate({width:'300px'}, 300);
+		}
+		else{
+			$('.box2').animate({width:'0px'}, 300);
+		}
+	});
+	// 回到顶部
+	$('.box').click(function(){
+		$('body').animate({scrollTop:'0px'},300);
+	});
+	// 右下扩大
+	$('.box2').mouseenter(function(){
+		$('.box2').animate({width:'600px'}, 300);
+	})
+	$('.box2').mouseleave(function(){
+		$('.box2').animate({width:'300px'}, 300);
+	})
+</script>
+</html>

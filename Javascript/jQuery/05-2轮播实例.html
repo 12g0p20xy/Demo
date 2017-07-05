@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>05-2</title>
+	<script type="text/javascript" src='jquery-1.11.3.min.js'></script>
+	<style type="text/css">
+		.video{width: 740px; overflow: hidden;}
+		img{width: 160px; height: 100px;}
+		li{list-style: none;}
+		.hd{width: 750px; border-bottom: 2px solid #ccc; padding: 10px; height: 1.8em;}
+		.title{float: left;}
+		.title h2{display: inline; font-size: 18px; font-family: '微软雅黑';}
+		.tips{display: inline-block;}
+		.tips span{display: inline-block; width: 8px; height: 8px; background: grey; text-indent: -9999em; border-radius: 50%; margin-left: 5px; line-height: 10px;}
+		span.current{background: red;}
+		.changeBtn{display: inline-block; width: 480px; margin-left: 10px;}
+		.changeBtn span{border: 1px solid #ccc; padding: 5px; cursor: pointer; border-radius: 6px; background: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,.1)); color: #333;}
+		.changeBtn em{float: right;}
+		.bd{width: 6000px; height:140px;} /*注意这里的宽度*/
+		.bd ul{margin-left: -30px; position: relative;}
+		.bd li{padding: 5px; display: inline-block; border: 1px solid #ccc; margin: 0 5px 10px 0;}
+	</style>
+</head>
+<body>
+	<div class="video">
+		<div class="hd">
+			<div class="title">
+				<h2>卡通动漫</h2>
+				<div class="tips">
+					<span class='current'>1</span><span>2</span><span>3</span><span>4</span>
+				</div>
+			</div>
+			<div class="changeBtn">
+				<span class='prev'>←</span>
+				<span class='next'>→</span>
+				<em><a href="#">更多>></a></em>
+			</div>
+		</div>
+		<div class="bd">
+			<ul>
+				<li><a href=""><img src="images/01_iron_man_2.jpg" alt=""></a></li>
+				<li><a href=""><img src="images/01_iron_man_2.jpg" alt=""></a></li>
+				<li><a href=""><img src="images/01_iron_man_2.jpg" alt=""></a></li>
+				<li><a href=""><img src="images/01_iron_man_2.jpg" alt=""></a></li>
+				<li><a href=""><img src="images/01_iron_man_2.jpg" alt=""></a></li>
+				<li><a href=""><img src="images/01_iron_man_2.jpg" alt=""></a></li>
+				<li><a href=""><img src="images/01_iron_man_2.jpg" alt=""></a></li>
+				<li><a href=""><img src="images/01_iron_man_2.jpg" alt=""></a></li>
+				<li><a href=""><img src="images/01_iron_man_2.jpg" alt=""></a></li>
+				<li><a href=""><img src="images/01_iron_man_2.jpg" alt=""></a></li>
+				<li><a href=""><img src="images/01_iron_man_2.jpg" alt=""></a></li>
+				<li><a href=""><img src="images/01_iron_man_2.jpg" alt=""></a></li>
+				<li><a href=""><img src="images/01_iron_man_2.jpg" alt=""></a></li>
+				<li><a href=""><img src="images/01_iron_man_2.jpg" alt=""></a></li>
+				<li><a href=""><img src="images/01_iron_man_2.jpg" alt=""></a></li>
+				<li><a href=""><img src="images/01_iron_man_2.jpg" alt=""></a></li>
+			</ul>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var page=1; //初始化当前版面数为1
+		var i=4; //每版放4个图片
+		var v_width=$('.video').width(); //获取每次需要移动的宽度
+		var len=$('.bd').find('li').length; //总的视频数
+		var page_count=Math.ceil(len/i); //只要不是整数，就往大的方向取最小的整数
+		$('span.next').click(function(){
+			if (page==page_count) {
+				$('.bd ul').stop(true,true).animate({left:'0'}, 'slow');
+				page=1; //到最后一个版面时，跳转到开头
+			}else{
+				$('.bd ul').stop(true,true).animate({left:'-='+v_width}, 'nomal')
+				page++;
+			};
+			$('.tips span').eq(page-1).addClass('current').siblings().removeClass('current');
+			//控制圆点
+		});
+		$('span.prev').click(function(){
+			if (page==1) {
+				$('.bd ul').stop(true,true).animate({left:'-='+v_width*(page_count-1)}, 'slow');
+				page=page_count;
+			}else{
+				$('.bd ul').stop(true,true).animate({left:'+='+v_width}, 'nomal')
+				page--;
+			};
+			$('.tips span').eq(page-1).addClass('current').siblings().removeClass('current');
+		});
+	</script>
+</body>
+</html>

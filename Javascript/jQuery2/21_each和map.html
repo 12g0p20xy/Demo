@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li>111</li>
+		<li>222</li>
+		<li>333</li>
+		<li>444</li>
+	</ul>
+	<script src="../jQuery/jquery-1.11.3.min.js"></script>
+	<script>
+	// $('li').each(function(index, el) {
+	// 	$('body').append($(el).text());
+	// });
+	$('body').append(
+		$('li').map(function(index, elem) {
+			return elem;
+		}).text()
+	);
+	</script>
+</body>
+</html>

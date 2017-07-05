@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var arr1 = [1, 2, 3];
+		var arr2 = arr1;
+		arr2.push(4);
+
+		console.log(arr1);      // [1, 2, 3, 4]
+		console.log(arr2);      // [1, 2, 3, 4]
+
+		// 结论：在js里的等于都是引用 arr1和arr2指向的是内存同一个区域
+		// 所以改变一个就会同时改变
+
+		var a1 = {person: "a"};
+		var a2 = a1;
+		a2.age = 16;
+		console.log(a1);       // {person: a, age: 16}
+		console.log(a2);	   // {person: a, age: 16}
+
+		a2 = {age: 20};        // 而这里相当于a2重新引用了，a2不再等于a1
+		console.log(a1);       // {person: a, age: 16}
+		console.log(a2);	   // {age: 20}
+
+		// 想要复制而不是引用可以用for in循环
+
+		var a1 = {person: "a", age: 18};
+		for(var i in a1){
+			a2[i] = a1[i];
+		}
+		a2.age = 30;
+		console.log(a1);       // {person: a, age: 18}
+		console.log(a2);	   // {person: a, age: 30}
+	</script>
+</body>
+</html>

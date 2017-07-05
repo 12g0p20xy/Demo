@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#nav{ display: none; width: 200px; height: 300px; background: #ccc; }
+	</style>
+</head>
+<body>
+	<button id="btn">MENU</button>
+	<div id="nav"></div>
+
+	<script>
+		window.onload = function(){
+			var oBtn = document.getElementById('btn'),
+				oNav = document.getElementById('nav');
+			oBtn.onclick = function(e){
+				// 阻止了事件冒泡，这样点击按钮不会触发document的点击事件
+				e.stopPropagation();
+				oNav.style.display = 'block';
+			};
+			document.onclick = function(){
+				// 点击document隐藏菜单
+				oNav.style.display = 'none';
+			};
+		};
+	</script>
+</body>
+</html>

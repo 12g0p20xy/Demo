@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{
+			width: 300px;
+			height: 200px;
+			background: blue;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<script>
+		function toRed(){
+			var box = document.getElementById('box');
+			box.style.width = '500px';
+			box.style.height = '600px';
+			box.style.background = 'red';
+		}
+		function toBlue(){
+			var box = document.getElementById('box');
+			box.style.width = '300px';
+			box.style.height = '200px';
+			box.style.background = 'blue';
+		}
+		// 事件提取
+		window.onload = function(){
+			var box = document.getElementById('box');
+			box.onmouseover = toRed; // 不加括号
+			box.onmouseout = toBlue;
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	// 面向对象
+
+	// 先建立一个空的对象
+	var obj = new Object();
+
+	// 赋予对象一些属性和方法
+	obj.name = "john";
+	obj.sex = "male";
+	obj.showName = function(){
+		alert(this.name);
+	};
+	obj.showSex = function(){
+		alert(this.sex);
+	};
+
+	// 执行
+	obj.showName(); // "john"
+	obj.showSex(); // "male"
+	</script>
+</body>
+</html>

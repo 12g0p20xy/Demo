@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		section{ margin-bottom: 30px;}
+	</style>
+</head>
+<body>
+	<section>
+		<button>打开百度</button>
+	</section>
+	<section>
+		<textarea id="txt" cols="30" rows="10"><p>可以<a href="">输出</a><b>HTML</b><i>代码</i></p></textarea><br>
+		<button>运行HTML代码</button>
+	</section>
+	<section>
+		<button>关闭窗口</button>
+	</section>
+
+	<script>
+		window.onload = function(){
+			var aBtn = document.getElementsByTagName('button'),
+				oTxt = document.getElementById('txt');
+			aBtn[0].onclick = function(){
+				window.open('http://www.baidu.com', '_blank');
+			}
+			aBtn[1].onclick = function(){
+				// 打开一个新窗口并输出文本框的内容
+				var oNewWin = window.open('about:blank');
+				oNewWin.document.write(oTxt.value);
+			};
+			aBtn[2].onclick = function(){
+				window.close();
+			};
+		};
+	</script>
+</body>
+</html>

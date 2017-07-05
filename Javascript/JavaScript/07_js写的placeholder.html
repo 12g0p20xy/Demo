@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input id="first-name" type="text" placeholder="your first name">
+	<script>
+	function elementSupportsAttribute(element, attribute) {
+	  var test = document.createElement(element);
+	  if (attribute in test) {
+	    return true;
+	  } else {
+	    return false;
+	  }
+	};
+	var input = document.getElementById('first-name');
+	if(!elementSupportsAttribute('input', 'placeholder')){
+		input.onfocus = function(){
+			var text = this.placeholder || this.getAttribute('placeholder');
+			if (this.value == text) {
+				this.value = '';
+			};
+		};
+		input.onblur = function(){
+			if (this.value == '') {
+				this.value = this.placeholder || this.getAttribute('placeholder');
+			};
+		};
+		input.onblur();
+	};
+	</script>
+</body>
+</html>

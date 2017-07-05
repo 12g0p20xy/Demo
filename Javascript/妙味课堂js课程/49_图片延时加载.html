@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul{margin: 0; padding: 0; list-style: none;}
+		li{margin: 15px; width: 200px; height: 150px; border: 1px solid #ccc;}
+		img{width: 100%;}
+	</style>
+</head>
+<body>
+	<ul>
+		<li><img src="http://d.hiphotos.baidu.com/image/pic/item/38dbb6fd5266d01622b0017d9f2bd40735fa353d.jpg" alt=""></li>
+		<li><img src="http://d.hiphotos.baidu.com/image/pic/item/38dbb6fd5266d01622b0017d9f2bd40735fa353d.jpg" alt=""></li>
+		<li><img src="http://d.hiphotos.baidu.com/image/pic/item/38dbb6fd5266d01622b0017d9f2bd40735fa353d.jpg" alt=""></li>
+		<li><img src="http://d.hiphotos.baidu.com/image/pic/item/38dbb6fd5266d01622b0017d9f2bd40735fa353d.jpg" alt=""></li>
+		<li><img src="http://www.51qe.cn/oldman/images/loading.gif" alt=""></li>
+		<li><img src="http://www.51qe.cn/oldman/images/loading.gif" alt=""></li>
+		<li><img src="http://www.51qe.cn/oldman/images/loading.gif" alt=""></li>
+		<li><img src="http://www.51qe.cn/oldman/images/loading.gif" alt=""></li>
+		<li><img src="http://www.51qe.cn/oldman/images/loading.gif" alt=""></li>
+		<li><img src="http://www.51qe.cn/oldman/images/loading.gif" alt=""></li>
+		<li><img src="http://www.51qe.cn/oldman/images/loading.gif" alt=""></li>
+		<li><img src="http://www.51qe.cn/oldman/images/loading.gif" alt=""></li>
+		<li><img src="http://www.51qe.cn/oldman/images/loading.gif" alt=""></li>
+		<li><img src="http://www.51qe.cn/oldman/images/loading.gif" alt=""></li>
+		<li><img src="http://www.51qe.cn/oldman/images/loading.gif" alt=""></li>
+		<li><img src="http://www.51qe.cn/oldman/images/loading.gif" alt=""></li>
+		<li><img src="http://www.51qe.cn/oldman/images/loading.gif" alt=""></li>
+		<li><img src="http://www.51qe.cn/oldman/images/loading.gif" alt=""></li>
+		<li><img src="http://www.51qe.cn/oldman/images/loading.gif" alt=""></li>
+		<li><img src="http://www.51qe.cn/oldman/images/loading.gif" alt=""></li>
+		<li><img src="http://www.51qe.cn/oldman/images/loading.gif" alt=""></li>
+		<li><img src="http://www.51qe.cn/oldman/images/loading.gif" alt=""></li>
+	</ul>
+
+	<script>
+		window.onload = function(){
+			var aImg = document.getElementsByTagName('img');
+			var listH = document.getElementsByTagName('li')[0].offsetHeight + 15;
+			var aResult = [];
+			for (var i = 0; i < aImg.length; i++) {
+				if (aImg[i].src == 'http://www.51qe.cn/oldman/images/loading.gif') {
+					aResult.push(aImg[i]);
+				}
+			};
+			
+			var count = 1;
+			window.onscroll = function (){
+				var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+				if (scrollTop > listH*count) {
+					count++;
+					aResult[0].src = 'http://d.hiphotos.baidu.com/image/pic/item/38dbb6fd5266d01622b0017d9f2bd40735fa353d.jpg';
+					aResult.shift();
+					console.log(aResult.length);
+				}
+			};
+			
+		};
+	</script>
+</body>
+</html>

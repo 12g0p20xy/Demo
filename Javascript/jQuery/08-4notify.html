@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>08-4</title>
+	<script type="text/javascript" src='jquery-1.11.3.min.js'></script>
+	<script type="text/javascript" src='notify.min.js'></script>
+	<style type="text/css">
+		.box{width: 60px; height: 60px; background: green; margin-top: 300px;}
+	</style>
+</head>
+<body>
+	<section>
+		<div class="box" id='basic-waypoint'></div>
+		<script type="text/javascript">
+			$.notify.addStyle('happyblue', {
+			  html: "<div>☺<span data-notify-text/>☺</div>",
+			  classes: {
+			    base: {
+			      "background-color": "lightblue",
+			      "padding": "5px"
+			    },
+			  }
+			}); //这段重新定义了一个名为happyblue的style
+			$('.box').click(function(){
+				$.notify('hello',{
+					style:'happyblue',
+				});
+			})
+		</script>
+	</section>
+</body>
+</html>

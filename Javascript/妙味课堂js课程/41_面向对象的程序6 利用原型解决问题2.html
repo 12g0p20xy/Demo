@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	// 使用原型构造函数解决问题2
+	// 这个方法叫混合法
+	// 为了区分构造函数和普通函数 构造函数命名时首字母要大写
+
+
+	function CreatePerson(name, sex){					// 构造函数		
+		this.name = name;
+		this.sex = sex;									// 属性：在构造函数内部添加
+	};													//       因为每个对象都不相同
+
+	CreatePerson.prototype.showName = function(){		// 方法：在外面利用原型添加
+		alert(this.name);								//       因为所有对象可用同一个方法
+	};
+	CreatePerson.prototype.showSex = function(){
+		alert(this.sex);
+	};
+
+	var p1 = new CreatePerson('john', 'male');
+	var p2 = new CreatePerson('marry', 'female');
+	p1.showName(); // 'john'
+	p2.showSex(); // 'female'
+
+	// 使用这个原型构造的方法不会被重复创建
+	alert(p1.showName == p2.showName); // true
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../jQuery/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+	<div class="box">
+		<h3>text size</h3>
+		<button id="bigger">bigger</button>
+		<button id="smaller">smaller</button>
+		<button id="default">default</button>
+	</div>
+	<script type="text/javascript">
+	$(function(){
+		var defaultSize=$('h3').css('fontSize'); //存储默认字号
+		$('button').click(function(){
+			var num=parseFloat($('h3').css('fontSize'));
+			console.log(this.id);
+			// 通过获取当前点击的按钮id来执行不同代码
+			switch (this.id){
+				case 'bigger':
+					num *= 1.4;
+					break;
+				case 'smaller':
+					num /= 1.4;
+					break;
+				default:
+					num = parseFloat(defaultSize);
+			};
+			$('h3').animate({fontSize:num+'px'}, 'slow');
+		});
+	});
+	</script>
+</body>
+</html>

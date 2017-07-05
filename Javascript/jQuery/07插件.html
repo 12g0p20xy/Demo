@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>07</title>
+	<script type="text/javascript" src='jquery-1.11.3.min.js'></script>
+	<script type="text/javascript" src='jquery.validate.js'></script>
+	<script type="text/javascript" src='messages_zh.js'></script>
+	<script type="text/javascript" src='jquery.metadata.js'></script>
+	<style type="text/css">
+		form{width: 600px;}
+		label.error{color: red;}
+	</style>
+	<script type="text/javascript">
+	$.validator.addMethod(
+		'formula',
+		function(value, element, param){
+			return value ==eval(param);
+		},
+		'请正确输入计算后的结果'
+		);
+	$(function(){
+		$('.commentForm').validate({
+			rules:{
+				username:{
+					required:true,
+					minlength:2,
+				},
+				valcode:{formula:'7+9'},
+			},
+			messages:{
+				username:'更改的提示文字',
+			}
+		});
+	});
+	</script>
+</head>
+<body>
+	<form class='commentForm'>
+		<fieldset>
+			<p>
+				<label for='name'>姓名</label>
+				<input id='name' class='{required:true, minlength:2}'><em>*</em>
+			</p>
+			<p>
+				<label for='name2'>姓名</label>
+				<input id='name2' name='username'><em>*</em>
+			</p>
+			<p>
+				<label for='email'>邮箱</label>
+				<input id='email' class='required'><em>*</em>
+			</p>
+			<p>
+				<label for='cvacode'>计算7+9=</label>
+				<input id='cvacode' name='valcode'><em>*</em>
+			</p>
+			<button class='submit'>提交</button>
+		</fieldset>
+	</form>
+</body>
+</html>

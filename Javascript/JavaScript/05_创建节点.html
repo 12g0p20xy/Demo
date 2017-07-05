@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="testdiv"></div>
+	<script type="text/javascript">
+	window.onload=function(){
+		var para=document.createElement('p');
+		//createElement创建元素节点
+		var txt=document.createTextNode('Hello world!');
+		//createTextNode创建文本节点
+		var testdiv=document.getElementById('testdiv');
+		testdiv.appendChild(para); //para成为了testdiv的子节点
+		para.appendChild(txt); //txt成为了para的子节点
+	}
+	</script>
+</body>
+</html>

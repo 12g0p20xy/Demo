@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul{
+			list-style: none;
+			padding: 0;
+		}
+		.tabnav li{
+			display: inline-block;
+			padding: .5em;
+			border: 1px solid #ccc;
+			cursor: pointer;
+		}
+		.tabnav .active{
+			background: #F6F0D9;
+		}
+		div{
+			display: none;
+			width: 150px;
+			height: 100px;
+			background: #eee;
+		}
+	</style>
+</head>
+<body>
+	<ul class="tabnav">
+		<li class="active">1</li>
+		<li>2</li>
+		<li>3</li>
+	</ul>
+	<div style="display: block;">111</div>
+	<div>222</div>
+	<div>333</div>
+	<script>
+		window.onload = function(){
+			var oList = document.getElementsByTagName('li'),
+				oCon = document.getElementsByTagName('div');
+			for (var i = 0; i < oList.length; i++) {
+				oList[i].index = i; // 注意这行，需要将i传入下面的函数里
+				oList[i].onclick = function(){
+					for (var i = 0; i < oList.length; i++) {
+						oList[i].className = '';
+						oCon[i].style.display = 'none';
+					};
+					this.className = 'active';
+					oCon[this.index].style.display = 'block'; // this.index，this指向当前点击的li
+				};
+			};
+		};
+	</script>
+</body>
+</html>

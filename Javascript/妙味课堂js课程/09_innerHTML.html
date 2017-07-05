@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul{
+			list-style: none;
+			padding: 0;
+			width: 200px;
+			font-size: 0;
+		}
+		li{
+			font-size: 18px;
+			margin: 5px;
+			display: inline-block;
+			padding: 1em;
+			border: 1px solid #ccc;
+		}
+		.active{
+			color: #fff;
+			background: #2B2B2B;
+		}
+		#txt{
+			width: 200px;
+			height: 100px;
+			background: #eee;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li class="active">1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li>8</li>
+		<li>9</li>
+	</ul>
+	<div id="txt"></div>
+	<script>
+		var aData = [
+			'一月活动',
+			'二月活动',
+			'三月活动',
+			'四月活动',
+			'五月活动',
+			'六月活动',
+			'七月活动',
+			'八月活动',
+			'九月活动'
+		];
+		window.onload = function(){
+			var aLi = document.getElementsByTagName('li'),
+				aTxt = document.getElementById('txt');
+			for (var i = 0; i < aLi.length; i++) {
+				aLi[i].index = i;
+				aLi[i].onmouseover = function(){
+					for (var i = 0; i < aLi.length; i++) {
+						aLi[i].className = '';
+					};
+					this.className = 'active';
+					aTxt.innerHTML = '<h3>' + (this.index+1) + '月活动</h3><p>'
+									 + aData[this.index] + '</p>';
+				};
+			};
+		};
+	</script>
+</body>
+</html>

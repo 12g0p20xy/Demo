@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>03-3</title>
+	<script type="text/javascript" src='jquery-1.11.3.min.js'></script>
+	<style type="text/css">
+		.change{ background: red; color: white;}
+	</style>
+</head>
+<body>
+	<p title='选择你最喜欢的水果'>你最喜欢的水果是？</p>
+	<ul>
+		<li title='苹果'>苹果</li>
+		<li title='橘子'>橘子</li>
+		<li title='菠萝'>菠萝</li>
+	</ul>
+	<script type="text/javascript">
+		$('ul li:eq(1)').attr({'title':'香蕉','class':'fruit'}); //设置多个属性
+		$('ul li:eq(2)').removeAttr('title'); //删除属性
+	</script>
+
+	<!---------------------- 我是分割线 ------------------------>
+	<p class="myClass" title='选择你最喜欢的水果'>你最喜欢的水果是？</p>
+	<script type="text/javascript">
+		$('p').addClass('newClass class2'); //给p元素追加多个class只要用空格隔开
+
+		var $btn = $('<button>点我切换class</button>');
+		$('p:eq(1)').after($btn); //增加一个按钮
+		$btn.click(function() {
+			$('p').toggleClass('change'); //toggleClass可以重复切换
+		});
+	</script>
+</body>
+</html>

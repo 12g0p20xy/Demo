@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>08-6</title>
+	<script type="text/javascript" src='jquery-1.11.3.min.js'></script>
+	<script type="text/javascript" src='skrollr.min.js'></script>
+	<style type="text/css">
+		section.s1{height: 600px; border-bottom: 1px dashed #ccc;}
+		section.s2{position: relative;}
+		.box1{background:rgb(0,0,255); width: 100px; height: 100px;}
+		.box2{background:rgb(100,0,0); width: 100px; height: 100px; position: absolute; left: 200px;}
+		.box3{background:rgb(100,0,100); width: 100px; height: 100px; position: absolute; left: 300px;}
+		.box4{background:rgb(100,100,100); width: 100px; height: 100px; position: absolute; left: 400px;}
+	</style>
+</head>
+<body>
+	<section class='s1'></section>
+	<section class='s2'>
+		<div data-0="top:-80px; opacity:1" data-top="top:100px; opacity:.3;"  class='box2'>WOOOT</div>
+		<div data-0="top:-30px; opacity:1" data-top="top:60px; opacity:.3;"  class='box3'>WOOOT</div>
+		<div data-0="top:-60px; opacity:1" data-top="top:100px; opacity:.3;"  class='box4'>WOOOT</div>
+	</section>
+	<script type="text/javascript">
+		var s = skrollr.init();
+	</script>
+</body>
+</html>

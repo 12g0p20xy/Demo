@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	// 原型的应用：扩展系统对象
+
+	// 例子1
+	// 给系统默认的String对象增加一个叫trim的方法，去除字符串两边的空格
+	String.prototype.trim = function(){
+		return this.replace(/^\s+|\s+$/g, '');
+	};
+
+	var str = '   fsdf  fsdf   sdf   sdf  f  ';
+	alert(str.trim()); // "fsdf  fsdf   sdf   sdf  f"
+
+
+	// 例子2
+	// 给系统默认的Array对象增加一个叫sum的方法
+	Array.prototype.sum = function(){
+		var result = 0;
+		for (var i = 0; i < this.length; i++) {
+			result += this[i];
+		}
+		return result;
+	};
+
+	var arr1 = new Array(12, 5, 8, 4);
+	var arr2 = new Array(12, 6, 54, 4, 23);
+	alert(arr1.sum());
+	alert(arr2.sum());
+
+	</script>
+</body>
+</html>

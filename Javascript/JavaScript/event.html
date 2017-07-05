@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="myBtn">click me!</button>
+	<script type="text/javascript">
+	var btn = document.getElementById('myBtn');
+	var handler = function(e){
+		switch(e.type){ //event.type属性可以检测事件类型
+			case 'click':
+				alert('Clicked');
+				break;
+			case 'mouseover':
+				e.target.style.backgroundColor = 'red';
+				break;
+			case 'mouseout':
+				e.target.style.backgroundColor = '';
+				break;
+		};
+	};
+	btn.onclick = handler;
+	btn.onmouseover = handler;
+	btn.onmouseout = handler;
+	</script>
+</body>
+</html>

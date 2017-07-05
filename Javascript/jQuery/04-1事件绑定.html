@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04-1</title>
+	<script type="text/javascript" src='jquery-1.11.3.min.js'></script>
+	<style type="text/css">
+		h3, p{font-size: 14px; line-height: 1.5em; text-align: left; padding: 5px; border: 1px black solid; width: 300px}
+		p{ height: 300px;}
+		.con{ display: none;}
+	</style>
+</head>
+<body>
+	<div class="panel">
+		<h3>什么是jQuery？</h3>
+		<div class="con">
+			<p>许多的说明文字……</p>
+		</div>
+	</div>
+	<script type="text/javascript">
+	$(function(){										//		$(function(){
+		$('.panel h3').bind('click', function(){		//	简		$('h3').click(function(){
+			$(this).next('.panel .con').show();			//	写			$('.con').show();
+		});												//	成		});
+	});													//		})
+	</script>
+
+	<!---------------------- 我是分割线 ------------------------>
+	<div class="panel2">
+		<h3>什么是jQuery？(hover版)</h3>
+		<div class="con">
+			<p>许多的说明文字……</p>
+		</div>
+	</div>
+	<script type="text/javascript">
+	$(function(){
+		$('.panel2 h3').hover(function(){
+			$(this).next('.panel2 .con').show();
+		},function(){
+			$(this).next('.panel2 .con').hide();
+		});
+	});
+	</script>
+
+	<!---------------------- 我是分割线 ------------------------>
+	<div class="panel3">
+		<h3>什么是jQuery？(toggle版 1.9以下版本)</h3>
+		<div class="con">
+			<p>许多的说明文字……</p>
+		</div>
+	</div>
+	<script type="text/javascript">
+	$(function(){
+		$('.panel3 h3').toggle(function(){
+			$(this).next('.panel3 .con').toggle();
+		},function(){
+			$(this).next('.panel3 .con').toggle();
+		});
+	});
+	</script>
+
+	<!---------------------- 我是分割线 ------------------------>
+	<div class="panel4">
+		<h3>什么是jQuery？(toggle版 1.9以上版本)</h3>
+		<div class="con">
+			<p>许多的说明文字……</p>
+		</div>
+	</div>
+	<script type="text/javascript">
+	$(function(){
+		$('.panel4 h3').click(function(){
+			if ($('.panel4 .con').is(':visible')) {
+				$('.panel4 .con').hide();
+			}else{
+				$('.panel4 .con').show();
+			};
+		});
+	});
+	</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="foo" data-appId="12345" data-myname="Nicholas"></div>
+	<button id="btn2">click meee!</button>
+	<script>
+		var div = document.getElementById('foo');
+		// 取得值
+		var appId = div.dataset.appId;
+		var myname = div.dataset.myname;
+		// 设置值
+		div.dataset.appId = 23456;
+	</script>
+</body>
+</html>

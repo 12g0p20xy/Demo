@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#div, #div2{
+			margin-top: 10px;
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+		#div2{
+			top: 150px;
+			background: blue;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn">点击</button>
+	<div id="div"></div>
+	<div id="div2"></div>
+	<script>
+
+		function startMove(id, iSpeed){
+			var oDiv = document.getElementById(id);
+			var timer = null;
+
+			clearInterval(timer); // 每次点击的时候先清除一次定时器， 防止叠加
+
+			timer = setInterval(function(){
+				if (oDiv.offsetLeft >= 500) {
+					clearInterval(timer);
+				}
+				else{
+					oDiv.style.left = oDiv.offsetLeft + iSpeed +'px';
+					console.log(oDiv.offsetLeft);
+				}
+			}, 30);
+		};
+
+		window.onload = function(){
+			var oBtn = document.getElementById('btn');
+			oBtn.onclick = function(){
+				startMove('div', 5);
+				startMove('div2', 10);
+			};
+		};
+	</script>
+</body>
+</html>

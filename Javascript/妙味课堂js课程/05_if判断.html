@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="wrap">
+		<p id="title">我是标题 点我</p>
+		<ul id="list" style="display: none;">
+			<li><a href="javascript:;">项目1</a></li>
+			<li><a href="javascript:;">项目2</a></li>
+			<li><a href="javascript:;">项目3</a></li>
+		</ul>
+	</div>
+	<script>
+		window.onload = function(){
+			var title = document.getElementById('title'),
+				list = document.getElementById('list');
+			
+			title.onclick = listShow;
+
+			function listShow(){
+				if (list.style.display == 'none') {
+					list.style.display = 'block';
+					return;
+				}
+				list.style.display = 'none';
+			};
+		};
+	</script>
+</body>
+</html>

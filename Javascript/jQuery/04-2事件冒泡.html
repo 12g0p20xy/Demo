@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04-2</title>
+	<script type="text/javascript" src='jquery-1.11.3.min.js'></script>
+</head>
+<body>
+
+	<!-------- 点击内部元素外部的元素click()也依次响应 -------->
+	<div class="content">
+		外层div元素
+		<span>内层span元素</span>
+		外层div元素
+	</div>
+	<div class="msg"></div>
+	<script type="text/javascript">
+	$(function(){
+		//为span元素绑定click事件
+		$('span').click(function(){
+			var txt=$('.msg').html()+'<p>内层span元素被单击</p>';
+			$('.msg').html(txt);
+		});
+		//为div元素绑定事件
+		$('.content').click(function(){
+			var txt=$('.msg').html()+'<p>外层div元素被单击</p>';
+			$('.msg').html(txt);
+		});
+		//为body元素绑定事件
+		$('body').click(function(){
+			var txt=$('.msg').html()+'<p>body元素被单击</p>';
+			$('.msg').html(txt);
+		});
+	})
+	</script>
+</body>
+</html>

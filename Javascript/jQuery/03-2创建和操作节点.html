@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>03-2</title>
+	<script type="text/javascript" src='jquery-1.11.3.min.js'></script>
+</head>
+<body>
+	<p title='选择你做喜欢的水果'>你做喜欢的水果是？</p>
+	<ul>
+		<li title='苹果'>苹果</li>
+		<li title='橘子'>橘子</li>
+		<li title='菠萝'>菠萝</li>
+	</ul>
+	<script type="text/javascript">
+		var $li_1 = $('<li>新元素1</li>');
+		var $li_2 = $('<li>新元素2</li>'); //创建2个li元素，注意要用闭合标签
+		$('ul').append($li_1).append($li_2); //把新元素插入文档中
+
+		var $btn = $('<input type="button" class="btn" value="按钮" />');
+		//也可以同时创建属性值，注意引号嵌套
+		$('body').append($btn);
+
+		$('p').appendTo('ul li:eq(2)');
+		//这行代码将p元素搬运到ul中第3个li元素里
+	</script>
+	
+	<!---------------------- 我是分割线 ------------------------>
+	<div class="box" style="width:100px;height:100px;background:red"></div>
+	<script type="text/javascript">
+		$('.box').click(function(){
+			$(this).clone(true).appendTo('body');
+			//单击.box复制一个.box,参数true的含义是同时复制元素所绑定的事件
+		})
+	</script>
+</body>
+</html>

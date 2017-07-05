@@ -1,0 +1,217 @@
+document.getElementById('txt').style.display = 'block';
+= 是赋值
+
+// 选择DOM对象：
+document.getElementById('txt');
+document.querySelector('#txt'); // W3C标准 但不支持ie
+
+// 改变class：
+document.getElementById('txt').className = 'box';
+
+// mouseover和mouseenter的区别：
+不论鼠标指针穿过被选元素或其子元素，都会触发 mouseover 事件。对应mouseout
+只有在鼠标指针穿过被选元素时，才会触发 mouseenter 事件。对应mouseleave
+这样的话，mouseenter子元素不会反复触发事件，否则在IE中经常有闪烁情况发生。
+
+// 绑定事件：
+function toRed(){...}; box.onmouseover = toRed; // 没有括号
+window.onload = function(){...};
+
+// 写判断的时候注意：
+a=5 赋值
+a==5 判断
+
+// 选择一组元素
+getElementsByTagName
+
+// 获取索引值
+for (var i = 0; i < elem.length; i++) {
+    elem[i].index = i; // 先定义
+    console.log(this.index);
+}
+
+// 时间对象
+var oDate = new Date();
+oDate.getHours(); oDate.getMinutes();等
+
+// 获取属性值
+elem.style.width无法获取到<style></style>设置的属性，可以使用elem.offsetWidth来获取实际的值（offsetWidth包含了边框和padding）;
+style.left是读写的，offsetLeft是只读的
+
+或者elem.currentStyle['width'] 获取计算后的样式（只能在ie用）
+或者getComputedStyle(elem,null)['width']获取计算后的样式（支持w3c浏览器，不支持ie）
+
+以上获得的值不带 'px' ，如果需要记得加上
+
+// js的组成部分
+ECMAScript负责 运算 var function等
+DOM 文档对象模型 即是document
+BOM 浏览器对象模型 即是window
+
+// 数据类型转换
+parseInt(); parseFloat();
+NaN == NaN 会返回false; 用isNaN() 可以检测是否为NaN
+
+// 匈牙利命名法
+a：数组  b：布尔值  f：浮点数  fn：函数
+i：整数  o：对象  re：正则表达式  s：字符串  v：变体变量
+例子：aList（一组元素） oBtn（一个元素）...
+
+break; 终止整个循环
+continue; 终止本次循环，并继续下一次的循环
+
+真：true、非零数字、非空字符串、非空对象
+假：false、数字零、空字符串、空对象（null）、undefined
+
+函数没有返回值时候会返回undefined
+
+// 数组的arr.length既可以获取，也可以设置
+// arr.length = 0 可以快速清空数组
+var arr = [1, 3, 6];
+arr.length = 6; // 返回[1, 3, 6, , , ]
+
+
+// DOM操作
+document.createElement('li'); 创建一个元素
+oUl.appendChild(oLi); 插入一个元素
+oUl.insertBefore(oLi, aLi[0]); 将oLi插入到aLi[0]之前
+oUl.removeChild(this.parentNode); 删除节点
+
+// 获取节点（注意兼容的问题）
+获取子节点：
+选择childNodes要配合nodeType判断，否则有兼容问题
+或者直接用children，没有兼容问题
+<ul><li><b>111</b></li></ul> // 左边 <li>是<ul>的子节点， 而<b>不是（子节点只计算一层）
+
+// 获取父节点：
+parentNode
+
+// 获取实际定位的父节点（用于position）：
+offsetParent
+
+// 节点属性
+setAttribute getAttribute removeAttribute
+
+document.write 清空当前页面并替换内容
+
+
+// BOM操作
+// window对象属性
+window.open window.close 打开/关闭窗口
+window.navigator.userAgent 输出浏览器版本
+window.location 读写网页地址
+
+document.documentElement.clientWidth 可视区尺寸
+var scrollTop = document.body.scrollTop || document.documentElement.scrollTop 滚动距离（兼容性写法）
+
+// window对象事件
+onload、onscroll、onresize
+
+// 鼠标事件
+onmousemove
+oEvent.clientX oEvent.clientY
+
+// 兼容写法
+function(e){ var oEvent = e || event; }
+
+// 键盘事件
+onkeydown
+oEvent.keyCode
+oEvent.ctrlKey oEvent.shiftlKey oEvent.altKey
+
+// 默认事件
+
+// 屏蔽右键菜单
+document.oncontextmenu = function(){
+   return false;
+};
+
+// cookie特性
+同一个网站所有页面共享一套cookie；
+数量、大小有限；
+过期时间；
+
+// js使用cookie
+document.cookie
+
+// cookie需要服务器环境才能正常使用
+
+// cookie设置保存时间
+expires
+
+// Ajax
+能且仅能从服务器读一个文件
+
+// 使用Ajax文件和网页的编码要一致（会变成乱码）
+
+// 用获取时间戳方法改变路径，解决缓存的问题
+ajax('1.html?t=' + new Date().getTime(), function(str){
+    alert(str);
+});
+
+// eval(str)
+eval可以计算字符串里的值 甚至是执行函数;
+ajax获取的都是字符串 要用eval转换;
+用ajax读取服务器文件 一般用eval配合json
+
+// GET和POST
+get: 把数据放在url中提交 安全性低、容量低，适合获取
+post: 不放在url中 安全性一般、容量高，适合上传
+
+// 同步和异步
+同步：多件事情一件件处理
+异步： 多件事情一起处理
+
+// 连接服务器
+open(方法, url, 是否异步)
+
+// 发送请求
+send()
+
+// 接受返回
+onreadystatechange事件：当服务器通信变化时候调用；
+oAjax.readyState属性：返回4相当于完成解析，可以调用；
+oAjax.status属性：返回200代表成功，404代表未找到文件；
+
+// oAjax.responseText：返回解析的值
+
+
+// 面向对象
+抽象（提取出事物的一些属性）
+封装（不考虑内部实现 留出接口）
+继承（从已有对象上继承出新的对象）
+
+// 对象的组成
+属性和方法（属性即是属于一个对象的变量，方法即是属于一个对象的函数）
+
+// 原型 prototype
+可以扩展系统对象(给系统对象加上自定的方法)
+面向对象中运用原型给自己的函数添加的方法不会重复创建
+
+// 混合法：在构造函数内设置属性 在外部用原型设置方法
+
+// 命名空间
+json方式的面向对象（属性，方法都保存在一个json里面）
+例子：
+var baidu = {};
+baidu.common = {
+    getName: function(){...},
+    getAge: function(){...}
+};
+baidu.common.getName();
+
+// 绑定事件
+oBtn.attachEvent('onclick', fn); // ie 注意用onclick
+oBtn.addEventListener('click', fn, false); // ff chrome 注意只需要写click
+在ie下绑定后this会变成window
+
+// 取整
+Math.ceil(10.2); // 11
+Math.floor(10.2); // 10
+
+// 循环
+数组的循环可以用for 和 for...in
+而json只能用for...in循环
+for(i in json){
+    alert(i + ':' + json[i]);
+}

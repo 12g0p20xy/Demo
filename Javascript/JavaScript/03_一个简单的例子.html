@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul id="gallery">
+		<li><a href=""></a></li>
+		<li><a href=""></a></li>
+		<li><a href=""></a></li>
+	</ul>
+	<script type="text/javascript">
+	function prepareGallery(){
+		if (!document.getElementsByTagName) {
+			return false;
+		};
+		if (!document.getElementById) {
+			return false;
+		};
+		//检查浏览器是否支持getElementsByTagName或getElementById方法
+		var gallery = document.getElementById('gallery');
+		var links = gallery.getElementsByTagName('a');
+		//获取gallery里的全部a元素
+		for (var i = 0; i < links.length; i++) {
+			links[i].onclick = function(){
+				showPic(this);
+				//this在这里表示links[i]，传递给一个showPic函数
+				return false;
+				//取消a链接的默认行为
+			};
+		};
+		//给每个a元素绑定onclick事件
+	}
+	</script>
+</body>
+</html>

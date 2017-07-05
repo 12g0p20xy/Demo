@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	// 用工厂模式构造对象 用函数包起来并设置参数 这样就可以重复调用
+	// 这个例子留下了2个问题看下个文件
+
+	function createPerson(name, sex){
+
+		var obj = new Object();				// 1、原料
+
+		obj.name = name;					// 2、加工
+		obj.sex = sex;
+		obj.showName = function(){
+			alert(this.name);
+		};
+		obj.showSex = function(){
+			alert(this.sex);
+		};
+
+		// 记得返回创建的对象给外部使用		// 3、出厂
+		return obj;
+		
+	};
+
+	var p1 = createPerson('john', 'male');
+	var p2 = createPerson('marry', 'female');
+	p1.showName(); // 'john'
+	p2.showSex(); // 'female'
+
+	</script>
+</body>
+</html>

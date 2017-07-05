@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box { position: absolute; width: 100px; height: 100px; background: red; }
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+
+	<script>
+
+	// 3个事件处理：
+	// onmousedown 存储鼠标距离div的位置
+	// onmousemove 根据鼠标位置计算div的新位置
+	// onmouseup 停止
+
+	window.onload = function(){
+		var oBox = document.getElementById('box');
+		var disX = 0;
+		var disY = 0;
+
+		oBox.onmousedown = function(e){
+			var e = e || event;
+			disY = e.clientY - oBox.offsetTop;
+			disX = e.clientX - oBox.offsetLeft;
+			console.log(disY + ', ' + disX);
+
+			// 绑定到document防止鼠标脱出div时事件停止
+			document.onmousemove = function(e){
+				var e = e || event;
+				oBox.style.top = e.clientY - disY + 'px';
+				oBox.style.left = e.clientX - disX + 'px';
+			};
+
+			document.onmouseup = function(){
+				document.onmousemove = null;
+				document.onmouseup = null;
+			};
+
+			// 修复空div的拖拽bug
+			return false;
+		};
+
+	};
+
+	</script>
+</body>
+</html>

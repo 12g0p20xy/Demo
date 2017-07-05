@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function Person(name, sex){
+			this.name = name;
+			this.sex = sex;
+		}
+		Person.prototype.getName = function(){
+			return this.name;
+		}
+		Person.prototype.getSex = function(){
+			return this.sex;
+		}
+		var john = new Person('John', 'male');
+		console.log(john.getName());                   // "John"
+
+		// 创建一个新构造函数Worker并继承Person
+		// 同时再添加一个新属性age
+
+		function Worker(name, sex, age){
+			Person.call(this, name, sex);              // 继承属性（函数伪装）
+			this.age = age;                            // 添加属性
+		}
+		for(var i in Person.prototype){
+			Worker.prototype[i] = Person.prototype[i]; // 继承方法（原型链）
+		}
+		Worker.prototype.getAge = function(){          // 添加方法
+			return this.age;
+		}
+		var mike = new Worker('Mike', 'male', '18');
+		console.log(mike.getSex());                    // "male" 继承了
+		console.log(mike.getAge());                    // "18" 新的属性和方法
+	</script>
+</body>
+</html>

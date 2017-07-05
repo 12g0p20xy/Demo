@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../jQuery/jquery-1.11.3.min.js"></script>
+	<style type="text/css">
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+	$(function(){
+		var arr = [52, 97, 3, 62, 10, 63, 64, 1, 9, 3, 4];
+		arr.sort();
+		console.log(arr); // 默认是按照字母表排序
+
+		var arr2 = [52, 97, 3, 62, 10, 63, 64, 1, 9, 3, 4];
+		arr2.sort(function(a, b){
+			if (a < b) {
+				return -1;
+			}
+			if (a > b) {
+				return 1;
+			}
+			return 0;
+		});
+		console.log(arr2);
+		// 按照数值大小排序
+	});
+	</script>
+</body>
+</html>

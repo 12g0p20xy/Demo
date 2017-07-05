@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../jQuery/jquery-1.11.3.min.js"></script>
+	<style type="text/css">
+		.wrapper{border: 1px solid grey; width: 200px; height: 300px; padding: 10px;}
+		.page2{ background: grey; color: white;}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="page">
+			<p>some text</p>
+		</div>
+	</div>
+	<button>click me</button>
+	<script type="text/javascript">
+	$(function(){
+		var changePage=function(){
+			$('.wrapper').load('05-1.html');
+		};
+		$('button').click(changePage);
+		// 添加键盘事件 右方向键换页
+		$(document).keyup(function(){
+			if (39) {
+				$('.wrapper').load('05-1.html');
+			};
+		});
+	});
+
+	// 在控制台里查看按键码
+	$(document).keyup(function(e){
+		console.log(e.which);
+	});
+	</script>
+</body>
+</html>

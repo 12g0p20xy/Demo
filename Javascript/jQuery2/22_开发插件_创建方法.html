@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body{ outline: 1px dashed green;}
+	.box{ width: 100px; height: 100px; margin: 30px; box-shadow: 3px 3px 6px rgba(0,0,0,.6);}
+	.red{ background: red;}
+	.blue{ background: blue;}
+	</style>
+</head>
+<body>
+	<div class="box red"></div>
+	<div class="box blue"></div>
+	<script src="../jQuery/jquery-1.11.3.min.js"></script>
+	<script src="22_tool.js"></script>
+	<script>
+	$(function(){
+		$('body').on('click', function() {
+			$('.box').swapClass('red', 'blue');
+		});
+	})
+	</script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>06-1</title>
+	<script type="text/javascript" src='jquery-1.11.3.min.js'></script>
+	<style type="text/css">
+		form{width: 600px; margin-top: 30px;}
+		label{width: 6em; display: inline-block; vertical-align: top; padding: 3px;}
+		div{margin-top: 3px;}
+		input, textarea{width: 300px;}
+		.focus{
+			border: 1px solid #f00;
+			background: #fcc;
+		}
+		.bigger, .down{display: inline-block; background: #ccc; vertical-align: center; padding: 6px;}
+		input[type=checkbox]{width: inherit;}
+		input[type=button]{width: inherit;}
+		.form4{width: 800px;}
+		.form4 label:before{content: '*'; color: red;}
+		label.label3:before{content: '';}
+	</style>
+</head>
+<body>
+	<form>
+		<fieldset>
+			<legend>个人基本信息</legend>
+			<div>
+				<label for='username'>名称：</label>
+				<input id='username' type='text'>
+			</div>
+			<div>
+				<label for='pass'>密码：</label>
+				<input id='pass' type='password'>
+			</div>
+			<div>
+				<label for='msg'>详细信息：</label>
+				<textarea id='msg'></textarea>
+			</div>
+		</fieldset>
+	</form>
+	<script type="text/javascript">
+	$(function(){
+		$('form:eq(0) :input').focus(function(){
+			$(this).addClass('focus');
+		}).blur(function(){
+			$(this).removeClass('focus');
+		});
+	});
+	</script>
+
+	<!-------- 分界线 -------->
+	<form>
+		<fieldset>
+			<div class="msg_caption">
+				<span class='bigger'>放大</span>
+				<span class="down">向下</span>
+			</div>
+			<div>
+				<textarea id='comment' rows='8' cols='20'>我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字</textarea>
+			</div>
+	</fieldset>
+	</form>
+	<script type="text/javascript">
+	$(function(){
+		var comment_height=$('#comment').height();
+		$('.bigger').click(function(){
+			if (comment_height<800) {
+				if(!$('#comment').is(':animated')){ //如果正在动画过程中则不添加其他动画
+					$('#comment').animate({height:'+=50'}, 300); //如果高度小于800px，在原有的基础上加50px
+				};
+			};
+		});
+		$('.down').click(function(){
+			if(!$('#comment').is(':animated')){
+				$('#comment').animate({scrollTop:'+=50'}, 300); //向下滚动
+			};
+		});
+	});
+	</script>
+
+	<!-------- 分界线 -------->
+	<form>
+		<fieldset>
+			你爱好的运动是？<br>
+			<input type='checkbox' name='items' value='足球'>足球
+			<input type='checkbox' name='items' value='篮球'>篮球
+			<input type='checkbox' name='items' value='羽毛球'>羽毛球
+			<input type='checkbox' name='items' value='乒乓球'>乒乓球
+			<input type='button' id='checkAll' value='全选'>
+			<input type='button' id='checkNone' value='全不选'>
+			<input type='button' id='checkRev' value='反选'>
+		</fieldset>
+	</form>
+	<script type="text/javascript">
+	$(function(){
+		$('#checkAll').click(function(){
+			$('[name=items]:checkbox').attr('checked', true);
+		});
+		$('#checkNone').click(function(){
+			$('[name=items]:checkbox').attr('checked', false);
+		});
+		$('#checkRev').click(function(){
+			$('[name=items]:checkbox').each(function() { //each()为每个匹配元素运行函数
+				this.checked=!this.checked; //取反值
+			});
+		});
+	})
+	</script>
+
+	<!-------- 分界线 -------->
+	<form class='form4'>
+		<fieldset>
+			<div class="int">
+				<label for='name'>用户名：</label>
+				<input type='text' id='name' class='required'>
+			</div>
+			<div class="int">
+				<label for='text'>邮箱：</label>
+				<input type='text' id='email' class='required'>
+			</div>
+			<div class="int">
+				<label class='label3' for='info'>个人资料：</label>
+				<input type='text' id='info'>
+			</div>
+			<div class="sub">
+				<button id='send'>提交</button>
+				<button id='res'>重置</button>
+			</div>
+		</fieldset>
+	</form>
+	<script type="text/javascript">
+	$(function(){
+		$('form:eq(3) :input').blur(function(){
+			var $parent = $(this).parent();
+			if ($(this).is('#name')) {
+				if ($(this).val()=='' || $(this).val().length<6) {
+					var errorMsg='请输入至少6位的用户名';
+					$parent.find('.formtips').remove(); //删除旧的提醒元素
+					$parent.append('<span class="formtips onError">'+errorMsg+'</span>');
+				}else{
+					var okMsg='输入正确';
+					$parent.find('.formtips').remove();
+					$parent.append('<span class="formtips">'+okMsg+'</span>');
+				}
+			};
+		}).keyup(function(){ //keyup()和focus()实现表单实时提醒
+			$(this).triggerHandler('blur');
+		}).focus(function(){
+			$(this).triggerHandler('blur');
+		});
+		$('#send').click(function() {
+			$('form:eq(3) .required:input').trigger('blur'); //点击提交按钮时再触发一次表单验证
+			var numError=$('.onError').length; //判断此时有几个错误提示
+			if (numError) {
+				return false;
+			}
+			alert('注册成功！'); //错误提示为0时注册成功
+		});
+	})
+	</script>
+</body>
+</html>

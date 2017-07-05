@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>08-1</title>
+	<script type="text/javascript" src='jquery-1.11.3.min.js'></script>
+	<script type="text/javascript" src='jquery.scrollmagic.js'></script>
+	<style type="text/css">
+		body{height: 1800px;}
+		img{position: relative;}
+	</style>
+</head>
+<body>
+	<section id="tweens">
+		<h3>move</h3>
+		<script type="text/javascript">
+			var controller=new ScrollMagic();
+			var scene=new ScrollMagic({
+				triggerElement:'#tweens h3',
+				duration:400
+			})
+			.setPin('#tweens h3').addTo(controller);
+			</script>
+	</section>
+</body>
+</html>

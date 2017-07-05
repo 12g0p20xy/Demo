@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>Snapshots</h1>
+	<ul>
+		<li><a href="images/1.jpg" title="bridge" onclick="showPic(this);return false;">bridge</a></li>
+		<li><a href="images/2.jpg" title="rock-stack" onclick="showPic(this);return false;">rock-stack</a></li>
+		<li><a href="images/3.jpg" title="stream" onclick="showPic(this);return false;">stream</a></li>
+		<li><a href="images/4.jpg" title="trail" onclick="showPic(this);return false;">trail</a></li>
+	</ul>
+	<img id="placeholder" src="images/0.jpg" alt="my gallery">
+	<p id="description">Choose an image.</p>
+	<script>
+	function showPic(whichpic){
+		var source = whichpic.getAttribute('href');
+		var placeholder = document.getElementById('placeholder');
+		placeholder.setAttribute('src', source);
+
+		var text = whichpic.getAttribute('title');
+		var description = document.getElementById('description');
+		// 注意这里，description的文字内容节点是description.childNodes[0]
+		description.childNodes[0].nodeValue = text;
+	}
+	</script>
+</body>
+</html>

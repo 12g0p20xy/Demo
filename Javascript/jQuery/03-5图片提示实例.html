@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>03-5</title>
+	<script type="text/javascript" src='jquery-1.11.3.min.js'></script>
+	<style type="text/css">
+		.tooltip{
+			position: absolute; /*注意这里不要忘了设置position*/
+			background: rgba(0,0,0,.6);
+			color: white;
+			padding: 6px;
+			font-size: 12px;
+			text-align: center;
+		}
+		a.pic img{
+			width: 100px;
+			height: 100px;
+			border: 1px black solid;
+		}
+	</style>
+</head>
+<body>
+	<!-------- 文字提示 -------->
+	<a href="#" title='默认提示'>默认提示</a>
+	<a href="#" title='修改提示'>修改提示</a>
+	<script type="text/javascript">
+	$(function(){
+		$('a:eq(1)').mouseover(function(e){
+			var tooltip='<div class="tooltip">'+this.title+'</div>'; //创建一个提示框
+			$('body').append(tooltip); //将它追加到文档中
+			$('.tooltip').css({'top':(e.pageY+20)+'px' , 'left':(e.pageX+10)+'px'}).show('fast');
+			//设置x和y坐标和显示时间
+			this.myTitle=this.title;
+			this.title=''; //将原先的title值清空
+		}).mouseout(function() {
+			$('.tooltip').remove(); //鼠标移开时移除
+			this.title=this.myTitle; //将原先的title值再赋给元素
+		}).mousemove(function(e){ //加上一个mousemove事件，让提示框随鼠标移动
+			$('.tooltip').css({'top':(e.pageY+20)+'px', 'left':(e.pageX+10)+'px'});
+		});
+	});
+	</script>
+
+	<!-------- 图片提示 -------->
+	<a class='pic' href="images/01_iron_man_2.jpg" title='iron man'><img src="images/01_iron_man_2.jpg" alt='小图'></a>
+	<script type="text/javascript">
+	$(function(){
+		$('a.pic').mouseover(function(e){
+			this.myTitle=this.title;
+			this.title=''; //将原先的title值清空
+			var imgTitle=this.myTitle? '<br/>' + this.myTitle:''; //增加图片的说明文字
+			var tooltip='<div class="tooltip"><img src="'+this.href+'" alt="大图"">'+imgTitle+'</div>';//创建一个提示框，【注意这里比较复杂的引号嵌套】
+			$('body').append(tooltip); //将它追加到文档中
+			$('.tooltip').css({'top':(e.pageY+20)+'px' , 'left':(e.pageX+10)+'px'}).show('fast');
+			//设置x和y坐标和显示时间
+		}).mouseout(function() {
+			$('.tooltip').remove(); //鼠标移开时移除
+			this.title=this.myTitle; //将原先的title值再赋给元素
+		}).mousemove(function(e){ //加上一个mousemove事件，让提示框随鼠标移动
+			$('.tooltip').css({'top':(e.pageY+20)+'px', 'left':(e.pageX+10)+'px'});
+		});
+	});
+	</script>
+</body>
+</html>

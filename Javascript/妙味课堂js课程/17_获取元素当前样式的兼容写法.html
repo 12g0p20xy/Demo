@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#div{ width: 300; height: 200px; background: blue; }
+	</style>
+</head>
+<body>
+	<div id="div"></div>
+	<script>
+		function getStyle(obj, attr){
+			if (obj.currentStyle) {
+				// ie 
+				return obj.currentStyle[attr];
+			}
+			else {
+				// ff, chrome, safari
+				return getComputedStyle(obj, false)[attr];
+			}
+		}
+		window.onload = function(){
+			var oDiv = document.getElementById('div');
+			alert(getStyle(oDiv, 'background-color'));
+		}
+	</script>
+</body>
+</html>

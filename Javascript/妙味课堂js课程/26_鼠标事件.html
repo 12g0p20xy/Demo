@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		document.onclick = function(ev){
+			// 兼容ff和ie ff下用ev，ie下用event
+			var ev = ev || event;
+			alert(ev.clientX + ', ' + ev.clientY);
+		};
+	</script>
+</body>
+</html>

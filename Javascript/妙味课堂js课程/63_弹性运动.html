@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin: 0; padding: 0;}
+		#div{width: 100px; height: 100px; background: red; position: absolute; top: 50px; left: 0;}
+		#wrap{position: absolute; width: 300px; height: 150px; border-right: 1px dashed #aaa;}
+		nav{margin-top: 200px; z-index: 99;}
+		li{display: inline-block; list-style: none;}
+		a{text-decoration: none; color: red; padding: 0 .5em;}
+		nav span{display: block; position: absolute; width: 3em; height: 2px; background: red;}
+	</style>
+</head>
+<body>
+	<div id="div"></div>
+	<button>开始</button>
+	<div id="wrap"></div>
+	<nav>
+		<ul>
+			<li><a href="javascript:;">项目</a></li>
+			<li><a href="javascript:;">项目</a></li>
+			<li><a href="javascript:;">项目</a></li>
+			<span></span>
+		</ul>
+	</nav>
+	<script>
+		// 弹性公式:
+		// 速度 += (目标值-oDiv.offsetLeft)/5
+		// 速度*=0.7
+		function startMove(obj, iTarget){
+			var iSpeed = 0;
+			clearInterval(obj.timer);
+			obj.timer = setInterval(function(){
+				iSpeed += (iTarget-obj.offsetLeft)/3;
+				iSpeed*=0.7; // 摩擦力
+				if (Math.abs(iTarget-obj.offsetLeft) < 1) {
+					clearInterval(obj.timer);
+					obj.style.left = obj.offsetLeft + 'px';
+				}
+				else{
+					obj.style.left = obj.offsetLeft + iSpeed + 'px';
+				}
+				console.log(obj.offsetLeft);
+			}, 30);
+		};
+
+		var oBtn = document.getElementsByTagName('button')[0];
+		var oDiv = document.getElementById('div');
+		oBtn.onclick = function(){
+			startMove(oDiv, 300);
+		};
+
+		var oSpan = document.getElementsByTagName('span')[0];
+		var aLi = document.getElementsByTagName('li');
+		for (var i = 0; i < aLi.length; i++) {
+			aLi[i].onmouseover = function(){
+				var iTarget = this.offsetLeft;
+				startMove(oSpan, iTarget);
+			};
+		};
+	</script>
+</body>
+</html>

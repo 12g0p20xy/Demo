@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../jQuery/jquery-1.11.3.min.js"></script>
+	<style type="text/css">
+	img{width: 60px; height: 100px; box-shadow: 3px 3px 6px rgba(0,0,0,.3);}
+	table{text-align: left; font: 14px helvetica, sans-serif;}
+	th, td{padding: 5px 10px;}
+	</style>
+</head>
+<body>
+	<table id="t-1" class="sortable">
+		<thead>
+			<tr>
+				<th></th>
+				<th class="sort-alpha">Title</th>
+				<th class="sort-alpha">Author(s)</th>
+				<th class="sort-date">Publish</th>
+				<th class="sort-numeric">Price</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><img src="../css3/images/1.jpg"></td>
+				<td>Drupal 7</td>
+				<td>David <span class="sort-key">Mercer</span></td>
+				<td>September 2010</td>
+				<td>$44.99</td>
+			</tr>
+			<tr>
+				<td><img src="../css3/images/2.jpg"></td>
+				<td>Amazon SimpleDB:LITE</td>
+				<td>Rich <span class="sort-key">Helms</span></td>
+				<td>May 2011</td>
+				<td>$9.99</td>
+			</tr>
+			<tr>
+				<td><img src="../css3/images/3.jpg"></td>
+				<td>Object-Oriented JavaScript</td>
+				<td>Stoyan <span class="sort-key">Stefanov</span></td>
+				<td>July 2008</td>
+				<td>$39.99</td>
+			</tr>
+		</tbody>
+	</table>
+	<script type="text/javascript">
+	$(function(){
+		var $tabel1 = $('#t-1');
+		var $headers = $tabel1.find('thead th').slice(1); //使用.slice()方法跳过每个表格的第一个<th>元素
+		$headers.wrapInner('<a href="#"></a>').addClass('sort'); //给表头加上链接
+
+		$headers.on('click', function(event){
+			event.preventDefault();
+			var column = $(this).index();
+			var rows = $tabel1.find('tbody>tr').get();
+			console.log(rows);
+			// console.log(column);
+			rows.sort(function(a, b){
+				var keyA = $(a).children('td').eq(column).text();
+				keyA = $.trim(keyA).toUpperCase();
+				var keyB = $(b).children('td').eq(column).text();
+				keyA = $.trim(keyB).toUpperCase();
+				if (keyA < keyB) return -1;
+				if (keyA < keyB) return 1;
+				return 0;
+			});
+			$.each(rows, function(index, row){
+				$tabel1.children('tbody').append(row);
+			});
+		});
+	});
+	</script>
+</body>
+</html>

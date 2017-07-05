@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../jQuery/jquery-1.11.3.min.js"></script>
+	<style type="text/css">
+	</style>
+</head>
+<body>
+	<input name="aaa" type="hidden" value="111" />
+	<input name="bbb" type="hidden" value="222" />
+	<input name="ccc" type="hidden" value="333" />
+	<input name="ddd" type="hidden"  value="444"/>
+	<script>
+	$(function(){
+		$("input:hidden").each(function(i,val){
+		    console.log(val.name);
+		    console.log(val.value);
+		});
+	});
+	</script>
+</body>
+</html>

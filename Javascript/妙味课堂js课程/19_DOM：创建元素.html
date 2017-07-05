@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul{ list-style: none; padding: 0;}
+		li{ background: #ccc; height: 1.5em; margin-top: .5em;}
+	</style>
+</head>
+<body>
+	<input id="txt" type="text" placeholder="输入文字">
+	<button>在最后插入li</button>
+	<button>在最前插入li</button>
+	<ul id="ul">
+	</ul>
+	<script>
+		window.onload = function(){
+			var oUl = document.getElementById('ul'),
+				oTxt = document.getElementById('txt'),
+				aBtn = document.getElementsByTagName('button');
+
+			aBtn[0].onclick = function(){
+				// 创建一个元素
+				var oLi = document.createElement('li');
+				// 给li插入文字节点
+				oLi.innerHTML = oTxt.value;
+				// 将li插入ul
+				oUl.appendChild(oLi);
+			};
+
+			aBtn[1].onclick = function(){
+				var oLi = document.createElement('li');
+				var aLi = document.getElementsByTagName('li');
+				oLi.innerHTML = oTxt.value;
+				if (aLi.length == 0) {
+					oUl.appendChild(oLi);
+				}
+				else{
+					oUl.insertBefore(oLi, aLi[0]);
+				}
+			};
+		};
+	</script>
+</body>
+</html>

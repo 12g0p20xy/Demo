@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{margin: 10px auto;}
+		#switcher{border: 1px solid #ccc; width: 200px; padding: 10px;}
+		.hidden{display: none;}
+		.bgChange{background: #f90;}
+	</style>
+	<script type="text/javascript" src="../jQuery/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+	<div id='switcher'>
+		<h3>可折叠窗口</h3>
+		<button id='btn1'>点击我</button>
+		<button id='switcher-large'>点击我</button>
+	</div>
+	<script type="text/javascript">
+	$(function(){
+		var triggers = {
+			D: 'default',
+			N: 'narrow',
+			L: 'large',
+		};
+		$(document).keyup(function(e){
+			var key=String.fromCharCode(e.which);
+			if (key in triggers) {
+				$('#switcher-'+triggers[key]).click();
+			};
+		});
+	});
+	// 按下L键触发第二个按钮点击效果
+	$('#switcher-large').click(function(){
+		$(this).toggleClass('bgChange');
+	});
+	</script>
+</body>
+</html>

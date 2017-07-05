@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn">点我</button>
+	<div id="div"></div>
+	<script>
+		function getStyle(obj, attr){
+			if (obj.currentStyle) {
+				return obj.currentStyle[attr];
+			}
+			else{
+				return getComputedStyle(obj, null)[attr];
+			}
+		};
+
+		function startMove(obj, attr, iTarget, fn){
+
+			clearInterval(obj.timer);
+			obj.timer = setInterval(function(){
+				var iCurrent = 0;
+				if (attr == 'opacity') {
+					iCurrent = parseInt(parseFloat(getStyle(obj, attr))*100);
+				}
+				else{
+					iCurrent = parseInt(getStyle(obj, attr));
+				}
+				var iSpeed = (iTarget - iCurrent)/10;
+				iSpeed = iSpeed>0?Math.ceil(iSpeed):Math.floor(iSpeed);
+				if (iCurrent == iTarget) {
+					clearInterval(obj.timer);
+					// 回调函数
+					if (fn) {
+						fn();
+					}
+				}
+				else{
+					if (attr == 'opacity') {
+						obj.style['opacity'] = (iCurrent + iSpeed)/100;
+						obj.style['filter'] = 'alpha(opacity=' + iCurrent + iSpeed +')';
+					}
+					else{
+						obj.style[attr] = iCurrent + iSpeed +'px';
+					}
+				}
+			}, 30);
+		};
+
+		window.onload = function(){
+			var oDiv = document.getElementById('div'),
+				oBtn = document.getElementById('btn');
+			oBtn.onclick = function(){
+				startMove(oDiv, 'width', 300, function(){
+					startMove(oDiv, 'opacity', 30, function(){
+						startMove(oDiv, 'height', 300);
+					});
+				});
+			};
+		};
+	</script>
+</body>
+</html>

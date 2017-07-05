@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>on()</title>
+	<script type="text/javascript" src='jquery-1.11.3.min.js'></script>
+	<script type="text/javascript" src='jquery-ui.js'></script>
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+	<section>
+		<div>
+			<button>click</button>
+		</div>
+		<script type="text/javascript">
+		$(document).ready(function(){
+	  		$("div").on("click","p",function(){
+	    		$(this).hide();
+	  		});
+	  		$("button").click(function(){
+	    		$("<p>This is a new paragraph.</p>").insertAfter("button");
+	  		});
+		});
+		</script>
+	</section>
+</body>
+</html>

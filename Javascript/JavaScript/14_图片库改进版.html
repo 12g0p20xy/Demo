@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>Snapshots</h1>
+	<ul id="gallery">
+		<li><a href="images/1.jpg" title="bridge">bridge</a></li>
+		<li><a href="images/2.jpg" title="rock-stack">rock-stack</a></li>
+		<li><a href="images/3.jpg" title="stream">stream</a></li>
+		<li><a href="images/4.jpg" title="trail">trail</a></li>
+	</ul>
+	<img id="placeholder" src="images/0.jpg" alt="my gallery">
+	<p id="description">Choose an image.</p>
+	<script>
+	function showPic(whichpic){
+		var source = whichpic.getAttribute('href');
+		var placeholder = document.getElementById('placeholder');
+		placeholder.setAttribute('src', source);
+
+		var text = whichpic.getAttribute('title');
+		var description = document.getElementById('description');
+		description.childNodes[0].nodeValue = text;
+	}
+	function prepareGallery(){
+		// 检测浏览器是否支持getElementsByTagName
+		if (!document.getElementsByTagName) return false;
+
+		var gallery = document.getElementById('gallery');
+		// 遍历一个a节点列表给links
+		var links = gallery.getElementsByTagName('a');
+		for (var i = 0; i < links.length; i++) {
+			// ！！！绑定匿名函数给每个链接
+			links[i].onclick = function(){
+				showPic(this);
+				return false;
+			};
+		};
+	}
+	// ！！！不要忘了绑定匿名函数执行prepareGallery()
+	window.onload = function(){
+		prepareGallery();
+	}
+	</script>
+</body>
+</html>

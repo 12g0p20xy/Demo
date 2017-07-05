@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+		// 给arr添加了一个方法
+		var arr = [12, 35, 86];
+		arr.fn = function(){
+			alert(this);
+		};
+
+		// 给oDiv添加了一个方法
+		oDiv.onclick = function(){
+			alert(this);
+		};
+
+		// this代表了当前的方法属于谁
+
+		// 全局函数的this指向window
+		function show(){
+			alert(this);
+		};
+		// 等同于
+		window.show = function(){
+			alert(this);
+		};
+	</script>
+</body>
+</html>

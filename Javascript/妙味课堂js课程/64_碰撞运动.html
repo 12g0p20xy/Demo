@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#div{width: 100px; height: 100px; background: red; position: absolute; top: 50px; left: 0; border-radius: 50%;}
+	</style>
+</head>
+<body>
+	<div id="div"></div>
+	<button>开始</button>
+	<script>
+		var iSpeedX = 10,
+			iSpeedY = 8;
+		function startMove(){
+			
+			setInterval(function(){
+				var oDiv = document.getElementById('div');
+				var iTargetW = document.documentElement.clientWidth - oDiv.offsetWidth,
+					iTargetH = document.documentElement.clientHeight - oDiv.offsetHeight;
+					iSpeedY += 2;
+				var l = oDiv.offsetLeft + iSpeedX,
+					t = oDiv.offsetTop + iSpeedY;
+				if (t >= iTargetH) {
+					iSpeedY *= -0.8;
+					iSpeedX *= 0.9; // 撞墙后速度减小
+					t = iTargetH;
+				}
+				else if (l >= iTargetW) {
+					iSpeedX *= -0.9;
+					l = iTargetW;
+				}
+				else if (t <= 0) {
+					iSpeedY *= -1;
+					iSpeedX *= 0.9;
+					t = 0;
+				}
+				else if (l <= 0) {
+					iSpeedX *= -0.9;
+					l = 0;
+				}
+				if (Math.abs(iSpeedX) < 1) {
+					iSpeedX = 0;
+				}
+				if (Math.abs(iSpeedY) < 1) {
+					iSpeedY = 0;
+				}
+				oDiv.style['left'] = l + 'px';
+				oDiv.style['top'] = t + 'px';
+			}, 30);
+		};
+
+		var oBtn = document.getElementsByTagName('button')[0];
+		oBtn.onclick = function(){
+			startMove();
+		};
+	</script>
+</body>
+</html>

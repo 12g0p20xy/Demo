@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04-3</title>
+	<script type="text/javascript" src='jquery-1.11.3.min.js'></script>
+</head>
+<body>
+	<div class="content">
+		外层div元素
+		<span>内层span元素</span>
+		外层div元素
+	</div>
+	<div class="msg"></div>
+	<script type="text/javascript">
+	$(function(){
+		//为span元素绑定click事件
+		$('span').click(function(event){ //当点击span时创建事件对象，函数执行完毕后就会销毁
+			var txt=$('.msg').html()+'<p>内层span元素被单击</p>';
+			$('.msg').html(txt);
+			event.stopPropagation(); //停止事件冒泡，也可直接写成return false;
+		});
+		//为div元素绑定事件
+		$('.content').click(function(event){
+			var txt=$('.msg').html()+'<p>外层div元素被单击</p>';
+			$('.msg').html(txt);
+			return false;
+		});
+	})
+	</script>
+
+	<!-------------- 强大的分割线 -------------->
+	<form action='test.html' style='margin-top: 30px;'>
+		用户名：<input type="text" id='username'><br>
+		<input type='submit' value='提交' id='sub'>
+	</form>
+	<div class="msg2"></div>
+	<script type="text/javascript">
+	$(function(){
+		$('#sub').click(function(event){
+			var username=$('#username').val(); //获取输入框的值
+			if (username=='') {
+				$('.msg2').html('<p>文本框的值不能为空</p>');
+				event.preventDefault(); //阻止默认行为（表单提交）,也可以直接写return false;
+			};
+		})
+	})
+	</script>
+</body>
+</html>

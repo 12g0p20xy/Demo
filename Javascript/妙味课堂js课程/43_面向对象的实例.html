@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul{
+			padding: 0;
+			list-style: none;
+		}
+		li{
+			display: inline-block;
+		}
+		#tab1 > div{
+			display: none;
+			width: 200px;
+			height: 150px;
+			background: #ccc;
+			line-height: 150px;
+			text-align: center;
+			font-size: 24px;
+		}
+		#tab1 > div.active{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div id="tab1">
+		<ul>
+			<li><a href="javascript:;">内容1</a></li>
+			<li><a href="javascript:;">内容2</a></li>
+			<li><a href="javascript:;">内容3</a></li>
+		</ul>
+		<div class="active">1</div>
+		<div>2</div>
+		<div>3</div>
+	</div>
+
+	<script>
+
+	    // 【构造新对象】
+		window.onload = function (){
+			var oTab = new TabSwitch('tab1');
+		}
+
+		// 【构造对象的属性】
+		function TabSwitch (id){
+			var oDiv = document.getElementById(id);
+			this.aLi = oDiv.getElementsByTagName('li');
+			this.aDiv = oDiv.getElementsByTagName('div');
+
+			var _this = this; // 这里this是new出来的对象tab1 将this存入一个变量_this
+
+			for (var i = 0; i < this.aLi.length; i++) {
+				this.aLi[i].index = i;
+				// 要调用原型创建的方法tab，包裹一个闭包函数来传递this
+				this.aLi[i].onclick = function (){
+					_this.tab(this); // 这里this是点击的对象oLi，_this是刚才存入的new的对象tab1
+				};
+			};
+		};
+
+		// 【构造对象的方法】
+		TabSwitch.prototype.tab = function (oLi){ // 这里添加的参数oLi通过上面的_this.tab(this)的this传入
+			for (var i = 0; i < this.aDiv.length; i++) {
+				this.aDiv[i].className = '';
+			};
+			this.aDiv[oLi.index].className = 'active';
+		};
+
+	</script>
+
+</body>
+</html>

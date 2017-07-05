@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<!-- 让各按钮独自计数 -->
+
+	<button>1</button>
+	<button>2</button>
+	<button>3</button>
+	<button>4</button>
+
+	<script>
+	window.onload = function(){
+
+		// function fnBtn(id){
+		// 	var aBtn = document.getElementsByTagName('button');
+		// 	var count = 0;
+		// 	for (var i = 0; i < aBtn.length; i++) {
+		// 		addCount(aBtn[i]);
+		// 	}
+		// 	function addCount(obj){
+		// 		var count = 0;  // 这里给每个按钮保存了私有变量
+		// 		obj.onclick = function(){
+		// 			alert(count++);
+		// 		};
+		// 	}
+		// }
+		// fnBtn();
+
+		// 改成即时执行函数写法如下：
+
+		function fnBtn(id){
+			var aBtn = document.getElementsByTagName('button');
+			var count = 0;
+			for (var i = 0; i < aBtn.length; i++) {
+				(function addCount(obj){
+					var count = 0;
+					obj.onclick = function(){
+						alert(count++);
+					};
+				})(aBtn[i]);
+			}
+		}
+		fnBtn();
+
+	};
+	</script>
+</body>
+</html>

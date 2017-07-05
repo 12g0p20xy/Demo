@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04-4</title>
+	<script type="text/javascript" src='jquery-1.11.3.min.js'></script>
+	<script type="text/javascript">
+	$(function(){
+		$('.btn').bind('myClick', function(event, message1, message2){
+			$('.test').append('<p>'+ message1 + message2 +'</p>');
+		});
+		$('.btn').trigger('myClick',['我的自定义','事件']); //传递数据给myClick函数
+	})
+	</script>
+	
+	<!-------- 命名空间的用法 -------->
+	<script type="text/javascript">
+	$(function(){
+		$('.para1').bind('click.plugin', function() { //给click绑定了一个命名空间plugin
+			$(this).hide(1000);
+		});
+		$('.para2').bind('click', function() { //click没有命名空间plugin
+			$(this).hide(1000);
+		});
+		$('.btn2').click(function(){
+			$('p').trigger('click.plugin'); //点击按钮只会触发有命名空间plugin的元素
+		});
+	})
+	</script>
+</head>
+<body>
+	<button class="btn">点我</button>
+	<div class="test"></div>
+
+	<p class="para1">文字一</p>
+	<p class="para2">文字二</p>
+	<button class="btn2">点我</button>
+</body>
+</html>

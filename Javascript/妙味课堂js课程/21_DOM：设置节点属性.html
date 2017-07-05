@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" value="111">
+	<input type="text" value="111">
+	<input type="text" value="111">
+	<script>
+		var aTxt = document.getElementsByTagName('input');
+		
+		// 设置节点属性
+		// 方法1
+		aTxt[0].value = 'aaa';
+
+		// 方法2
+		aTxt[1]['value'] = 'bbb';
+
+		// 方法3
+		aTxt[2].setAttribute('value', 'ccc');
+
+		// 获取节点属性
+		console.log(aTxt[2].getAttribute('type'));
+	</script>
+</body>
+</html>

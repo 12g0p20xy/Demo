@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		html, body{
+			margin: 0;
+			padding: 0;
+		}
+		#div{
+			margin-top: 10px;
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+		span{
+			position: absolute;
+			left: 500px;
+			width: 1px;
+			height: 300px;
+			border-left: 1px dashed #ccc;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn">点击</button>
+	<div id="div"></div>
+	<span></span>
+	<script>
+
+		function startMove(iTarget){
+			var oDiv = document.getElementById('div');
+			var timer = null;
+
+			clearInterval(timer);
+
+			timer = setInterval(function(){
+				// 距离终点越近 速度越小
+				var iSpeed = (iTarget - oDiv.offsetLeft)/10;
+				// *** 给iSpeed取整 ***
+				iSpeed = iSpeed>0?Math.ceil(iSpeed):Math.floor(iSpeed);
+				if (oDiv.offsetLeft == iTarget) {
+					clearInterval(timer);
+				}
+				else{
+					oDiv.style.left = oDiv.offsetLeft + iSpeed +'px';
+					document.title = oDiv.offsetLeft;
+				}
+			}, 30); 
+		};
+
+		window.onload = function(){
+			var oBtn = document.getElementById('btn');
+			oBtn.onclick = function(){
+				startMove(500);
+			};
+		};
+	</script>
+</body>
+</html>

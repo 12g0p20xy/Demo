@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul id="ul">
+		<li>111</li>
+		<li>222</li>
+		<li>333</li>
+	</ul>
+	<script>
+		window.onload = function(){
+			var oUl = document.getElementById('ul');
+			for (var i = 0; i < oUl.childNodes.length; i++) {
+				// 使用childNodes需要判断子节点是否为元素节点(不判断的话浏览器间会不兼容)
+				// 或者使用children 不需要判断
+				if (oUl.childNodes[i].nodeType == 1) {
+					oUl.childNodes[i].style['background'] = 'red';
+				}
+			};
+		};
+	</script>
+</body>
+</html>

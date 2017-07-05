@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		img{ width: 300px; }
+	</style>
+</head>
+<body>
+	<img src="http://www.gruntjs.net/img/grunt-logo.png" alt="">
+	<script>
+
+		var timer = null;
+		var alpha = 30;
+		function startMove(iTarget){
+			
+			var oImg = document.querySelector("img");
+
+			clearInterval(timer);
+
+			timer = setInterval(function(){
+				var iSpeed = 0;
+				if (alpha < iTarget) {
+					iSpeed = 10;
+				}
+				else{
+					iSpeed = -10;
+				}
+
+				if (alpha == iTarget) {
+					clearInterval(timer);
+				}
+				else{
+					alpha += iSpeed;
+					document.title = alpha;
+					oImg.style.opacity = alpha/100;
+				}
+			}, 30);
+		};
+
+		window.onload = function(){
+			var oImg = document.querySelector("img");
+			oImg.onmouseover = function(){
+				startMove(100);
+			};
+			oImg.onmouseout = function(){
+				startMove(30);
+			};
+		};
+	</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="foo"></div>
+	<button id="btn2">click meee!</button>
+	<script>
+		var div = document.getElementById('foo');
+		
+		div.innerHTML = '<button id="btn">click!</button>';
+		var btn = document.getElementById('btn'),
+			btn2 = document.getElementById('btn2');
+
+		btn.addEventListener('click', function() {
+			alert('Done!');
+		});
+		btn2.addEventListener('click', function() {
+			alert('Done!');
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin: 0; padding: 0;}
+		.stage{position: relative; margin: 30px auto; width: 480px; height: 120px; outline: 1px solid #666; overflow: hidden;}
+		ul{list-style: none; position: absolute;}
+		li{float: left; padding: 10px; width: 100px; height: 100px;}
+		li > img{width: 100%;}
+	</style>
+</head>
+<body>
+	<div class="stage">
+		<ul>
+			<li><img src="img/01.jpeg" alt=""></li>
+			<li><img src="img/02.jpeg" alt=""></li>
+			<li><img src="img/03.jpeg" alt=""></li>
+			<li><img src="img/04.jpeg" alt=""></li>
+		</ul>
+	</div>
+	<a href="javascript:;">left</a>
+	<a href="javascript:;">right</a>
+
+	<script>
+		window.onload = function(){
+			var oUl = document.getElementsByTagName('ul')[0],
+				aLi = oUl.getElementsByTagName('li'),
+				oBtn = document.getElementsByTagName('button')[0],
+				timer = null,
+				iSpeed = 10;
+			// 复制一份
+			oUl.innerHTML += oUl.innerHTML;
+			// 设置ul的宽度
+			oUl.style.width = aLi[0].offsetWidth*aLi.length + 'px';
+			timer = setInterval(fnMove, 30);
+
+			function fnMove(){
+				if (oUl.offsetLeft < -oUl.offsetWidth/2) {
+					// 直接拉回
+					oUl.style.left = 0;
+				}
+				else if (oUl.offsetLeft > 0) {
+					// 拉到一半
+					oUl.style.left = -oUl.offsetWidth/2 + 'px';
+				}
+				// 运动 注意这里offsetLeft是相对父级计算 所以要把ul设置为position: absolute
+				oUl.style.left = oUl.offsetLeft + iSpeed + 'px';
+			};
+
+
+			// 左右按钮
+			var oLeft = document.getElementsByTagName('a')[0],
+				oRight = document.getElementsByTagName('a')[1];
+			oLeft.onclick = function(){
+				iSpeed = -10;
+			};
+			oRight.onclick = function(){
+				iSpeed = 10;
+			};
+			// 鼠标悬停
+			oUl.onmouseover = function(){
+				clearInterval(timer);
+			};
+			oUl.onmouseout = function(){
+				timer = setInterval(fnMove, 30);
+			};
+		};
+	</script>
+</body>
+</html>

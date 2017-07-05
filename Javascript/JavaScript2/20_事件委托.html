@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul id="myLinks">
+		<li id="goSomewhere">goSomewhere</li>
+		<li id="doSomething">doSomething</li>
+		<li id="sayHi">sayHi</li>
+	</ul>
+	<script>
+	var list = document.getElementById('myLinks');
+	list.addEventListener('click', function(event){
+		var target = event.target;
+		switch(target.id){
+			case 'goSomewhere':
+				location.href = 'http://www.baidu.com';
+				break;
+			case 'doSomething':
+				document.title = 'I changed the document\'s title';
+				break;
+			case 'sayHi':
+				alert('Hi!');
+				break;
+		}
+	});
+	</script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	body{margin: 0; padding: 0;}
+	#topic{margin: 5px;}
+	a{text-decoration: none; color: grey;}
+	.selected{background: grey; color: white;}
+	table{border: 1px solid #ccc; text-align: left; border-collapse: collapse;}
+	th, tr, td{padding: 5px 10px;}
+	thead{background: #333; color: white;}
+	tbody th{background: grey; color: white;}
+	.alt{background: #ccc;}
+	.highlight{background: yellow;}
+	</style>
+	<script type="text/javascript" src="../jQuery/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+	<div id="topic">
+		<a href="topics/all.html" class="selected">All</a>
+		<a href="topics/community.html">Community</a>
+		<a href="topics/conferences.html">Conferences</a>
+	</div>
+	<table id="news">
+		<thead>
+			<tr>
+				<th>Date</th>
+				<th>Headline</th>
+				<th>Author</th>
+				<th>Topic</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th colspan="4">2011</th>
+			</tr>
+			<tr>
+				<td>Apr 15</td>
+				<td>jQuery 1.6 Beta 1 Released</td>
+				<td>John Resig</td>
+				<td>Releases</td>
+			</tr>
+			<tr>
+				<td>Feb 24</td>
+				<td>jQuery Conference 2011: San Francisco Bay Area</td>
+				<td>Ralph Whitbeck</td>
+				<td>Conferences</td>
+			</tr>
+			<tr>
+				<th colspan="4">2012</th>
+			</tr>
+			<tr>
+				<td>Apr 15</td>
+				<td id="release">jQuery 1.6 Beta 1 Released</td>
+				<td>John Resig</td>
+				<td>Community</td>
+			</tr>
+			<tr>
+				<td>Feb 24</td>
+				<td>jQuery Conference 2011: San Francisco Bay Area</td>
+				<td>Ralph Whitbeck</td>
+				<td>Conferences</td>
+			</tr>
+			<tr>
+				<td>Feb 24</td>
+				<td>jQuery Conference 2011: San Francisco Bay Area</td>
+				<td>Ralph Whitbeck</td>
+				<td>Conferences</td>
+			</tr>
+			<tr>
+				<td>Apr 15</td>
+				<td>jQuery 1.6 Beta 1 Released</td>
+				<td>John Resig</td>
+				<td>Releases</td>
+			</tr>
+		</tbody>
+	</table>
+	<script type="text/javascript">
+	$(function(){
+		$('#topic a').click(function(e){
+			e.preventDefault();
+			var topic=$(this).text();
+			
+			$('#topic a.selected').removeClass('selected');
+			$(this).addClass('selected');
+
+			$('#news tr').show();
+			if (topic != 'All') {
+				$('#news').find('tr:has(td)').not(function(){
+					return $(this).children(':nth-child(4)').text()==topic;
+				}).hide();
+			};
+		});
+
+		$('#news').find('tr:nth-child(even)').addClass('alt');
+
+		$('#release').nextAll().addBack().addClass('highlight');
+	});
+	</script>
+</body>
+</html>

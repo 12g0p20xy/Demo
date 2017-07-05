@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var str1 = 'function show(){ alert("Hello!") };';
+		var str2 = '12 + 15';
+		var str3 = '[0, 1, 2, 3]';
+		var str4 = [{user: 'aaa', pass: '123'}, {user: 'bbb', pass: 123456}]
+
+		eval(str1); show(); // 字符串转化成函数
+		alert(eval(str2)); // 字符串转换成可计算公式
+		alert(eval(str3)[1]); // 字符串转化成数组
+		alert(eval(str4)[0].user); // 读取json文件
+	</script>
+</body>
+</html>

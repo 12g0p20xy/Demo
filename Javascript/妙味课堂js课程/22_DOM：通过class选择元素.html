@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul id="ul">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li class="active"></li>
+		<li></li>
+		<li></li>
+		<li class="active"></li>
+		<li class="active"></li>
+		<li></li>
+		<li></li>
+	</ul>
+	<script>
+		function getByClass(oParent, cls){
+			// 选取父元素下的所有元素
+			var elem = oParent.getElementsByTagName('*'),
+				aResult = [];
+			for (var i = 0; i < elem.length; i++) {
+				if (elem[i].className == cls) {
+					aResult.push(elem[i]);
+				}
+			}
+			return aResult;
+		};
+		window.onload = function(){
+			var oUl = document.getElementById('ul');
+			var aActive = getByClass(oUl, 'active');
+			for (var i = 0; i < aActive.length; i++) {
+				aActive[i].style['backgroundColor'] = 'red';
+			};
+		};
+	</script>
+</body>
+</html>

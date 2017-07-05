@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{
+			display: none;
+			width: 200px;
+			height: 150px;
+			background: #eee;
+			margin-top: 15px;
+		}
+	</style>
+</head>
+<body>
+	<a id="link" href="javascript:;">链接</a>
+	<div id="box"></div>
+	<script>
+		var oBox = document.getElementById('box'),
+			oLink = document.getElementById('link'),
+			timer = null;
+
+		// 鼠标移到div时清除计时器
+		function showBox(){
+			oBox.style.display = 'block';
+			clearTimeout(timer);
+		};
+
+		function hideBox(){
+			timer = setTimeout(function(){
+				oBox.style.display = 'none';
+			}, 300);
+		};
+		
+		oLink.onmouseenter = showBox;
+		oLink.onmouseleave = hideBox;
+
+		oBox.onmouseenter = showBox;
+		oBox.onmouseleave = hideBox;
+	</script>
+</body>
+</html>

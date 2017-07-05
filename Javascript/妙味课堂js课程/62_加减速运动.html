@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#div{width: 100px; height: 100px; background: red; position: absolute; top: 50px; left: 0;}
+	</style>
+</head>
+<body>
+	<div id="div"></div>
+	<button>开始</button>
+	<script>
+		var iSpeed = 0;
+		function startMove(){
+			var oDiv = document.getElementById('div');
+			setInterval(function(){
+				// 加速运动
+				iSpeed++;
+				oDiv.style.left = oDiv.offsetLeft + iSpeed + 'px';
+			}, 30);
+		};
+
+		var oBtn = document.getElementsByTagName('button')[0];
+		oBtn.onclick = function(){
+			startMove();
+		}
+	</script>
+</body>
+</html>

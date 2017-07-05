@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn">点我</button>
+	<div id="div"></div>
+	<script>
+		function getStyle(obj, attr){
+			if (obj.currentStyle) {
+				return obj.currentStyle[attr];
+			}
+			else{
+				return getComputedStyle(obj, null)[attr];
+			}
+		};
+
+		function startMove(obj, json, fn){
+
+			clearInterval(obj.timer);
+			obj.timer = setInterval(function(){
+				// 检测是否所有循环中的值都到达了的开关
+				var bStop = true;
+				// for...in循环传入json
+				for(var attr in json){
+					var iCurrent = 0;
+					if (attr == 'opacity') {
+						iCurrent = parseInt(parseFloat(getStyle(obj, attr))*100);
+					}
+					else{
+						iCurrent = parseInt(getStyle(obj, attr));
+					}
+					var iSpeed = (json[attr] - iCurrent)/10;
+					iSpeed = iSpeed>0?Math.ceil(iSpeed):Math.floor(iSpeed);
+					if (iCurrent != json[attr]) {
+						// 每次循环中检查 如果这次循环没到终点则设为false
+						bStop = false;
+					}
+					if (attr == 'opacity') {
+						obj.style['opacity'] = (iCurrent + iSpeed)/100;
+						obj.style['filter'] = 'alpha(opacity=' + iCurrent + iSpeed +')';
+					}
+					else{
+						obj.style[attr] = iCurrent + iSpeed +'px';
+					}
+				};
+				// 当所有循环都结束的时候
+				if (bStop) {
+					clearInterval(obj.timer);
+					if (fn) {
+						fn();
+					}
+				}
+			}, 30);
+		};
+
+		window.onload = function(){
+			var oDiv = document.getElementById('div'),
+				oBtn = document.getElementById('btn');
+			oBtn.onclick = function(){
+				startMove(oDiv, {
+					width: 300,
+					height: 150,
+					opacity: 30
+				}, function(){
+					alert('Done!');
+				});
+			};
+		};
+	</script>
+</body>
+</html>

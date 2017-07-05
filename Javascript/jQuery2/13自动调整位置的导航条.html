@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../jQuery/jquery-1.11.3.min.js"></script>
+</head>
+<body style="height:6000px;">
+	<div class="nav" style="width: 100px; height: 300px; background: #ccc; margin-top: 100px;"></div>
+	<script type="text/javascript">
+	$(function(){
+		var navScroll = function(){
+			var distance = $(window).scrollTop();
+			if (distance > 100) {
+				$('.nav').css({position:'relative'}).animate({top: distance}, 300);
+			}else{
+				$('.nav').animate({top: 0}, 300);
+			};
+		};
+		// 节流事件
+		var timer = 0;
+		$(window).scroll(function() {
+			if (!timer) {
+				timer = setTimeout(function() {
+					navScroll();
+					timer = 0;
+				}, 600);
+			};
+		}).trigger('scroll');
+	});
+	</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- 间歇调用 -->
+	<script type="text/javascript">
+	var num = 0,
+		max = 5,
+		intervalId = null;
+	function incrementNumber(){
+		num++;
+		if (num = max) {
+			// 需要跟踪间歇调用id才能清除
+			clearInterval(intervalId);
+			console.log(num);
+		};
+	};
+	intervalId = setInterval(incrementNumber, 1000);
+	</script>
+	
+	<!-- 推荐方式 以超时调用模拟间歇调用 -->
+	<script type="text/javascript">
+	var num = 0,
+		max = 10;
+	function incrementNumber(){
+		num++;
+		if (num < max) {
+			// 这里是设置了另一次超时调用
+			// 没有必要跟踪超时调用id，会自行停止
+			// 使用clearTimeout时才需要id标识
+			setTimeout(incrementNumber, 1000);
+		}else{
+			console.log('done!');
+		};
+	};
+	setTimeout(incrementNumber, 1000);
+	</script>
+</body>
+</html>
+
+<!-- 
+！！！注意：
+！！！将setTimeout函数调用赋值给一个变量是个好主意
+！！！声明时没有用var，这个movement是一个全局变量
+	  movement = setTimeout('moveMessage()', 10); 
+-->

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	abbr{ background: yellow;}
+	</style>
+</head>
+<body>
+	<p id="msg">Whee!!!!!!</p>
+
+	<script>
+
+	function positionMessage(){
+		if (!document.getElementById('msg')) return false;
+		var elem = document.getElementById('msg');
+		elem.style.position = 'absolute';
+		elem.style.left = '50px';
+		elem.style.top = '100px';
+	}
+
+	function moveElement(elementID,final_x,final_y,interval){
+		var elem = document.getElementById(elementID);
+		var xpos = parseInt(elem.style.left);
+		var ypos = parseInt(elem.style.top);
+		if (xpos == final_x && ypos == final_y) {
+			return true;
+		}
+		if (xpos < final_x) {
+			xpos++;
+		}
+		if (xpos > final_x) {
+			xpos--;
+		}
+		if (ypos < final_y) {
+			ypos++;
+		}
+		if (ypos > final_y) {
+			ypos--;
+		};
+		elem.style.left = xpos + 'px';
+		elem.style.top = ypos + 'px';
+
+		// 调用setTimeout时还需要传一次参数给moveElement
+		movement = setTimeout('moveElement("'+elementID+'",'+final_x+','+final_y+','+interval+')', interval);
+	}
+
+	window.onload = function(){
+		positionMessage();
+		// 这里可以输入不同的参数
+		moveElement('msg',125,25,20);
+	}
+
+	</script>
+</body>
+</html>

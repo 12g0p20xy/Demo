@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var arr = [1, 6, 0, 123, 86, 180, 210];
+		// 直接使用sort会按照字符串顺序排列
+		arr.sort(function(a, b){
+			return a - b;
+		});
+		document.write(arr);
+	</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>03-4</title>
+	<script type="text/javascript" src='jquery-1.11.3.min.js'></script>
+</head>
+<body>
+	<p title='选择你最喜欢的水果'><b>你最喜欢的水果是？</b></p>
+	<ul>
+		<li title='苹果'>苹果</li>
+		<li title='橘子'>橘子</li>
+		<li title='菠萝'>菠萝</li>
+	</ul>
+	<script type="text/javascript">
+		var p_html = $('p').html(); //获取p元素的html代码
+		// alert(p_html); 输出：<b>你最喜欢的水果是？</b>
+		var p_text = $('p').text(); //获取p元素的文本内容
+		// alert(p_text); 输出：你最喜欢的水果是？
+		$('p').html('<a href="#">替换的文字</a>'); //设置p元素的html代码
+	</script>
+
+	<!---------------------- 我是分割线 ------------------------>
+	<input type='text' class='address' value='请输入邮箱地址'>
+	<script type="text/javascript">
+		$('input.address').focus(function(){ //输入框获得焦点
+			var text_value=$(this).val(); //得到当前文本框的值
+			if (text_value=='请输入邮箱地址') {
+				$('input.address').val(''); //符合条件则清空内容
+			};
+		});
+		$('.address').blur(function(){ //输入框失去焦点
+			var text_value=$(this).val();
+			if (text_value=='') {
+				$(this).val('请输入邮箱地址'); //符合条件则设置内容
+			};
+		})
+	</script>
+
+	<!---------------------- 我是分割线 ------------------------>
+	<input type='checkbox' value='check1'>多选1
+	<input type='checkbox' value='check2'>多选2
+	<input type='checkbox' value='check3'>多选3
+	<script type="text/javascript">
+		$(':checkbox').val(['check2','check3']); //同时设置后两个多选框被选中
+	</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="testdiv"></div>
+	<script>
+	window.onload = function(){
+		// 创建一个新元素节点
+		var para = document.createElement('p');
+		// var info = 'nodeName:'+para.nodeName+' nodeType:'+para.nodeType;
+		// alert(info);
+
+		// 将新元素p插入testdiv
+		var testdiv = document.getElementById('testdiv');
+		testdiv.appendChild(para);
+
+		// 想插入文字还需要创建一个文本节点
+		var text = document.createTextNode('Hello world');
+		para.appendChild(text);
+
+		// ——————总结：createElement创建一个新元素节点，createTextNode创建一个新文本节点，appendChild可以连接节点——————
+	}
+	</script>
+</body>
+</html>

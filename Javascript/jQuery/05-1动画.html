@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>05-1</title>
+	<script type="text/javascript" src='jquery-1.11.3.min.js'></script>
+	<style type="text/css">
+		.box, .box2{ width: 100px; height: 100px; background: red; line-height: 100px; text-align: center; margin: 100px;}
+	</style>
+</head>
+<body>
+	<div class="box">回调函数</div>
+	<script type="text/javascript">
+		$('.box').click(function(){
+			$(this).animate({left:'400px', height:'200px', opacity:'1'}, 3000)
+				.animate({top:'200px', width:'200px'}, 3000, function(){
+					$(this).css('border', '5px solid blue'); //这里的css()方法使用回调函数实现对非动画效果的排队
+			});
+		});
+	</script>
+
+	<div class="box2">停止动画</div>
+	<script type="text/javascript">
+		$('.box2').hover(function(){
+			$(this).stop(true)
+				.animate({height:'150'},200) //如果在此时触发光标移除事件则直接跳过后面的动画序列
+				.animate({width:'300'},300)
+		}, function(){
+			$(this).stop(true)
+				.animate({height:'22'},200)
+				.animate({width:'60'},300)
+		});
+	</script>
+</body>
+</html>

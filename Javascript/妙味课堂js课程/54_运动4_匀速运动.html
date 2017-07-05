@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		html, body{
+			margin: 0;
+			padding: 0;
+		}
+		#div{
+			margin-top: 10px;
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+		span{
+			position: absolute;
+			left: 500px;
+			width: 1px;
+			height: 300px;
+			border-left: 1px dashed #ccc;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn">点击</button>
+	<div id="div"></div>
+	<span></span>
+	<script>
+
+		function startMove(iTarget){
+			var oDiv = document.getElementById('div');
+			var timer = null;
+
+			clearInterval(timer);
+
+			timer = setInterval(function(){
+				var iSpeed = iTarget - oDiv.offsetLeft;
+				if (iSpeed > 0) {
+					iSpeed = 7;
+				}
+				else{
+					iSpeed = -7;
+				}
+				// 判断当距离终点小于一次iSpeed移动端距离则停止
+				if (Math.abs(oDiv.offsetLeft - iTarget) < 7) {
+					clearInterval(timer);
+					oDiv.style.left = iTarget + 'px';
+				}
+				else{
+					oDiv.style.left = oDiv.offsetLeft + iSpeed +'px';
+					document.title = oDiv.offsetLeft;
+				}
+			}, 30); 
+		};
+
+		window.onload = function(){
+			var oBtn = document.getElementById('btn');
+			oBtn.onclick = function(){
+				startMove(500);
+			};
+		};
+	</script>
+</body>
+</html>

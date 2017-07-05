@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// 使用firefox可以测试本机网页的cookie
+
+		// cookie不会覆盖上一条
+		document.cookie = 'user = blue';
+		document.cookie = 'password = 123';
+
+		// 设置cookie的过期时间
+		// 不同的cookie可以设置独立的过期时间
+		var oDate = new Date();
+		oDate.setDate(oDate.getDate() + 30); // 当前时间+30天
+		document.cookie = 'user = blue; expires =' + oDate;
+
+		alert(document.cookie);
+	</script>
+</body>
+</html>
