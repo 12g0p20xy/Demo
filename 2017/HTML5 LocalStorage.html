@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>HTML5 Local Storage</title>
+</head>
+<body>
+
+		<label for="user-name">姓名：</label>
+		<input type="text" id="user-name">
+		<br>
+		<label for="user-number">手机：</label>
+		<input type="text" id="user-number">
+		<br>
+		<label for="user-address">地址：</label>
+		<input type="text" id="user-address">
+		<br>
+		<button onclick="UserMap.save()">新增用户</button>
+
+		<hr>
+
+		<label for="search-number">输入手机号：</label>
+		<input type="text" id="search-number">
+		<button onclick="UserMap.find()">搜索用户</button>
+
+		<div id="result"></div>
+
+		<hr>
+
+		<h3>当前储存的所有用户</h3>
+		<div id="user-list"></div>
+		<button onclick="UserMap.clearAll()">清空 Local Storage</button>
+
+	<script>
+
+		var UserMap = {
+
+			save: function() {
+
+				var user = {};
+		    user.name = document.getElementById('user-name').value;
+		    user.number = document.getElementById('user-number').value; 
+		    user.address = document.getElementById('user-address').value;
+
+		    // 转换为 JSON 对象
+		    var userData = JSON.stringify(user);
+
+		    // 以每个用户的电话号码 user.number 为索引值设置 Local Storage
+		    localStorage.setItem(user.number, userData);
+
+		    console.log(localStorage);
+		    this.findAll();
+
+			},
+
+			find: function() {
+
+				var result = document.getElementById('result');
+				var searchNumber = document.getElementById('search-number').value;
+				// 以索引值（电话号码）查找用户，这里的 searchUser 是 JSON 对象
+				var searchUser = localStorage.getItem(searchNumber);
+				result.innerHTML = searchNumber + "的机主是：" + JSON.parse(searchUser).name;
+
+			},
+
+			findAll: function() {
+
+				var userList = document.getElementById('user-list');
+
+				if (localStorage.length > 0) {
+					var result = '<table>';
+					result += '<thead><td>姓名</td><td>手机</td><td>地址</td></thead>';
+
+					for (var i = 0; i < localStorage.length; i++) {
+						// localStorage.key(index) 通过索引读取数据
+						var allUser = localStorage.getItem(localStorage.key(i));
+						// 转换 JSON 对象
+						var	contact = JSON.parse(allUser);
+						result += '<tr><td>'
+										+ contact.name + '</td><td>'
+										+ contact.number + '</td><td>'
+										+ contact.address + '</td></tr>';
+					}
+					result += '</table>'
+					userList.innerHTML = result;
+				}
+				else {
+					userList.innerHTML = "目前数据为空";
+				}
+
+			},
+
+			clearAll: function() {
+
+				localStorage.clear();
+				alert('已清空，现在 localStorage.legnth 是' + localStorage.length);
+				this.findAll();
+
+			}
+
+		}
+
+		UserMap.findAll();
+
+	</script>
+
+</body>
+</html>
