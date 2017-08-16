@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+
+  <div id="app">
+    <child>
+      <template scope="props">
+        {{ props.msg }}
+      </template>
+    </child>
+  </div>
+
+  <script>
+
+    // 带插槽的组件
+    Vue.component('child', {
+      template: `
+      <div class="child">
+        <slot msg="Child Message!"></slot>
+      </div>
+      `
+    })
+
+    new Vue({
+      el: '#app'
+    })
+
+  </script>
+
+</body>
+</html>

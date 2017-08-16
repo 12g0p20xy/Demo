@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+
+  <div id="app">
+    <component :is="currentView"></component>
+    <button @click="changePage">切换子组件</button>
+  </div>
+
+  <script>
+
+    const Page1 = {
+      template: '<p>子组件111</p>'
+    }
+    const Page2 = {
+      template: '<p>子组件222</p>'
+    }
+
+    new Vue({
+      el: '#app',
+      data: {
+        // 改变这里的 currentView 即可改变显示的子组件
+        currentView: Page1
+      },
+      component: {
+        Page1, Page2
+      },
+      methods: {
+        changePage() {
+          this.currentView = this.currentView == Page1 ? Page2 : Page1
+        }
+      }
+    })
+
+  </script>
+
+</body>
+</html>
