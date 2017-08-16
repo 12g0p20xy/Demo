@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+	<title>SPA</title>
+	<style>
+		html, body{margin: 0; padding: 0; height: 100%; padding-left: 2em; background: #eee}
+		nav{position: fixed; top: 0; bottom: 0; left: 0; background: #333;}
+		a{display: block; padding: 1em; color: #eee; text-decoration: none;}
+		a.router-link-active{color: #F05151;}
+		h2{margin: 0;}
+		#app{height: 100%;}
+		#index{height: 100%; background: #FFD052}
+		#brief{height: 100%; background: #5552FF}
+	</style>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+
+	<div id="app">
+		<nav>
+			<router-link to="/index">首页</router-link>
+			<router-link to="/brief">用户</router-link>
+		</nav>
+    <router-view></router-view>
+	</div>
+
+	<script>
+
+		// 引入组件
+		const Index = { template: '<div id="index">首页</div>' }
+		const Brief = {
+			template: `
+				<div id="brief">
+		    	<router-link to="brief/user1">用户1</router-link>
+		    	<router-link to="brief/user2">用户2</router-link>
+				</div>
+			`
+		}
+		const User = {
+			template: '\
+				<div class="user">\
+					<h2>User {{ $route.params.username }}</h2>\
+					<router-view></router-view>\
+					<router-link to="/brief">后退</router-link>\
+				</div>\
+			'
+		}
+		const UserHome = { template: '<div>UserHome</div>' }
+		const UserProfile = { template: '<div>UserProfile</div>' }
+		const UserPosts = { template: '<div>UserPosts</div>' }
+
+		// 创建 router 实例
+		const router = new VueRouter({
+		  routes: [
+		  	{ path: '/', component: Index },
+		  	{ path: '/index', component: Index },
+		  	{ path: '/brief', component: Brief },
+		  	{ path: '/brief/:username', component: User,
+		  		children: [
+		  			{
+		  				path: '',
+		  				component: UserHome
+		  			},
+		  			{
+		  				// 当 /user/:username/profile 匹配成功
+		          // UserProfile 会被渲染在 User 的 <router-view> 中
+		          path: 'profile',
+		          component: UserProfile
+		  			},
+		  			{
+		  				// 当 /user/:username/posts 匹配成功
+		          // UserPosts 会被渲染在 User 的 <router-view> 中
+		          path: 'posts',
+		          component: UserPosts
+		  			}
+		  		]
+		  	 },
+		  	{ path: '/', redirect: '/index'}
+		  ]
+		})
+
+		new Vue({
+		  router,
+		  el: '#app'
+		})
+
+	</script>
+
+</body>
+</html>

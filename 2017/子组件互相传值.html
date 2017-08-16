@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+
+  <div id="app">
+    <child-a></child-a>
+    <child-b></child-b>
+  </div>
+
+  <script>
+
+    // 新注册一个空的实例作为“中转站”
+    var bus = new Vue()
+
+    // 组件A
+    Vue.component('child-a', {
+      template: '\
+        <div>\
+          我是组件A，a的值为\
+          <button @click="add">{{ a }}</button>\
+        </div>',
+      data() {
+        return {
+          a: 0
+        }
+      },
+      methods: {
+        add() {
+          this.a ++
+          // 触发中转站的名为 addA 的事件，实现传值
+          bus.$emit('addA', this.a)
+        }
+      }
+    })
+
+    // 组件B
+    Vue.component('child-b', {
+      template: '\
+        <div>\
+          我是组件B，从组件A获取到的a的值为\
+          {{ b }}\
+        </div>',
+      data() {
+        return {
+          b: 0
+        }
+      },
+      mounted() {
+        // 检测到 addA 事件，接收组件 A 传来的值
+        bus.$on('addA', function (val) {
+          this.b = val
+          console.log(val)
+        // 这里需要把 this 绑定到组件 B 上
+        }.bind(this))
+      }
+    })
+
+    new Vue({
+      el: '#app'
+    })
+
+  </script>
+
+</body>
+</html>

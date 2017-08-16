@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+
+  <div id="app">
+    <child>
+      <p slot="header">我是插槽header</p>
+      <p slot="footer">我是插槽footer</p>
+      <p slot="footer">我是插槽footer2</p>
+      <p>我是未命名的插槽</p>
+      <p>我是未命名的插槽2</p>
+    </child>
+  </div>
+
+  <script>
+
+    // 带插槽的组件
+    Vue.component('child', {
+      template: `
+      <div class="child">
+        <slot name="header"></slot>
+        <slot></slot>
+        <slot name="footer"></slot>
+      </div>
+      `,
+      mounted() {
+        // this.$slots 包含了1个 header、2个 footer、6个 defalut 的数组
+        // 通过例如 this.$slots.header.elm 可获取到插槽 header 的 p 元素节点
+        console.log(this.$slots)
+        this.$slots.footer.forEach(function(item) {
+          item.elm.style.color = 'red'
+        })
+      }
+    })
+
+    new Vue({
+      el: '#app'
+    })
+
+  </script>
+
+</body>
+</html>
