@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Person(name) {
+      var _name = name;
+      // SETTER
+      this.setName = function() {
+        _name = name;
+      };
+      // GETTER
+      this.getName = function() {
+        return _name;
+      };
+    }
+
+    var john = new Person('John');
+    console.log(john.name); // undefined
+    john.setName('John');
+    console.log(john.getName()); // "John"
+
+  </script>
+</body>
+</html>

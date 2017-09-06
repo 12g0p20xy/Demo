@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vuex"></script>
+</head>
+<body>
+  <div id="app">
+    {{ count }}
+    <button @click="add">+</button>
+  </div>
+  <script>
+
+    // 使用 Vuex，创建一个 store
+    const store = new Vuex.Store({
+      // 变量
+      state: {
+        count: 0
+      },
+      // 方法
+      mutations: {
+        increment (state) {
+          state.count ++
+        }
+      }
+    })
+
+    /*
+      通过 store.state 获取状态对象
+      console.log(store.state.count)
+      通过 store.commit 方法触发状态变更
+      store.commit('increment')
+    */
+
+    new Vue({
+      el: '#app',
+      computed: {
+        count() {
+          return store.state.count
+        }
+      },
+      methods: {
+        add() {
+          store.commit('increment')
+        }
+      }
+    })
+
+  </script>
+</body>
+</html>

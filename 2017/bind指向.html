@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  
+    var Pack = {
+
+      itemList: ['fruits', 'pen', 'knife', 'lighter'],
+
+      showItem: function() {
+        var _this = this;
+        setInterval(function() {
+          if (_this.itemList.length > 0) {
+            console.log(_this.itemList[0]);
+          }
+          _this.itemList = _this.itemList.slice(1, 4);
+        }, 1000);
+      }
+
+    }
+
+    var Pack2 = {
+
+      itemList: ['apple', 'banana', 'orange', 'grape'],
+
+      showItem: function() {
+        setInterval(function() {
+          if (this.itemList.length > 0) {
+            console.log(this.itemList[0]);
+          }
+          this.itemList = this.itemList.slice(1, 4);
+        }.bind(this), 1000);
+      }
+
+    }
+
+    Pack2.showItem()
+
+  </script>
+</body>
+</html>
