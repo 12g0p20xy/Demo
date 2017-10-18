@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>豆瓣API测试</title>
+</head>
+<body>
+  <div id="app">
+    <a href="https://developers.douban.com/wiki/?title=book_v2"><h2>豆瓣 API 测试</h2></a>
+    <hr>
+    <input v-model="searchKey">
+    <button @click="search">搜索</button>
+    <div v-for="item in bookList">
+      <span>{{item.id}}</span>
+      |
+      <span>{{item.title}}</span>
+    </div>
+  </div>
+  <script src="https://cdn.bootcss.com/vue/2.4.4/vue.min.js"></script>
+  <script src="https://cdn.bootcss.com/fetch-jsonp/1.1.3/fetch-jsonp.min.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        searchKey: '',
+        bookList: []
+      },
+      methods: {
+        search() {
+          fetchJsonp('https://api.douban.com/v2/book/search?q=' + this.searchKey + '&fields=id,title')
+            .then(response => 
+              response.json()
+            )
+            .then(json => {
+              json.books.forEach((el) => {
+                this.bookList.push({
+                  id: el.id,
+                  title: el.title
+                })
+              })
+              console.log(this.bookList)
+            })
+            .catch(ex => {
+              console.log('读取失败')
+            })
+        }
+      }
+    })
+  </script>
+</body>
+</html>
