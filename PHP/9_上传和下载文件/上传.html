@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>上传文件</title>
+</head>
+<body>
+  <!-- enctype 指定表单的编码数据方式 -->
+  <form action="upload.php" method="post" enctype="multipart/form-data">
+    <!-- MAX_FILE_SIZE 用于简单限制文件的大小 -->
+    <input type="hidden" name="MAX_FILE_SIZE" value="100000">
+    选择文件：<input type="file" name="myfile">
+    <button>上传文件</button>
+  </form>
+</body>
+</html>

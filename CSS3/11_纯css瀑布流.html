@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>纯css瀑布流</title>
+  <style>
+    ul {
+      width: 600px;
+      background: #DCEEFF;
+      padding: 15px;
+      -moz-column-count: 3;
+      -webkit-column-count: 3;
+      column-count: 3;
+      -moz-column-width: 6em;
+      -webkit-column-width: 6em;
+      column-width: 6em;
+      -moz-column-gap: 1em;
+      -webkit-column-gap: 1em;
+      column-gap: 1em;
+    }
+    li {
+      list-style: none;
+      padding: 10px;
+      background: #fff;
+      -webkit-column-break-inside: avoid;
+      -moz-page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    img {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li><img src="images/01_iron_man_2.jpg"></li>
+    <li><img src="images/11.jpg"></li>
+    <li><img src="images/chimpified.jpeg"></li>
+    <li><img src="images/michael-jackson-bad.jpg"></li>
+    <li><img src="images/01_iron_man_2.jpg"></li>
+    <li><img src="images/2.jpg"></li>
+  </ul>
+</body>
+</html>
