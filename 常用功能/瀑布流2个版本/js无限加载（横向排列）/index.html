@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <style>
+    * {
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #DCEEFF;
+    }
+    img {
+      width: 100%;
+    }
+    p {
+      margin: 0;
+    }
+    .grid {
+      width: 100%;
+    }
+    .grid-item {
+      width: 50%;
+      padding: 1%;
+    }
+    .grid-item .content {
+      background: #fff;
+      border-radius: 6px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid">
+    <div class="grid-item">
+      <div class="content">
+        <img src="../images/01_iron_man_2.jpg">
+        <p>111</p>
+      </div>
+    </div>
+    <div class="grid-item">
+      <div class="content">
+        <img src="../images/11.jpg">
+        <p>222</p>
+      </div>
+    </div>
+    <div class="grid-item">
+      <div class="content">
+        <img src="../images/chimpified.jpeg">
+        <p>333</p>
+      </div>
+    </div>
+    <div class="grid-item">
+      <div class="content">
+        <img src="../images/michael-jackson-bad.jpg">
+        <p>444</p>
+      </div>
+    </div>
+    <div class="grid-item">
+      <div class="content">
+        <img src="../images/01_iron_man_2.jpg">
+        <p>555</p>
+      </div>
+    </div>
+    <div class="grid-item">
+      <div class="content">
+        <img src="../images/2.jpg">
+        <p>666</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+  <script src="https://unpkg.com/masonry-layout@4.2.0/dist/masonry.pkgd.min.js"></script>
+  <script>
+    var $grid = $('.grid').imagesLoaded(function() {
+      $grid.masonry()
+    })
+
+    // 阻止重复加载
+    var isLoad = false
+
+    $(window).on('scroll', function() {
+      var scrollTop = $(this).scrollTop(),
+          newItems = ''
+      if (scrollTop + window.innerHeight > document.body.clientHeight -30 && !isLoad) {
+
+        // 关闭加载
+        isLoad = true
+
+        $.getJSON('fake_data.js', function(json) {
+          json.forEach(function(el) {
+            newItems
+              += '<div class="grid-item"><div class="content">'
+              + '<img src="' + el.img + '">'
+              + '<p>' + el.id + '</p>'
+              + '</div></div>'
+          })
+
+          // ! Masonry 的 append 方法只接受 $() 对象
+          var $newItems = $(newItems)
+          $grid.imagesLoaded(function() {
+            $grid.append($newItems).masonry('appended', $newItems)
+          })
+
+          // 开启加载
+          isLoad = false
+        })
+      }
+    })
+  </script>
+</body>
+</html>
