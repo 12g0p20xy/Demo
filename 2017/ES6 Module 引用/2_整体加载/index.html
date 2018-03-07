@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="module">
+    // 逐一加载
+    import { area, circumference } from './circle.js'
+    console.log('圆面积：' + area(4))
+    console.log('圆周长：' + circumference(4))
+
+    // 整体加载
+    import * as circle from './circle.js'
+    console.log('圆面积：' + circle.area(4))
+    console.log('圆周长：' + circle.circumference(4))
+  </script>
+</body>
+</html>

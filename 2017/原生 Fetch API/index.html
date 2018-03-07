@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    fetch('img.gif')
+      .then(function(response) {
+        return response.url;
+      })
+      .then(function(url) {
+        const img = document.createElement('img');
+        img.src = url;
+        document.body.appendChild(img);
+      });
+  </script>
+</body>
+</html>

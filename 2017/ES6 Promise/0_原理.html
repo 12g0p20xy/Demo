@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // resolve 函数是将 Promise 对象的状态从“未完成”变为“成功”
+    // reject 函数是将 Promise 对象的状态从“未完成”变为“失败”
+    const promise = new Promise((resolve, reject) => {
+
+      // 一些代码
+
+      if (/* 成功*/) {
+        // 异步操作的结果作为参数会抛给回调函数
+        resolve(value)
+      }
+      else {
+        // 异步操作的结果作为参数会抛给回调函数
+        reject(error)
+      }
+
+    })
+
+    /* then 是为 Promise 实例添加状态改变时的回调函数；
+       then 接收2个参数，第一个是 resolved 状态的回调函数，第二个（可选）是 rejected 状态的回调函数。
+    */
+    promise.then(function(value) {
+      // success
+    }, function(error) {
+      // failure
+    })
+
+    // then 方法返回一个新的 Promise 实例，并且接收上一个 Promise 的返回值
+    getJSON("/posts.json").then(function(json) {
+      return json.post;
+    }).then(function(post) {
+      // ...
+    });
+  </script>
+</body>
+</html>

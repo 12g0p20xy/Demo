@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mock</title>
+  <style>
+    html, body {margin: 0; padding: 0;}
+    a {text-decoration: none; color: #333;}
+    a:hover {text-decoration: underline;}
+    p {display: -webkit-box; overflow : hidden; text-overflow: ellipsis; -webkit-line-clamp: 5; -webkit-box-orient: vertical;}
+    small {color: #999;}
+    ul {list-style: none;}
+    li {float: left; margin: 15px; width: 200px; padding: 10px; border: 1px solid #eee;}
+  </style>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="item in items">
+        <a :href="item.url">
+          <img :src="item.img">
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.text }}</p>
+          <small>{{ item.date }}</small>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <script src="https://cdn.bootcss.com/vue/2.5.13/vue.min.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        items: []
+      },
+      mounted() {
+        this.getData()
+      },
+      methods: {
+        getData() {
+          const url = 'https://www.easy-mock.com/mock/5a5eb1e653fd8e0b52797717/gallery/gallery'
+          fetch(url)
+            .then(response => response.json())
+            .then((json) => {
+              this.items = json.data.projects
+            })
+        }
+      }
+    })
+    
+  </script>
+</body>
+</html>
