@@ -22,7 +22,8 @@
 			BackTop.prototype.init = function() {
 				$(document.body).append(this.$backBtn);
 				this.$backBtn.on('click', function() {
-					$(document.body).animate({scrollTop: 0}, 300);
+					// $('html, body') 同时兼容 chrome 和 firefox
+					$('html, body').animate({scrollTop: 0}, 300);
 				});
 				this.scrollPage();
 			};
@@ -30,7 +31,7 @@
 			// 节流检测
 			BackTop.prototype.scrollPage = function() {
 				var that = this;
-				$(document).on('scroll', function() {
+				$(window).on('scroll', function() {
 					that.scrolled = true;
 				});
 				setInterval(function() {
@@ -38,11 +39,11 @@
 						that.showBtn();
 						that.scrolled = false;
 					}
-				}, 250);
+				}, 500);
 			};
 
 			BackTop.prototype.showBtn = function() {
-				this.scrollTop = $(document.body).scrollTop();
+				this.scrollTop = $(window).scrollTop();
 				if (this.scrollTop >= 150) {
 					this.$backBtn.fadeIn();
 				}
