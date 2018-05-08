@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    document.cookie = 'name=zhangsan'
+    document.cookie = 'jrwh_Appid=testId'
+    document.cookie = 'age=100'
+
+    console.log('cookie is:', document.cookie)
+
+    let wxcode = ''
+
+    let cookieArr = document.cookie.split(';')
+    // 遍历获取 jrwh_Appid 的值
+    cookieArr.some(val => {
+      // 这里一定要加 trim() 删掉前后空格
+      let arr = val.trim().split('=')
+      if (arr[0] === 'jrwh_Appid') {
+        wxcode = arr[1]
+        // 终止循环
+        return true
+      }
+      else {
+        wxcode = ''
+      }
+    })
+
+    console.log('wxcode is: ', wxcode)
+  </script>
+</body>
+</html>

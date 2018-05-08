@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		const loadXML = (url) => {
+			let xmlDoc
+			// ie
+			// try {
+			// 	xmlDoc = new ActiveXObject('Microsoft.XMLDOM')
+			// }
+			// firefox
+			// catch(err) {
+			// 	try {
+			// 		xmlDoc = document.implementation.createDocument('', '', null)
+			// 	}
+			// 	catch(err) {
+			// 		alert(err.message)
+			// 	}
+			// }
+			try {
+				xmlDoc.async = false
+				xmlDoc.load(url)
+				// document.write('xmlDoc is loaded.')
+			}
+			// chrome
+			catch(err) {
+				const xmlhttp = new XMLHttpRequest()
+				xmlhttp.open('GET', url, false)
+				xmlhttp.send(null)
+				xmlDoc = xmlhttp.responseXML
+			}
+
+			return xmlDoc
+		}
+
+
+		const list = loadXML('https://comment.bilibili.com/38008168.xml').getElementsByTagName('d')
+		for (var i = 0; i < list.length; i++) {
+			document.write(list[i].innerHTML)
+		}
+
+	</script>
+</body>
+</html>

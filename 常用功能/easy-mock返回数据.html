@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>测试返回接口</title>
+</head>
+<body>
+  <button type="button" onclick="getData()">GET</button>
+  <button type="button" onclick="getData2()">POST</button>
+
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+
+    var getData2 = function() {
+      $.ajax({
+        url: 'https://easy-mock.com/mock/5ae41781985d63275b55e16e/response/post',
+        type: 'POST',
+        data: {name: 'nk'},
+      })
+      .done(function(data) {
+        console.log(data);
+      })
+      .fail(function() {
+        console.log("error");
+      })
+      .always(function() {
+        console.log("complete");
+      });
+    }
+
+    var getData = function() {
+      $.ajax({
+        url: 'https://easy-mock.com/mock/5ae41781985d63275b55e16e/response/get?name=nk',
+        type: 'GET',
+      })
+      .done(function(data) {
+        console.log(data);
+      })
+      .fail(function() {
+        console.log("error");
+      });
+    }
+  </script>
+</body>
+</html>
